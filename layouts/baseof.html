@@ -7,8 +7,9 @@
   <main>
     {{ block "main" . }}{{ end }}
   </main>
-  <footer>
+  <footer class="site-footer">
     {{ partial "footer.html" . }}
   </footer>
+  <script src="{{ "js/tabs.js" | relURL }}"></script>
 </body>
 </html>

@@ -1,7 +1,33 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ .Title }}</title>
-{{- with or .Description site.Params.description }}
+{{- $desc := or .Summary .Description site.Params.description }}
+{{- with $desc }}
   <meta name="description" content="{{ . }}">
 {{- end }}
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{ .Permalink }}">
+<meta name="theme-color" content="#f4f6f8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:locale" content="en_US">
+{{- with $desc }}
+  <meta property="og:description" content="{{ . }}">
+  <meta name="twitter:description" content="{{ . }}">
+{{- end }}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ .Title }}">
+{{- $ld := dict
+  "@context" "https://schema.org"
+  "@type" "WebSite"
+  "name" site.Title
+  "url" .Permalink
+  "description" $desc
+  "inLanguage" "en"
+  "author" (dict "@type" "Person" "name" "Raphael Hans" "email" "raphael.hans@continuous-governance.org")
+}}
+<script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>
+<link rel="stylesheet" href="{{ "css/open-props.min.css" | relURL }}">
 <link rel="stylesheet" href="{{ "css/main.css" | relURL }}">

@@ -1,0 +1,22 @@
+{{- $class := "data" -}}
+{{- with index .THead 0 -}}
+  {{- $label := index . 0 -}}
+  {{- if eq $label.Text "Pipeline perspective" }}{{ $class = "compare" }}{{ end -}}
+  {{- if eq $label.Text "Who" }}{{ $class = "benefits" }}{{ end -}}
+{{- end -}}
+<table class="{{ $class }}">
+  <thead>
+    {{- range .THead }}
+    <tr>
+      {{- range . }}<th>{{ .Text | safeHTML }}</th>{{ end }}
+    </tr>
+    {{- end }}
+  </thead>
+  <tbody>
+    {{- range .TBody }}
+    <tr>
+      {{- range . }}<td>{{ .Text | safeHTML }}</td>{{ end }}
+    </tr>
+    {{- end }}
+  </tbody>
+</table>

@@ -4,7 +4,10 @@ title = 'Continuous Governance'
 publishDir = 'docs'
 cleanDestinationDir = true
 
-disableKinds = ['taxonomy', 'term', 'RSS', 'sitemap']
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[markup.goldmark.extensions]
+  definitionList = true
 
 [module]
   [module.hugoVersion]
