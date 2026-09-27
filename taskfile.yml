@@ -1,0 +1,38 @@
+version: '3'
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+    silent: true
+
+  build:
+    desc: Build the site into docs/
+    cmds:
+      - hugo --gc {{.CLI_ARGS}}
+
+  serve:
+    desc: Serve the site locally with live reload
+    cmds:
+      - hugo server --buildDrafts --disableFastRender {{.CLI_ARGS}}
+
+  minify:
+    desc: Build a minified production site into docs/
+    env:
+      HUGO_ENVIRONMENT: production
+    cmds:
+      - hugo --gc --minify {{.CLI_ARGS}}
+
+  clean:
+    desc: Remove generated files
+    cmds:
+      - rm -rf docs public resources .hugo_build.lock hugo_stats.json
+
+  new:
+    desc: Create a content file
+    preconditions:
+      - sh: test -n "{{.CLI_ARGS}}"
+        msg: 'Pass a content path, for example: task new -- content/page.md'
+    cmds:
+      - hugo new content {{.CLI_ARGS}}
