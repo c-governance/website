@@ -80,6 +80,16 @@
     history.pushState(null, "", next);
   }
 
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("a[href^='#']");
+    if (!link) return;
+    var id = link.getAttribute("href").replace(/^#/, "");
+    if (!panels.some(function (item) { return item.id === id; })) return;
+    event.preventDefault();
+    select(id, false);
+    syncHash(id);
+  });
+
   tablist.addEventListener("click", function (event) {
     var tab = event.target.closest("[role='tab']");
     if (!tab) return;
