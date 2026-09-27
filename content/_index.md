@@ -126,7 +126,7 @@ I am Raphael, the initiator of Continuous Governance. I work at Robert Bosch Gmb
 
 The service is planned for release under an open-source license. Details are still under internal discussion. Updates are published on this site. I am happy to take questions, feedback, and suggestions. If you want to know more about Continuous Governance, please contact me. 
 
-Write to [raphael.hans@continuous-governance.org](mailto:raphael.hans@continuous-governance.org).
+Write to [raphael.hans@continuous-governance.org](mailto:raphael.hans@continuous-governance.org) or open a [ticket](https://github.com/c-governance/website/issues) on github.com. 
 
 ## Impressum
 

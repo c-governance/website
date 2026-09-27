@@ -91,19 +91,31 @@ a:hover { text-decoration: none; }
   gap: var(--size-4);
 }
 
-.github {
+.profiles {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: var(--size-4);
+  margin-top: 0.7rem;
+}
+
+.profile {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  flex: 0 0 auto;
-  margin-top: 0.7rem;
   color: var(--ink);
   font-size: var(--font-size-0);
   font-weight: 600;
   text-decoration: none;
 }
 
-.github:hover { color: var(--accent); }
+.profile svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.profile:hover { color: var(--accent); }
 
 .lede {
   max-width: 38rem;
