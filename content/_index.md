@@ -6,27 +6,29 @@ summary = 'Continuous Governance sits beside continuous integration, delivery, a
 
 ## Problem
 
-Today, operating IT systems in a modern environment covers many concerns. Continuous deployment helps handle infrastructure and operational complexity. Separate automation tasks address the service itself:
-
+In corporate IT, an IT service is connected to other services, identity provider, platforms, and local processes in place. Its operational discipline behind it, is called **DevOps (Development + Operation)**. 
+**Continuous Deployments (CD)** tools help to handle the *operational aspect* and boost the shift to modern cloud environments with their complexity. 
+The *development aspect* in **DevOps** is typically covered by applying **Continuous Integration (CI)** tools for automation tasks which address the IT service itself, e.g.:  
 - Resource management
 - Internal billing
 - Maintenance and security
 - Audit and governance
 - Custom user and business workflows
 
-For these use cases, teams typically use continuous integration tools, in the form of pipelines, cron jobs, and scripts. These tools are the obvious choice, because they already exist in the environment. They get the job done, and they fail in a familiar way:
+**Continuous Integration (CI)** tools  are perfect tools to builds, tests, and deploys software, but miss the original intent of DevOps practices. Using **CI** tools for the automation of IT systems has following methodical disadvantages: 
 
-- There is no durable model of the operation. State lives in the last log, a spreadsheet, or only in the remote system.
-- Every run starts from zero and talks to live APIs again. The operation is recomputed, not calculated from a known model.
-- Audit is archaeology. Evidence is reconstructed after the fact.
-- Each new operation becomes another pipeline. The pattern is copied, not reused.
-- A green job proves that something ran. It does not prove what the operation now is, why it changed, or which rule allowed it.
+- The operation has no durable model. Its state is the last log, a spreadsheet, or the remote system.
+- Each run starts without a retained model and reads the live APIs again. The operation is recomputed from those calls.
+- Evidence for an audit is assembled after the run.
+- A further operation requires a further pipeline. The implementation is duplicated.
+- A completed job records that a run finished. The record omits the resulting content of the operation, the cause of the change, and the rule that permitted it.
 
-Any IT operations team that uses continuous integration pipelines for service automation runs into the same problems with upstream processes and governance.
+Any IT operations team in corporate environments that uses continuous integration tools for service automation, runs into the same problems with upstream processes and governance.
 
 > **Vision**
 >
 > Continuous Governance contributes to a shift-left in IT operations by making every IT operation auditable by definition.
+
 
 ## Solution
 
@@ -49,6 +51,9 @@ With that, logic that today lives in pipelines can be replaced, one for one, by 
 That is the new perspective. A pipeline produces an artifact and forgets the world. A state machine stays with the operation. Because the decision is a calculation over a local model, it can be repeated, explained, and shown. Governance is not a second process. It is the trace of the calculation: what was observed, what was planned, what was executed, and which rule applied.
 
 CI, CD, and CT stay in place. They remain how software is integrated, delivered, and tested, including the software that implements CG. CG is how the operations that software performs are kept correct over time.
+
+
+
 
 ## Method
 
