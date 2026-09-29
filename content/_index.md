@@ -6,16 +6,17 @@ summary = 'Continuous Governance sits beside continuous integration, delivery, a
 
 ## Problem
 
-In corporate IT, an IT service is connected to other services, identity provider, platforms, and local processes in place. Its operational discipline behind it, is called **DevOps (Development + Operation)**. 
-**Continuous Deployments (CD)** tools help to handle the *operational aspect* and boost the shift to modern cloud environments with their complexity. 
-The *development aspect* in **DevOps** is typically covered by applying **Continuous Integration (CI)** tools for automation tasks which address the IT service itself, e.g.:  
+In corporate IT, an IT service is connected to other services, identity providers, platforms, and local processes already in place. The operational discipline behind this is called **DevOps (Development and Operations)**.
+**Continuous deployment (CD)** tools handle the *operational aspect* and support the shift to modern cloud environments, including their complexity.
+The *development aspect* of **DevOps** is typically covered by applying **Continuous Integration (CI)** tools to automation tasks that address the IT service itself, for example:
+
 - Resource management
 - Internal billing
 - Maintenance and security
 - Audit and governance
 - Custom user and business workflows
 
-**Continuous Integration (CI)** tools  are perfect tools to builds, tests, and deploys software, but miss the original intent of DevOps practices. Using **CI** tools for the automation of IT systems has following methodical disadvantages: 
+**Continuous Integration (CI)** tools are perfect for building, testing, and deploying software, but they miss the original intent of DevOps. Using **CI** tools to automate IT systems has the following methodological disadvantages: 
 
 - The operation has no durable model. Its state is the last log, a spreadsheet, or the remote system.
 - Each run starts without a retained model and reads the live APIs again. The operation is recomputed from those calls.
@@ -23,7 +24,7 @@ The *development aspect* in **DevOps** is typically covered by applying **Contin
 - A further operation requires a further pipeline. The implementation is duplicated.
 - A completed job records that a run finished. The record omits the resulting content of the operation, the cause of the change, and the rule that permitted it.
 
-Any IT operations team in corporate environments that uses continuous integration tools for service automation, runs into the same problems with upstream processes and governance.
+Any IT operations team in a corporate environment that uses continuous integration tools for service automation runs into the same problems with upstream processes and governance.
 
 > **Vision**
 >
@@ -131,7 +132,7 @@ I am Raphael, the initiator of Continuous Governance. I work at Robert Bosch Gmb
 
 The service is planned for release under an open-source license. Details are still under internal discussion. Updates are published on this site. I am happy to take questions, feedback, and suggestions. If you want to know more about Continuous Governance, please contact me. 
 
-Write to [raphael.hans@continuous-governance.org](mailto:raphael.hans@continuous-governance.org) or open a [ticket](https://github.com/c-governance/website/issues) on github.com. 
+Write to [raphael.hans@continuous-governance.org](mailto:raphael.hans@continuous-governance.org) or open a [ticket](https://github.com/c-governance/website/issues) on GitHub. 
 
 ## Impressum
 
