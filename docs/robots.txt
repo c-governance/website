@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://continuous-governance.org/sitemap.xml
