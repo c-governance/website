@@ -2,8 +2,7 @@
   var main = document.querySelector("main");
   if (!main) return;
 
-  cardify(document.getElementById("rules"));
-  cardify(document.getElementById("two-aspects"));
+  Array.prototype.forEach.call(main.querySelectorAll("dl"), cardify);
 
   var headings = Array.prototype.slice.call(main.querySelectorAll("h2"));
   if (!headings.length) return;
@@ -119,22 +118,16 @@
 
   select(location.hash.replace("#", "") || panels[0].id, false);
 
-  function cardify(heading) {
-    if (!heading) return;
-    var node = heading.nextElementSibling;
-    while (node && node.tagName !== "DL") {
-      if (node.tagName === "H2" || node.tagName === "H3") return;
-      node = node.nextElementSibling;
-    }
-    if (!node) return;
-    var children = Array.prototype.slice.call(node.children);
+  function cardify(list) {
+    if (!list) return;
+    var children = Array.prototype.slice.call(list.children);
     for (var i = 0; i < children.length; i += 2) {
       var card = document.createElement("div");
       card.className = "card";
       card.appendChild(children[i]);
       if (children[i + 1]) card.appendChild(children[i + 1]);
-      node.appendChild(card);
+      list.appendChild(card);
     }
-    node.classList.add("cards");
+    list.classList.add("cards");
   }
 })();
