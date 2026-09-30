@@ -110,18 +110,24 @@ Engineering
 
 ## What changes
 
+Continuous Governance addresses the particular requirements of IT operations in enterprise environments.
+
+Continuous integration and testing
+: The shift-left promise is kept by moving release-related activities into the early stages of ongoing development. As a result, releases can be performed often and quickly.
+
+Continuous Governance
+: The shift-left promise is kept by moving governance-related activities into the day-to-day routine. As a result, audits can be performed often, and incidents can be investigated quickly.
+
+In practice, this affects the following:
+
 | Who | What they gain |
 | --- | --- |
-| Users | In-memory processing and a flexible code contract enable fast synchronization. |
+| User Experience | Flexible code contracts, microservices, or shared memory allow faster synchronization than purely synchronous pipeline implementations. |
 | Service managers | They govern what the operation contains, not only whether a job was green. |
 | Operators | Scale is another instance of a known service. Health is data on the model: last run, last error, queue. |
-| Engineers | A new operation is a new transition on the same machine, not a copied pipeline. AI assistance is bounded by the architecture and by review. |
+| Engineers | A new operation is a new transition on the same machine, not a copied pipeline. AI assistance is bounded by the architecture and by human review. This enables fully process-compliant development of automation code that was previously unprioritized. |
 | Security | The machine does not trust the systems it drives. Drift and unexpected privilege are inputs. The state machine sets the intended state again. |
 | Auditors | Evidence is produced while the operation runs: observation, intent, and execution. It is not collected weeks later. |
-
-CG is a method. It does not govern an organization by itself. People keep the rules, review change, and use the evidence to learn.
-
-More of the method will be published here in the coming weeks and months.
 
 
 ## Contact
