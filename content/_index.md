@@ -134,11 +134,25 @@ In practice, this affects the following:
 A *Continuous Governance* oriented service keeps a *Service-under-Control* in sync with it's desired state. Populator- and Generator-Microservices share one database - the *Service-State*. A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.
 
 ![](/lorena-architecture-comic-v8-light.png)
+*Fig.: This comic was concipated and redacted by Raphael Hans - created by Grok 4.7.*
 
-Fig.: This comic was created by Grok 4.7 and redacted by Raphael Hans.
+This introduces a novel controller-oriented perspective in IT and is a proposal implementation of Continuous Governance principles in form of an enterprise service.
 
-This introduces a novel control-oriented perspective in IT and is a proposal 
-implementation of Continuous Governance principles.  
+
+### A continuous governance oriented engineering workflow
+
+Continuous Governance moves also the practical work of a DevOps engineer from scripting and coding, to a more engineering oriented work of *modelling* a state-machine: it's states and it's transitions. This requires particular design steps and precise mathematical formulations, which are the basis of
+- governing any automation process precisly from planning, implementation, and it's execution
+- a fully AI assisted engineering process considers ad-hoc know-how (feedforward) and a .knowledge-base (feedback) which allows human curated maintenance of training  of agents over time.
+
+
+Since such modelling techniques are not typically known to DevOps engineers, AI assissted development 
+and its ISO 42001 compliance is considered as pre-requesite for the success of above method.
+
+![](/lorena-workflow-comic-v9-light.png)
+*Fig.: This comic was concipated and redacted by Raphael Hans - created by Grok 4.7.*
+
+In the context of Continuous Governance, previously unpriorized code is now planned, documented, and monitored. It's operation is not hidden, but publicly available for further insights. 
 
 
 ## Contact
