@@ -129,6 +129,17 @@ In practice, this affects the following:
 | Security | The machine does not trust the systems it drives. Drift and unexpected privilege are inputs. The state machine sets the intended state again. |
 | Auditors | Evidence is produced while the operation runs: observation, intent, and execution. It is not collected weeks later. |
 
+### A continuous governance oriented service design
+
+A *Continuous Governance* oriented service keeps a *Service-under-Control* in sync with it's desired state. Populator- and Generator-Microservices share one database - the *Service-State*. A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.
+
+![](/lorena-architecture-comic-v8-light.png)
+
+Fig.: This comic was created by Grok 4.7 and redacted by Raphael Hans.
+
+This introduces a novel control-oriented perspective in IT and is a proposal 
+implementation of Continuous Governance principles.  
+
 
 ## Contact
 

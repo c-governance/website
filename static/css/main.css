@@ -73,6 +73,13 @@ h3 {
 
 p, li, dd { max-width: var(--measure); }
 
+main img {
+  display: block;
+  width: 100%;
+  max-width: var(--measure);
+  height: auto;
+}
+
 a { color: var(--accent); }
 
 a:hover { text-decoration: none; }
