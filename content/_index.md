@@ -145,7 +145,7 @@ and its ISO 42001 compliance is considered as pre-requesite for the success of a
 In the context of Continuous Governance, previously unpriorized code is now planned, documented, and monitored. It's operation is not hidden, but publicly available for further insights. 
 
 
-### Continuous Governance versus no-code and low-code approaches
+### Continuous Governance is an agentic no-code approach
 
 A *Service-under-Control* is operated by rules, through a *state machine*. These rules are mathematical expressions, governed by the DevOps engineer. This controller-oriented perspective is a natural, and novel, form of [*Policy-as-Code*](https://www.ibm.com/de-de/think/topics/policy-as-code) in IT, because the *state machine* logic represents the service rules one to one.
 
@@ -181,7 +181,10 @@ In this way, Continuous Governance treats the **service operation and the engine
 
 I am Raphael, the initiator of Continuous Governance. I work at Robert Bosch GmbH. Fifteen years of experience in project management and software development led to the idea of Continuous Governance. At Robert Bosch GmbH, a continuous governance service is applied in practice and rolled out internally.
 
-The service is planned for release under an open-source license. Details are still under internal discussion. Updates are published on this site. I am happy to take questions, feedback, and suggestions. If you want to know more about Continuous Governance, please contact me. 
+This page is meant as a concept paper. It considers the most recent developments in agentic programming and can be interpreted as a state-of-the-art approach to IT automation. The use of a mathematical modelling language as a mutual contract between human and agent can also be taken as a blueprint for other applications or domains.
+
+The IT automation service under development follows this same novel agentic development approach. It comes with its own set of agents, which are context- and architecture-aware. Curated training of agents is a new task in software engineering and shows that trained agents and code belong together. I am convinced that this concept will find further application in practice.
+
 
 Write to ![E-mail](/contact-email-light.png) or open a [ticket](https://github.com/c-governance/website/issues) on GitHub. 
 
