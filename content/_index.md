@@ -4,7 +4,11 @@ description = 'Continuous Governance is an automation dialect for enterprise IT 
 summary = 'Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance.'
 +++
 
+## At a Glance
+
 {{< entry-comic >}}
+
+The loop above is the whole method: observe the desired and the current state, decide one difference, act once, and keep the record. The sections that follow show why an enterprise operation needs that record, and how the service and the engineering work stay on the same model.
 
 ## Problem
 
@@ -110,7 +114,7 @@ Operation
 Engineering
 : How that automation is built: each requirement is traceable, each decision is auditable, each change is reviewable. Assistants work inside a declared use case. Architecture is the contract. Accepted knowledge is advisory. This side is ISO 42001 compliant, and that compliance has to be proven in practice.
 
-## What changes
+## What's new?
 
 Continuous Governance addresses the particular requirements of IT operations in enterprise environments.
 
@@ -190,7 +194,7 @@ The IT automation service under development follows this same novel agentic deve
 
 Write to ![E-mail](/contact-email-light.png) or open a [ticket](https://github.com/c-governance/website/issues) on GitHub. 
 
-## Impressum
+### Impressum
 
 Angaben gemäß § 5 DDG
 

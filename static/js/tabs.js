@@ -61,23 +61,33 @@
 
   var current = "";
 
+  function resolve(id) {
+    var match = panels.filter(function (item) { return item.id === id; })[0];
+    if (match) return { item: match, anchor: null };
+    var el = id ? document.getElementById(id) : null;
+    if (!el) return null;
+    match = panels.filter(function (item) { return item.panel.contains(el); })[0];
+    if (!match) return null;
+    return { item: match, anchor: el };
+  }
+
   function select(id, focusTab) {
     var before = bar.getBoundingClientRect().top;
-    var match = panels.filter(function (item) { return item.id === id; })[0] || panels[0];
-    if (!match || match.id === current) {
-      if (focusTab && match) match.tab.focus();
-      return;
+    var resolved = resolve(id) || { item: panels[0], anchor: null };
+    var match = resolved.item;
+    if (match.id !== current) {
+      current = match.id;
+      panels.forEach(function (item) {
+        var on = item === match;
+        item.tab.setAttribute("aria-selected", on ? "true" : "false");
+        item.tab.tabIndex = on ? 0 : -1;
+        item.panel.hidden = !on;
+      });
+      var after = bar.getBoundingClientRect().top;
+      if (after !== before) window.scrollBy(0, after - before);
     }
-    current = match.id;
-    panels.forEach(function (item) {
-      var on = item === match;
-      item.tab.setAttribute("aria-selected", on ? "true" : "false");
-      item.tab.tabIndex = on ? 0 : -1;
-      item.panel.hidden = !on;
-    });
     if (focusTab) match.tab.focus();
-    var after = bar.getBoundingClientRect().top;
-    if (after !== before) window.scrollBy(0, after - before);
+    if (resolved.anchor) resolved.anchor.scrollIntoView();
   }
 
   function syncHash(id) {
@@ -90,7 +100,7 @@
     var link = event.target.closest("a[href^='#']");
     if (!link) return;
     var id = link.getAttribute("href").replace(/^#/, "");
-    if (!panels.some(function (item) { return item.id === id; })) return;
+    if (!resolve(id)) return;
     event.preventDefault();
     select(id, false);
     syncHash(id);
