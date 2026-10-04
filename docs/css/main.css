@@ -438,7 +438,7 @@ table.benefits td:first-child { font-weight: 600; }
   font-size: var(--font-size-0);
 }
 
-@media (max-width: 40rem) {
+@media (max-width: 60rem) {
   .tabbar { flex-wrap: wrap; }
 
   .profiles {
@@ -449,7 +449,9 @@ table.benefits td:first-child { font-weight: 600; }
   }
 
   .tablist { flex: 1 0 100%; }
+}
 
+@media (max-width: 40rem) {
   .cards { grid-template-columns: 1fr; }
 
   table.compare tr,
