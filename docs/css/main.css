@@ -102,6 +102,40 @@ img.contact-detail {
   vertical-align: -0.15em;
 }
 
+.entry-comic {
+  position: relative;
+  width: 100%;
+  max-width: var(--measure);
+  margin: 0 0 var(--size-5);
+}
+
+.entry-comic img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+
+.entry-comic figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  color: var(--ink);
+  font-size: var(--font-size-0);
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.entry-comic:hover figcaption,
+.entry-comic:focus-within figcaption {
+  opacity: 1;
+}
+
 a { color: var(--accent); }
 
 code {
@@ -405,6 +439,17 @@ table.benefits td:first-child { font-weight: 600; }
 }
 
 @media (max-width: 40rem) {
+  .tabbar { flex-wrap: wrap; }
+
+  .profiles {
+    order: -1;
+    flex: 1 0 100%;
+    justify-content: flex-start;
+    padding-left: 0;
+  }
+
+  .tablist { flex: 1 0 100%; }
+
   .cards { grid-template-columns: 1fr; }
 
   table.compare tr,

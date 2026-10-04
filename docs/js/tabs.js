@@ -50,8 +50,13 @@
   if (profiles) bar.appendChild(profiles);
 
   var header = main.querySelector(".site-header");
-  if (header && header.nextSibling) main.insertBefore(bar, header.nextSibling);
-  else main.insertBefore(bar, main.firstChild);
+  if (header) {
+    var last = header;
+    while (last.nextSibling) last = last.nextSibling;
+    last.after(bar);
+  } else {
+    main.insertBefore(bar, main.firstChild);
+  }
   panels.forEach(function (item) { main.appendChild(item.panel); });
 
   var current = "";
