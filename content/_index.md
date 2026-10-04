@@ -4,6 +4,8 @@ description = 'Continuous Governance is an automation dialect for enterprise IT 
 summary = 'Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance.'
 +++
 
+{{< entry-comic >}}
+
 ## Problem
 
 In corporate IT, an IT service is connected to other services, identity providers, platforms, and local processes already in place. The operational discipline behind this is called **DevOps (Development and Operations)**.
