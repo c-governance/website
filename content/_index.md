@@ -179,6 +179,13 @@ This split is pragmatic and reflects the governance rules in enterprise environm
 
 In practice, it can even be seen that human implementations and manual changes do not follow the same precision as agents. As a consequence, these manual changes often introduce misaligned wording or content mismatches, which confuse agents badly. From that perspective, the method above does not have humans contribute directly. They interact with the agents to express their intent. This can be read as a modern [no-code](https://www.ibm.com/think/topics/low-code-vs-no-code) approach.
 
+### Summary
+
+Enterprise IT operations always include engineering work. In the past, and still today, that work is often done with monolithic scripts and pipelines. New no-code, low-code, and vibe-coding approaches offer a chance to cut this Gordian knot. An enterprise operation still has to carry the work through to a measurable trace: who made a change, which rule allowed it, and what was executed. Traceability and governance are the requirements the recent trends still leave to the surrounding environment.
+
+Continuous Governance uses a state machine applied to a *Service-under-Control*. The service has a desired state and a current state. The difference is calculated, applied as one bounded change, and recorded. The same model is the contract for agentic coding. Classical state-machine modeling names the states and the transitions. A modern agent implements them. People keep ownership of the rules and their acceptance. The standing check is that human intent and agent action match. To that end, an end-to-end agentic development process is proposed, one that takes individual enterprise requirements and boundaries into account.
+
+In this way, Continuous Governance treats the **service operation and the engineering process behind it as one**. A state machine can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding. As a consequence, AI-assisted work has a central, well-defined scope in the concept. State machines also contribute a further perspective in IT: the [feedback loop](https://en.wikipedia.org/wiki/Closed-loop_controller). This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of state machines for IT and service operation is novel and, to the best of the author's knowledge, not yet explored to that extent.
 
 ## Contact
 
