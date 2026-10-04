@@ -154,7 +154,31 @@ and its ISO 42001 compliance is considered as pre-requesite for the success of a
 
 In the context of Continuous Governance, previously unpriorized code is now planned, documented, and monitored. It's operation is not hidden, but publicly available for further insights. 
 
-From the author's perspective, the univeral principles of control engineering can contribute to new approaches in IT governance, automation and security. 
+
+### Continuous Governance versus no-code and low-code approaches
+
+A *Service-under-Control* is operated by rules, through a *state machine*. These rules are mathematical expressions, governed by the DevOps engineer. This controller-oriented perspective is a natural, and novel, form of [*Policy-as-Code*](https://www.ibm.com/de-de/think/topics/policy-as-code) in IT, because the state-machine logic represents the service rules one to one.
+
+This drives a fundamental shift in DevOps practice. The state-machine design is the single-policy contract for the engineer and the enterprise organization. Its documentation and its implementation are performed by a set of trained agents. The engineer is expected to:
+
+- formulate the rule
+- govern the implementation
+- perform the end-to-end testing
+- plan the rollout
+- curate knowledge for the agent
+- monitor service health
+
+Here, a state machine is an agent-friendly language. It lets the DevOps engineer carry out the former coding work in a fully agentic way. The development trace is now straightforward Markdown files, used at every stage and simple to archive and track. Their content is the precise service rules (`intent`). Their implementation is performed by an agent (`action`). In day-to-day work, it remains a human responsibility that
+
+`intent(human) == action(agent)`.
+
+This split is pragmatic and reflects the governance rules in enterprise environments. With recent progress in agentic coding, it is straightforward to implement prototypical development workflows for the agents. Those workflows keep the work compliant and can fulfill individual enterprise requirements. A prototypical workflow can look like this:
+
+![](/lorena-process-comic-v23-light.png)
+*Fig. 3: This comic was conceived and edited by Raphael Hans, and created by Grok 4.7.*
+
+In practice, it can even be seen that human implementations and manual changes do not follow the same precision as agents. As a consequence, these manual changes often introduce misaligned wording or content mismatches, which confuse agents badly. From that perspective, the method above does not have humans contribute directly. They interact with the agents to express their intent. This can be read as a modern [no-code](https://www.ibm.com/think/topics/low-code-vs-no-code) approach.
+
 
 ## Contact
 
