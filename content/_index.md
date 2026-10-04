@@ -1,7 +1,7 @@
 +++
-title = 'Continuous Governance — auditable IT operations'
-description = 'Continuous Governance is an automation dialect beside continuous integration, delivery, and testing, for enterprise operations that must be auditable.'
-summary = 'Continuous Governance is an automation dialect beside continuous integration, delivery, and testing, for enterprise operations that must be auditable.'
+title = 'Continuous Governance'
+description = 'Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance.'
+summary = 'Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance.'
 +++
 
 ## Problem
