@@ -8,6 +8,18 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="{{ .Permalink }}">
 <meta name="theme-color" content="#f4f6f8">
+<script>
+(function () {
+  var stored = null;
+  try { stored = localStorage.getItem("theme"); } catch (e) {}
+  var theme = stored === "light" || stored === "dark"
+    ? stored
+    : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", theme);
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", theme === "dark" ? "#1c2836" : "#f4f6f8");
+})();
+</script>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.Title }}">
 <meta property="og:title" content="{{ .Title }}">

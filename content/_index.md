@@ -35,7 +35,7 @@ Any IT operations team in a corporate environment that uses continuous integrati
 
 Continuous Governance is an automation dialect that supplements the ones already in use: continuous integration, testing, deployment, and security. It focuses on the automation of network applications that modern IT environments require. The shift-left promise is that auditability and governance are first-class concerns, and they shape the design of the service. The dialect introduces:
 
-- a desired state and a current state for a network application
+- a *desired state* and a *current state* for a network application
 - a database as the single source of truth, holding authoritative content
 - rule sets that drive an event factory and build a *state machine*
 - events that carry a context and an intent
@@ -62,7 +62,7 @@ CG applies the ideas that made delivery continuous — small feedback loops, rep
 
 ### The loop
 
-1. Observe desired state and current state.
+1. Observe *desired state* and *current state*.
 2. Keep both in a durable local *model*.
 3. Calculate the difference in memory, by rules.
 4. Plan one bounded, traceable change.
@@ -118,20 +118,10 @@ Continuous integration and testing
 Continuous Governance
 : The shift-left promise is kept by moving governance-related activities into the day-to-day routine. As a result, audits can be performed often, and incidents can be investigated quickly.
 
-In practice, this affects the following:
-
-| Who | What they gain |
-| --- | --- |
-| User Experience | Flexible code contracts, microservices, or shared memory allow faster synchronization than purely synchronous pipeline implementations. |
-| Service managers | They govern what the operation contains, not only whether a job was green. |
-| Operators | Scale is another instance of a known service. Health is data on the *model*: last run, last error, queue. |
-| Engineers | A new operation is a new *transition* on the same machine, not a copied pipeline. AI assistance is bounded by the architecture and by human review. This enables fully process-compliant development of automation code that was previously unprioritized. |
-| Security | The machine does not trust the systems it drives. Drift and unexpected privilege are inputs. The *state machine* sets the intended state again. |
-| Auditors | Evidence is produced while the operation runs: observation, intent, and execution. It is not collected weeks later. |
 
 ### A continuous governance oriented service design
 
-A *Continuous Governance* oriented service keeps a *Service-under-Control (SuC)* in sync with it's desired state, by watching it's current state. Populator- and Generator-microservices share one database and build together a *state machine (controller)*. A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.
+A *Continuous Governance* oriented service keeps a *Service-under-Control (SuC)* in sync with it's *desired state*, by watching it's *current state*. Populator- and Generator-microservices share one database and build together a *state machine (controller)*. A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.
 
 ![](/lorena-architecture-comic-v17-light.png)
 *Fig. 1: This comic was concipated and redacted by Raphael Hans - created by Grok 4.7.*
@@ -183,7 +173,7 @@ In practice, it can even be seen that human implementations and manual changes d
 
 Enterprise IT operations always include engineering work. In the past, and still today, that work is often done with monolithic scripts and pipelines. New no-code, low-code, and vibe-coding approaches offer a chance to cut this Gordian knot. But an enterprise operation still has to carry the work through to a measurable trace: who made a change, which rule allowed it, and what was executed. Traceability and governance are the requirements the recent trends still leave to the surrounding environment.
 
-Continuous Governance uses a *state machine* applied to a *Service-under-Control*. The service has a desired state and a current state. The difference is calculated, applied as one bounded change, and recorded. The same *model* is the contract for agentic coding. Classical *state machine* *modeling* names the *states* and the *transitions*. A modern agent implements them. People keep ownership of the rules and their acceptance. The standing check is that human intent and agent action match. To that end, an end-to-end agentic development process is proposed, one that takes individual enterprise requirements and boundaries into account.
+Continuous Governance uses a *state machine* applied to a *Service-under-Control*. The service has a *desired state* and a *current state*. The difference is calculated, applied as one bounded change, and recorded. The same *model* is the contract for agentic coding. Classical *state machine* *modeling* names the *states* and the *transitions*. A modern agent implements them. People keep ownership of the rules and their acceptance. The standing check is that human intent and agent action match. To that end, an end-to-end agentic development process is proposed, one that takes individual enterprise requirements and boundaries into account.
 
 In this way, Continuous Governance treats the **service operation and the engineering process behind it as one**. A *state machine* can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding. As a consequence, AI-assisted work has a central, well-defined scope in the concept. *State machines* also contribute a further perspective in IT: the [feedback loop](https://en.wikipedia.org/wiki/Closed-loop_controller). This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of *state machines* for IT and service operation is novel and, to the best of the author's knowledge, not yet explored to that extent.
 

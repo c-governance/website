@@ -29,9 +29,23 @@
   --line: #d5dee7;
   --card: #ffffff;
   --accent: #1f4e79;
+  --mark: #1f4e79;
+  --mark-ink: #fff;
   --measure: 42rem;
   --frame: 72rem;
   color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #1c2836;
+  --ink: #f4f6f8;
+  --muted: #b4c0cb;
+  --line: #3d4d5e;
+  --card: #243244;
+  --accent: #9ec0e0;
+  --mark: #9ec0e0;
+  --mark-ink: #1c2836;
+  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
@@ -82,6 +96,14 @@ main img {
 
 a { color: var(--accent); }
 
+code {
+  background: var(--card);
+  color: var(--ink);
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  font-size: 0.95em;
+}
+
 a:hover { text-decoration: none; }
 
 :focus-visible {
@@ -123,6 +145,18 @@ a:hover { text-decoration: none; }
 }
 
 .profile:hover { color: var(--accent); }
+
+.theme-toggle {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: 600 var(--font-size-0) "Source Sans 3", var(--font-sans);
+  cursor: pointer;
+}
+
+.theme-toggle:hover { color: var(--accent); }
 
 .lede {
   max-width: 38rem;
@@ -228,8 +262,8 @@ li + li { margin-top: 0.4rem; }
   display: grid;
   place-items: center;
   border-radius: var(--radius-round);
-  background: var(--accent);
-  color: #fff;
+  background: var(--mark);
+  color: var(--mark-ink);
   font-size: var(--font-size-0);
   font-weight: 600;
 }

@@ -1,0 +1,9 @@
+{{- $dest := .Destination -}}
+{{- $dark := replace $dest "-light.png" "-black.png" -}}
+{{- $paired := and (strings.HasSuffix $dest "-light.png") (fileExists (printf "static%s" $dark)) -}}
+<img src="{{ $dest | safeURL }}"
+  {{- if $paired }}
+  data-src-light="{{ $dest | safeURL }}"
+  data-src-dark="{{ $dark | safeURL }}"
+  {{- end }}
+  {{- with .Text }} alt="{{ . }}"{{ end }}>
