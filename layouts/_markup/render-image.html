@@ -1,7 +1,9 @@
 {{- $dest := .Destination -}}
 {{- $dark := replace $dest "-light.png" "-black.png" -}}
 {{- $paired := and (strings.HasSuffix $dest "-light.png") (fileExists (printf "static%s" $dark)) -}}
+{{- $detail := or (in $dest "contact-email") (in $dest "contact-address") -}}
 <img src="{{ $dest | safeURL }}"
+  {{- if $detail }} class="contact-detail"{{ end }}
   {{- if $paired }}
   data-src-light="{{ $dest | safeURL }}"
   data-src-dark="{{ $dark | safeURL }}"

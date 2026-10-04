@@ -94,6 +94,14 @@ main img {
   height: auto;
 }
 
+img.contact-detail {
+  display: inline-block;
+  width: auto;
+  max-width: none;
+  height: 1em;
+  vertical-align: -0.15em;
+}
+
 a { color: var(--accent); }
 
 code {
