@@ -29,8 +29,11 @@
   <meta property="og:description" content="{{ . }}">
   <meta name="twitter:description" content="{{ . }}">
 {{- end }}
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ .Title }}">
+<meta property="og:image" content="{{ "lorena-architecture-comic-v17-light.png" | absURL }}">
+<meta name="twitter:image" content="{{ "lorena-architecture-comic-v17-light.png" | absURL }}">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
 {{- $ld := dict
   "@context" "https://schema.org"
   "@type" "WebSite"

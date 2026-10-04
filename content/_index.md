@@ -1,7 +1,7 @@
 +++
-title = 'Continuous Governance'
-description = 'A method that makes IT automation governable.'
-summary = 'Continuous Governance sits beside continuous integration, delivery, and testing. It keeps IT operations auditable by calculating each change in memory, on a state machine.'
+title = 'Continuous Governance — auditable IT operations'
+description = 'Continuous Governance is an automation dialect beside continuous integration, delivery, and testing, for enterprise operations that must be auditable.'
+summary = 'Continuous Governance is an automation dialect beside continuous integration, delivery, and testing, for enterprise operations that must be auditable.'
 +++
 
 ## Problem
@@ -123,7 +123,7 @@ Continuous Governance
 
 A *Continuous Governance* oriented service keeps a *Service-under-Control (SuC)* in sync with it's *desired state*, by watching it's *current state*. Populator- and Generator-microservices share one database and build together a *state machine (controller)*. A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.
 
-![](/lorena-architecture-comic-v17-light.png)
+![Stick-figure diagram of a Continuous Governance service: an initiator, populators, a central database, generators, and a service under control, with a user, an auditor, and a hacker.](/lorena-architecture-comic-v17-light.png)
 *Fig. 1: This comic was concipated and redacted by Raphael Hans - created by Grok 4.7.*
 
 This introduces a novel controller-oriented perspective in IT and is a proposal implementation of Continuous Governance principles in form of an enterprise service.
@@ -139,7 +139,7 @@ Continuous Governance moves also the practical automation work of a DevOps engin
 Since such modelling techniques are not typically known to DevOps engineers, AI assissted development is feasible
 and its ISO 42001 compliance is considered as pre-requesite for the success of above method.
 
-![](/lorena-workflow-comic-v10-light.png)
+![Two-panel stick-figure comic comparing pipeline scripting with a continuous governance engineering workflow.](/lorena-workflow-comic-v10-light.png)
 *Fig. 2: This comic was concipated and redacted by Raphael Hans - created by Grok 4.7.*
 
 In the context of Continuous Governance, previously unpriorized code is now planned, documented, and monitored. It's operation is not hidden, but publicly available for further insights. 
@@ -164,7 +164,7 @@ Here, a *state machine* is an agent-friendly language. It lets the DevOps engine
 
 This split is pragmatic and reflects the governance rules in enterprise environments. With recent progress in agentic coding, it is straightforward to implement prototypical development workflows for the agents. Those workflows keep the work compliant and can fulfill individual enterprise requirements. A prototypical workflow can look like this:
 
-![](/lorena-process-comic-v23-light.png)
+![Stick-figure flowchart of a policy-as-code process from an enterprise requirement through model, plan, code, deploy, and debug to human review.](/lorena-process-comic-v23-light.png)
 *Fig. 3: This comic was conceived and edited by Raphael Hans, and created by Grok 4.7.*
 
 In practice, it can even be seen that human implementations and manual changes do not follow the same precision as agents. As a consequence, these manual changes often introduce misaligned wording or content mismatches, which confuse agents badly. From that perspective, the method above does not have humans contribute directly. They interact with the agents to express their intent. This can be read as a modern [no-code](https://www.ibm.com/think/topics/low-code-vs-no-code) approach.
@@ -175,11 +175,9 @@ Enterprise IT operations always include engineering work. In the past, and still
 
 Continuous Governance uses a *state machine* applied to a *Service-under-Control*. The service has a *desired state* and a *current state*. The difference is calculated, applied as one bounded change, and recorded. The same *model* is the contract for agentic coding. Classical *state machine* *modeling* names the *states* and the *transitions*. A modern agent implements them. People keep ownership of the rules and their acceptance. The standing check is that human intent and agent action match. To that end, an end-to-end agentic development process is proposed, one that takes individual enterprise requirements and boundaries into account.
 
-In this way, Continuous Governance treats the **service operation and the engineering process behind it as one**. A *state machine* can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding. As a consequence, AI-assisted work has a central, well-defined scope in the concept. *State machines* also contribute a further perspective in IT: the [feedback loop](https://en.wikipedia.org/wiki/Closed-loop_controller). This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of *state machines* for IT and service operation is novel and, to the best of the author's knowledge, not yet explored to that extent.
+In this way, Continuous Governance treats the **service operation and the engineering process behind it as one**. A *state machine* can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding and build a mutual language between human and AI assistant. As a consequence, AI-assisted work has a central, well-defined scope in the concept. *State machines* also contribute a further perspective in IT: the [feedback loop](https://en.wikipedia.org/wiki/Closed-loop_controller). This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of *state machines* for IT and service operation is novel and, to the best of the author's knowledge, not yet explored to that extent.
 
 ## Contact
-
-Hi,
 
 I am Raphael, the initiator of Continuous Governance. I work at Robert Bosch GmbH. Fifteen years of experience in project management and software development led to the idea of Continuous Governance. At Robert Bosch GmbH, a continuous governance service is applied in practice and rolled out internally.
 
