@@ -123,9 +123,11 @@ a:hover { text-decoration: none; }
 .profiles {
   display: flex;
   flex: 0 0 auto;
+  align-self: stretch;
   align-items: center;
   gap: var(--size-4);
-  margin-top: 0.7rem;
+  margin-top: 0;
+  padding-left: var(--size-4);
 }
 
 .profile {
@@ -188,20 +190,24 @@ a:hover { text-decoration: none; }
 }
 
 .tabbar {
+  display: flex;
+  align-items: stretch;
   position: sticky;
   top: 0;
   z-index: 1;
   background: var(--paper);
   margin: 0 calc(var(--size-4) * -1);
   padding: 0 var(--size-4);
+  border-bottom: 1px solid var(--line);
 }
 
 .tablist {
   display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
   gap: var(--size-4);
   overflow-x: auto;
   scrollbar-width: none;
-  border-bottom: 1px solid var(--line);
 }
 
 .tablist::-webkit-scrollbar { display: none; }

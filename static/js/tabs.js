@@ -46,6 +46,8 @@
   var bar = document.createElement("nav");
   bar.className = "tabbar";
   bar.appendChild(tablist);
+  var profiles = main.querySelector(".profiles");
+  if (profiles) bar.appendChild(profiles);
 
   var header = main.querySelector(".site-header");
   if (header && header.nextSibling) main.insertBefore(bar, header.nextSibling);
