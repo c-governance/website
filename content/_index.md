@@ -20,7 +20,7 @@ The state-machine design is a classical microprocessor-oriented modelling techni
 - audited programmatically
 - governed continuously
 
-Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding. This novel *no-code* service application for IT automation and governance is currently under development and is planned to be released under an *open-source* license in the coming month. 
+Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding - since it's replaced by **assissted modelling**. This novel *no-code* service application for IT automation and governance is currently under development and is planned to be released under an *open-source* license in the coming month. 
 
 ## Problem
 
