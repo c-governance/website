@@ -8,7 +8,19 @@ summary = 'Continuous Governance is an automation dialect for enterprise IT oper
 
 {{< entry-comic >}}
 
-The loop above is the whole method: observe the desired and the current state, decide one difference, act once, and keep the record. The sections that follow show why an enterprise operation needs that record, and how the service and the engineering work stay on the same model.
+The loop above is the whole method: observe the desired and the current state, decide one difference, act once, and keep the record. At the center of this is the *model*. The *model* is a mathematical abstraction of IT policies, automation workflows, or any other DevOps engineering task in enterprise IT that is done today with scripts or pipelines.
+
+A *model* allows us to express our intent with precision and formalism. Basically any IT automation process with finite steps can be formulated like this:
+
+![A state machine that expresses, mathematically, the policies inside an IT organization.](/state-machine-comic-v20-light.png)
+
+The state-machine design is a classical microprocessor-oriented modelling technique in control engineering. In this context, it is meant to be an enabler for IT organizations, since such formal expressions can be:
+
+- tracked simply
+- audited programmatically
+- governed continuously
+
+Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding. This novel *no-code* service application for IT automation and governance is currently under development and is planned to be released under an *open-source* license in the coming month. 
 
 ## Problem
 
