@@ -102,40 +102,6 @@ img.contact-detail {
   vertical-align: -0.15em;
 }
 
-.entry-comic {
-  position: relative;
-  width: 100%;
-  max-width: var(--measure);
-  margin: 0 0 var(--size-5);
-}
-
-.entry-comic img {
-  display: block;
-  width: 100%;
-  max-width: none;
-  height: auto;
-}
-
-.entry-comic figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 0.75rem 1rem;
-  background: color-mix(in srgb, var(--paper) 88%, transparent);
-  color: var(--ink);
-  font-size: var(--font-size-0);
-  line-height: 1.4;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
-.entry-comic:hover figcaption,
-.entry-comic:focus-within figcaption {
-  opacity: 1;
-}
-
 a { color: var(--accent); }
 
 code {
@@ -210,9 +176,10 @@ a:hover { text-decoration: none; }
   line-height: 1.4;
 }
 
-.support {
-  margin: var(--size-4) 0 0;
-  font-size: var(--font-size-0);
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
 }
 
 .tabbar {
@@ -452,6 +419,6 @@ table.benefits td:first-child { font-weight: 600; }
     font-weight: 600;
   }
 
-  table.compare td:nth-child(1)::before { content: "Pipeline perspective"; }
-  table.compare td:nth-child(2)::before { content: "CG perspective"; }
+  table.compare td:nth-child(1)::before { content: "Conventional"; }
+  table.compare td:nth-child(2)::before { content: "Continuous Governance"; }
 }
