@@ -1,14 +1,14 @@
 +++
 title = 'Continuous Governance'
-description = 'Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance.'
-summary = 'Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance.'
+description = 'Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.'
+summary = 'Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.'
 +++
 
 ## At a Glance
 
 {{< entry-comic >}}
 
-The loop above is the whole method: observe the desired and the current state, decide one difference, act once, and keep the record. At the center of this is the *model*. The *model* is a mathematical abstraction of IT policies, automation workflows, or any other DevOps engineering task in enterprise IT that is done today with scripts or pipelines.
+The loop above is how day-to-day enterprise IT operations look when Continuous Governance is applied: formulate and observe the desired and the current state of your service, the *Service-under-Control*. Decide on your events and rules, keep a record of everything, and repeat. At the center of this is the *model*. The *model* is a mathematical abstraction of IT policies, automation workflows, or any other DevOps engineering task in enterprise IT that is done today with scripts or pipelines.
 
 A *model* allows us to express our intent with precision and formalism. Basically any IT automation process with finite steps can be formulated like this:
 
@@ -20,7 +20,7 @@ The state-machine design is a classical microprocessor-oriented modelling techni
 - audited programmatically
 - governed continuously
 
-Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding - since it's replaced by **assissted modelling**. This novel *no-code* service application for IT automation and governance is currently under development and is planned to be released under an *open-source* license in the coming month. 
+Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding - since it's replaced by **assisted modelling**. This novel *no-code* engineering platform for IT automation and governance is currently under development and is planned to be released under an *open-source* license in the coming month. 
 
 ### An incremental change in enterprise IT
 
@@ -28,19 +28,30 @@ Continuous Governance promotes a shift in the awareness of transparency in IT op
 
 ![Continuous Governance promotes publishing all the data its controllers are collecting to its IT environment. This can change enterprises incrementally.](/enterprise-comic-v15-light.png)
 
+### Northstar
+
+Openness, enablement, trust, and responsibility are the working attributes of modern IT operations. They exist so the people and systems upstream of a Service-under-Control can do their work. A team may be improving a customer journey, holding a security line, or preparing an audit. Continuous Governance supports that range the way continuous integration supported software development: the relevant work is done continuously, up front, and the result stays visible.
+
+![A setting sun labeled conventional, with locked boxes in the dunes, and three people walking toward a star labeled Northstar.](/northstar-v18-light.png)
+
+*Today's operations sit in a closed landscape: measured, locked, and visible to a few. Continuous Governance is the other direction. Teams walk toward a north star where what they control is published, so the people upstream can govern it, check it, and use it.*
+
+
+
+
 
 ## Problem
 
 In corporate IT, an IT service is connected to other services, identity providers, platforms, and local processes already in place. The operational discipline behind this is called **DevOps (Development and Operations)**.
 **Continuous deployment (CD)** tools handle the *operational aspect* and support the shift to modern cloud environments, including their complexity.
-The *development aspect* of **DevOps** is typically covered by applying **Continuous Integration (CI)** tools to automation tasks that address the IT service itself, for example:
-
+The *development aspect* of **DevOps** addresses use of the IT service being operated, for example:
 - Resource management
 - Internal billing
 - Maintenance and security
 - Audit and governance
 - Custom user and business workflows
 
+Since **Continuous Integration (CI)** tools are already available to DevOps engineers in their IT environment, these software development tools are typically used for the automation tasks above.
 **Continuous Integration (CI)** tools are perfect for building, testing, and deploying software, but they miss the original intent of DevOps. Using **CI** tools to automate IT systems has the following methodological disadvantages: 
 
 - The operation has no durable *model*. Its *state* is the last log, a spreadsheet, or the remote system.
@@ -49,7 +60,7 @@ The *development aspect* of **DevOps** is typically covered by applying **Contin
 - A further operation requires a further pipeline. The implementation is duplicated.
 - A completed job records that a run finished. The record omits the resulting content of the operation, the cause of the change, and the rule that permitted it.
 
-Any IT operations team in a corporate environment that uses continuous integration tools for service automation runs into the same problems with upstream processes and governance.
+Any IT operations team in a corporate environment that uses continuous integration tools for service automation runs into the same problems with upstream processes and governance. Additional synergies of selecting such tools typically do not exist.
 
 > **Vision**
 >
@@ -58,32 +69,32 @@ Any IT operations team in a corporate environment that uses continuous integrati
 
 ## Solution
 
-Continuous Governance is an automation dialect that supplements the ones already in use: continuous integration, testing, deployment, and security. It focuses on the automation of network applications that modern IT environments require. The shift-left promise is that auditability and governance are first-class concerns, and they shape the design of the service. The dialect introduces:
+Continuous Governance is an automation dialect that supplements the ones already in use: continuous integration, testing, deployment, and security. It focuses on the automation of network applications that modern IT environments require. The shift-left promise is that auditability and governance are first-class concerns, and they shape the design of automation in IT. The dialect introduces:
 
-- a *desired state* and a *current state* for a network application
-- a database as the single source of truth, holding authoritative content
-- rule sets that drive an event factory and build a *state machine*
-- events that carry a context and an intent
+- a ``desired/current state`` and a ``drift`` for the network application operated, the ``Service-under-Control`` (``SuC``)
+- a database holding authoritative content, the ``state``
+- ``rule sets`` modelled as a ``state machine``, their ``state`` is evaluated by an ``event factory``
+- ``events`` that have ``context`` and ``intent``
+- a public read-only ``API`` which grants insight into ``state-machine`` and ``SuC`` operation
 
-With that, logic that today lives in pipelines can be replaced, one for one, by a continuous governance instance that is auditable as it runs.
+With that new perspective and wording, code and logs that today live in pipelines can be replaced, one for one, by a *Service-under-Control* that is auditable as it runs. This heavily impacts DevOps routines.
 
-| Pipeline perspective | CG perspective |
+| Conventional | Continuous Governance |
 | --- | --- |
-| A run starts from a change and produces an artifact. | A *state machine* keeps an operation aligned with an intended state. |
+| A run starts from a cron trigger or a source code change. | A *local model* is polled for events continuously. |
 | Each run talks to live systems and then exits. | Remote state is observed into a local *model*. The next operation is calculated in memory. |
-| Success means the job was green. | Success means the calculated change was applied and recorded. |
-| Governance is a report assembled later. | Governance is how the machine runs: observe, decide, act, record. |
+| Success means the job was green. | Success means the calculated event was applied and recorded. |
+| The trace is assembled from unstructured logs. | The trace is created as part of the applied event: state, intent, and action are recorded. |
 
-That is the new perspective. A pipeline produces an artifact and forgets the world. A *state machine* stays with the operation. Because the decision is a calculation over a local *model*, it can be repeated, explained, and shown. Governance is not a second process. It is the trace of the calculation: what was observed, what was planned, what was executed, and which rule applied.
+That is the new perspective. A *state machine* ensures that a *Service-under-Control* is aligned over time with its operational rules. Because *events* are a calculation over a local *model*, an event can be repeated, explained, and shown. Governance is not a second process. It is the trace of the rule sets and their implementation by the DevOps engineer, and it is the trace of the events, their execution, and their runtime context.
 
-CI, CD, and CT stay in place. They remain how software is integrated, delivered, and tested, including the software that implements CG. CG is how the operations that software performs are kept correct over time.
-
+CI, CT, and CD stay in place. They remain how software is shipped, tested, or deployed. Continuous Governance (CG) is an extension of these existing shift-left concepts, with a focus on service operation and its governance, especially relevant in enterprise IT environments.
 
 
 
 ## Method
 
-CG applies the ideas that made delivery continuous — small feedback loops, repeatability, version control, automation, and rapid recovery — to operations and to the engineering of those operations.
+Continuous Governance applies the ideas that made software delivery continuous — small feedback loops, repeatability, version control, automation, and rapid recovery — to operations and to the engineering of those operations.
 
 ### The loop
 

@@ -210,9 +210,10 @@ a:hover { text-decoration: none; }
   line-height: 1.4;
 }
 
-.support {
-  margin: var(--size-4) 0 0;
-  font-size: var(--font-size-0);
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
 }
 
 .tabbar {
