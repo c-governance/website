@@ -24,11 +24,11 @@ The *state-machine*  is one option for a *model* and is a classical microprocess
 - audited programmatically
 - governed continuously
 
-Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding - since it's replaced by **assisted modelling**. This novel *no-code* engineering platform for IT automation and governance is currently under development and is planned to be released under an *open-source* license in the coming month. 
+Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding - since it's replaced by **assisted modelling**. This can be interpreted as *no-code* engineering approach for IT automation and governance, which fits current trends and technical progresses. 
 
 ### An incremental change in enterprise IT
 
-Continuous Governance promotes a shift in the awareness of transparency in IT operations. Today, DevOps teams and their services work behind curtains, and insights are available only to a handful of people in operations. Continuous Governance promotes publishing the collected information about its service and environment state through public but curated APIs. This simple idea expands incrementally and enables IT environments. This is not radical. It is simply *API-first*, together with transparency that aims to simplify upstream services and to actively support organizations in governing service content and its compliance, or in investigating incidents more quickly. 
+Continuous Governance promotes a shift in the awareness of transparency in IT operations. Today, DevOps teams and their services work behind curtains, and insights are available only to a handful of people in operations. Continuous Governance promotes publishing the collected information about its service and environment state through a curated, read-only API that readers outside the operating team can use. This simple idea expands incrementally and enables IT environments. This is not radical. It is simply *API-first*, together with transparency that aims to simplify upstream services and to actively support organizations in governing service content and its compliance, or in investigating incidents more quickly. 
 
 ![Continuous Governance promotes publishing all the data its controllers are collecting to its IT environment. This can change enterprises incrementally.](/enterprise-comic-v15-light.png)
 *Fig.3: This comic was designed and edited by Raphael Hans - created by Grok 4.7.*
@@ -70,52 +70,53 @@ Any IT operations team in a corporate environment that uses continuous integrati
 
 ## Solution
 
-Continuous Governance is an automation dialect that supplements the ones already in use: continuous integration, testing, deployment, and security. It focuses on the automation of network applications that modern IT environments require. The shift-left promise is that auditability and governance are first-class concerns, and they shape the design of automation in IT. The dialect introduces:
+Continuous Governance is an automation dialect for operating a service. Continuous integration, testing, deployment, and security remain the tools of software development. DevOps does not use them for service operation. The shift-left promise is that auditability and governance are first-class concerns, and they shape the design of automation in IT. The dialect introduces:
 
-- a ``desired/current state`` and a ``drift`` for the network application operated, the ``Service-under-Control`` (``SuC``)
-- a database holding authoritative content, the ``state``
-- ``rule sets`` modelled as a ``state machine``, their ``state`` is evaluated by an ``event factory``
+- a ``desired state`` and a ``current state``, and a ``drift`` between them, for the operated service, the ``Service-under-Control`` (``SuC``). Drift is the error, reference minus actual state
+- a database whose tables store the ``state``. The state is the mathematical expression. The tables represent it
+- ``rule sets`` modelled as a ``state machine``, one type of model. The controller evaluates their ``state``
 - ``events`` that have ``context`` and ``intent``
-- a public read-only ``API`` which grants insight into ``state-machine`` and ``SuC`` operation
+- a curated, read-only ``API`` through which readers outside the operating team can see the ``state`` and the operation of the ``SuC``
 
-With that new perspective and wording, code and logs that today live in pipelines can be replaced, one for one, by a *Service-under-Control* that is auditable as it runs. This heavily impacts DevOps routines.
+With that new perspective and wording, code and logs that today live in pipelines are replaced, one for one, by a *Service-under-Control* that is auditable as it runs. This heavily impacts DevOps routines.
 
 | Conventional | Continuous Governance |
 | --- | --- |
 | A run starts from a cron trigger or a source code change. | A *local model* is polled for events continuously. |
 | Each run talks to live systems and then exits. | Remote state is observed into a local *model*. The next operation is calculated in memory. |
 | Success means the job was green. | Success means the calculated event was applied and recorded. |
-| The trace is assembled from unstructured logs. | The trace is created as part of the applied event: state, intent, and action are recorded. |
+| The trace is assembled from unstructured logs. | The trace is the record of the applied event: the rule, the plan, and the result. |
 
 That is the new perspective. A *state machine* ensures that a *Service-under-Control* is aligned over time with its operational rules. Because *events* are a calculation over a local *model*, an event can be repeated, explained, and shown. Governance is not a second process. It is the trace of the rule sets and their implementation by the DevOps engineer, and it is the trace of the events, their execution, and their runtime context.
 
-CI, CT, and CD stay in place. They remain how software is shipped, tested, or deployed. Continuous Governance (CG) is an extension of these existing shift-left concepts, with a focus on service operation and its governance, especially relevant in enterprise IT environments.
+CI, CT, and CD stay in place for software development. They remain how software is shipped, tested, or deployed. They are not the controller of the service. Continuous Governance (CG) carries shift-left into service operation and its governance, which is especially relevant in enterprise IT environments.
 
 
 
 ## Principles
 
-Continuous Governance applies the ideas that made software delivery continuous —  to IT operations and their related engineering tasks. This requires a new type of automation services and platforms for enterprise IT DevOps engineers, which is operated in addition to existing solutions for software developer.
+Continuous Governance applies the ideas that made software delivery continuous to IT operations and their related engineering tasks. This requires a further class of automation services and platforms for enterprise IT DevOps engineers, operated in addition to the existing solutions for software developers.
 
-Continuous Governance oriented services and platforms consider following principles:
+
+Continuous Governance oriented services and platforms follow these principles:
 
 State before action
-: Decide from the *model*, not from data that exists only inside a running script.
+: Decide from the *state* and the *model*, not from data that exists only inside a running script.
 
 One owner
 : Each record and each side effect has one owner, so several jobs do not fix the same condition.
 
 Reviewable rules
-: Desired state, eligibility, safeguards, and limits live in code, configuration, and tests.
+: The *model* is the engineer's contract. It holds the desired state, the eligibility, the safeguards, and the limits. The agent's code, configuration, and tests must match that model.
 
 Evidence by default
-: Observation, plan, result, and the rule that allowed them are one record.
+: The rule, the plan, and the result are one record.
 
 Bounded recovery
 : Reconciliation is idempotent. Timeouts, retries, and empty-input safeguards keep a failure visible.
 
 Zero trust
-: The *model* is the source of truth for the intended state. An out-of-band change is expected. The machine detects it and may revert it. A deviation is an event, not a surprise.
+: The *model* defines the intended state, the reference. An out-of-band change is a disturbance. The controller detects it and may revert it. A deviation is an event, not a surprise.
 
 Human approval
 : The machine may execute approved rules, and AI may speed the engineering. Ownership of requirements, architecture, acceptance, and release stays with people.
@@ -125,13 +126,13 @@ Curated learning
 
 ### Two aspects
 
-Continuous Governance reads the day-to-day work of an DevOps engineer as classical software engineering. This engineering process is considered actively in the service and platform design.
+Continuous Governance reads the day-to-day work of a DevOps engineer as classical software engineering. This engineering process is considered actively in the service and platform design.
 
 Operation
 : How an operation is automated: each event is auditable, each change is traceable, each state is observable.
 
 Engineering
-: How that automation is built: each requirement is traceable, each decision is auditable, each change is reviewable. Assistants work inside a declared use case. Architecture is the contract. Accepted knowledge is advisory. This side is ISO 42001 compliant, and that compliance has to be proven in practice.
+: How that automation is built: each requirement is traceable, each decision is auditable, each change is reviewable. Assistants work inside a declared use case. The *model* is the contract. Accepted knowledge is advisory. An organization that adopts this assisted workflow can aim at ISO 42001. Conformity belongs to that organization, and it is established by assessment.
 
 ## What's new?
 
@@ -141,7 +142,7 @@ Continuous integration and testing
 : The shift-left promise is kept by moving release-related activities into the early stages of ongoing development. As a result, releases can be performed often and quickly.
 
 Continuous Governance
-: The shift-left promise is kept by moving governance-related activities into the day-to-day routine. As a result, audits can be performed often, and incidents can be investigated quickly.
+: The shift-left promise is kept by moving governance-related activities into the day-to-day routine. DevOps does not keep pipeline tools for this work. Those tools remain with software development. As a result, audits can be performed often, and incidents can be investigated quickly.
 
 
 ### A continuous governance oriented service design
@@ -151,28 +152,27 @@ A *Continuous Governance* oriented service keeps a *Service-under-Control (SuC)*
 ![Stick-figure diagram of a Continuous Governance service: an initiator, populators, a central database, generators, and a service under control, with a user, an auditor, and a hacker.](/lorena-architecture-comic-v17-light.png)
 *Fig. 5: This comic was designed and edited by Raphael Hans - created by Grok 4.7.*
 
-This introduces a novel controller-oriented perspective in IT and is a proposal implementation of Continuous Governance principles in form of an enterprise service.
+This is a sketch of an unreleased service that implements the principles.
 
 
 ### A continuous governance oriented engineering workflow
 
-Continuous Governance moves also the practical automation work of a DevOps engineer from scripting and coding, to a more engineering oriented work of *modelling* a *state machine*: it's *states* and it's *transitions*. This requires particular design steps and precise mathematical formulations, which are the basis of
-- governing any automation process precisly from planning, implementation, and it's execution
-- a fully AI assisted engineering process considers ad-hoc know-how (feedforward) and a .knowledge-base (feedback) which allows human curated training  of agents over time.
+Continuous Governance also moves the practical automation work of a DevOps engineer from scripting and coding to the engineering work of *modelling* a *state machine*: its *states* and its *transitions*. This requires particular design steps and precise mathematical formulations, which are the basis of
+- governing any automation process precisely across planning, implementation, and execution
+- a fully AI-assisted engineering process that considers ad-hoc know-how (feedforward) and a knowledge base (feedback), which allows human-curated training of agents over time.
 
 
-Since such modelling techniques are not typically known to DevOps engineers, AI assissted development is feasible
-and its ISO 42001 compliance is considered as pre-requesite for the success of above method.
+Since such modelling techniques are not typically known to DevOps engineers, AI-assisted development is feasible. An organization that adopts it can aim at ISO 42001. Conformity belongs to that organization and is established by assessment.
 
 ![Two-panel stick-figure comic comparing pipeline scripting with a continuous governance engineering workflow.](/lorena-workflow-comic-v10-light.png)
 *Fig. 6: This comic was designed and edited by Raphael Hans - created by Grok 4.7.*
 
-In the context of Continuous Governance, previously unpriorized code is now planned, documented, and monitored. It's operation is not hidden, but publicly available for further insights. 
+In the context of Continuous Governance, previously unprioritized code is now planned, documented, and monitored. Its operation is readable beyond the operating team, curated in content, and read-only in effect. 
 
 
 ### Continuous Governance is an agentic no-code approach
 
-A *Service-under-Control* is operated by rules, through a *state machine*. These rules are mathematical expressions, governed by the DevOps engineer. This controller-oriented perspective is a natural, and novel, form of [*Policy-as-Code*](https://www.ibm.com/de-de/think/topics/policy-as-code) in IT, because the *state machine* logic represents the service rules one to one.
+A *Service-under-Control* is operated by rules, through a *state machine*. These rules are mathematical expressions, governed by the DevOps engineer. This controller-oriented perspective applies [*Policy-as-Code*](https://www.ibm.com/de-de/think/topics/policy-as-code) to service operation. The *state machine*, one type of *model*, represents the service rules one to one.
 
 This drives a fundamental shift in DevOps practice. The *state machine* design is the single-policy contract for the engineer and the enterprise organization. Its documentation and its implementation are performed by a set of trained agents. The engineer is expected to:
 
@@ -192,19 +192,19 @@ This split is pragmatic and reflects the governance rules in enterprise environm
 ![Stick-figure flowchart of a policy-as-code process from an enterprise requirement through model, plan, code, deploy, and debug to human review.](/lorena-process-comic-v23-light.png)
 *Fig. 7: This comic was designed and edited by Raphael Hans - created by Grok 4.7.*
 
-In practice, it can even be seen that human implementations and manual changes do not follow the same precision as agents. As a consequence, these manual changes often introduce misaligned wording or content mismatches, which confuse agents badly. From that perspective, the method above does not have humans contribute directly. They interact with the agents to express their intent. This can be read as a modern [no-code](https://www.ibm.com/think/topics/low-code-vs-no-code) approach.
+In practice, it can be seen that human implementations and manual changes do not follow the same precision as agents. These manual changes often introduce misaligned wording or content mismatches, which confuse agents. That is experience from the work. The engineer does the six duties above and does not write the implementation. An agent writes it. This can be read as a modern [no-code](https://www.ibm.com/think/topics/low-code-vs-no-code) approach.
 
 ### Summary
 
 Enterprise IT operations always include engineering work. In the past, and still today, that work is often done with monolithic scripts and pipelines. New no-code, low-code, and vibe-coding approaches offer a chance to cut this Gordian knot. But an enterprise operation still has to carry the work through to a measurable trace: who made a change, which rule allowed it, and what was executed. Traceability and governance are the requirements the recent trends still leave to the surrounding environment.
 
-Continuous Governance uses a *state machine* applied to a *Service-under-Control*. The service has a *desired state* and a *current state*. The difference is calculated, applied as one bounded change, and recorded. The same *model* is the contract for agentic coding. Classical *state machine* *modeling* names the *states* and the *transitions*. A modern agent implements them. People keep ownership of the rules and their acceptance. The standing check is that human intent and agent action match. To that end, an end-to-end agentic development process is proposed, one that takes individual enterprise requirements and boundaries into account.
+Continuous Governance uses a *state machine* applied to a *Service-under-Control*. The service has a *desired state*, the reference, and a *current state*. Drift is the difference. One event is applied, and the rule, the plan, and the result are recorded. The same *model* is the contract for agentic coding. Classical *state machine* *modeling* names the *states* and the *transitions*. A modern agent implements them. People keep ownership of the rules and their acceptance. The standing check is that human intent and agent action match. To that end, an end-to-end agentic development process is proposed, one that takes individual enterprise requirements and boundaries into account.
 
-In this way, Continuous Governance treats the **service operation and the engineering process behind it as one**. A *state machine* can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding and build a mutual language between human and AI assistant. As a consequence, AI-assisted work has a central, well-defined scope in the concept. *State machines* also contribute a further perspective in IT: the [feedback loop](https://en.wikipedia.org/wiki/Closed-loop_controller). This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of *state machines* for IT and service operation is novel and, to the best of the author's knowledge, not yet explored to that extent.
+In this way, Continuous Governance treats the **service operation and the engineering process behind it as one**. A *state machine* can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding and builds a mutual language between human and AI assistant. As a consequence, AI-assisted work has a central, well-defined scope in the concept. *State machines* also contribute a further perspective in IT: the [feedback loop](https://en.wikipedia.org/wiki/Closed-loop_controller). This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of *state machines* for IT and service operation is novel and, to the best of the author's knowledge, not yet explored to that extent.
 
 ## Contact
 
-I am Raphael, the initiator of Continuous Governance. I work at Robert Bosch GmbH. Fifteen years of experience in project management and software development led to the idea of Continuous Governance. At Robert Bosch GmbH, a continuous governance service is applied in practice and rolled out internally.
+I am Raphael, the initiator of Continuous Governance. I work at Robert Bosch GmbH. Fifteen years of experience in project management and software development led to the idea of Continuous Governance.
 
 This page is meant as a concept paper. It considers the most recent developments in agentic programming and can be interpreted as a state-of-the-art approach to IT automation. The use of a mathematical modelling language as a mutual contract between human and agent can also be taken as a blueprint for other applications or domains.
 
