@@ -202,6 +202,35 @@ Continuous Governance uses a *state machine* applied to a *Service-under-Control
 
 In this way, Continuous Governance treats the **service operation and the engineering process behind it as one**. A *state machine* can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding and builds a mutual language between human and AI assistant. As a consequence, AI-assisted work has a central, well-defined scope in the concept. *State machines* also contribute a further perspective in IT: the [feedback loop](https://en.wikipedia.org/wiki/Closed-loop_controller). This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of *state machines* for IT and service operation is novel and, to the best of the author's knowledge, not yet explored to that extent.
 
+## Glossary
+
+Entries are in alphabetical order. A term keeps its meaning from control engineering. Where this method applies the term to an IT service, the entry says so. A mention of a term elsewhere on the page links to its entry.
+
+| Term | Definition |
+| --- | --- |
+| Action | The input an agent applies to the plant as the implementation of an intent. The engineer's check is that human intent and agent action match. |
+| Controller | The function that computes the plant input from the state and the reference. In this method that input is one event. |
+| Curated read-only API | The interface through which a reader outside the operating team can read the state and the operation. The content is curated. The effect is read-only. |
+| Current state | The actual state of the plant, measured or estimated by the observer. |
+| Database | The tables that store the state. The tables represent the state. They are not the state, and they are not the model. |
+| Desired state | The reference: the state the controller is required to reach or keep. The model defines it. |
+| Disturbance | A change of plant state that the controller did not command. An out-of-band change is a disturbance. The controller may answer it with a correcting event. |
+| Drift | The error, equal to the desired state minus the current state. |
+| Event | The controller's calculated response to a drift. It carries context and intent. The same state and the same model yield the same event. |
+| Intent | The engineer's statement of the rule, held in the model. The engineer formulates the rule, governs the implementation, tests, plans the rollout, curates knowledge, and monitors health. The engineer does not write the implementation. |
+| Job log | The record that a pipeline run finished. It is not a state of the service. A pipeline is a tool of software development, not the controller of the service. |
+| Model | A mathematical abstraction of the plant: which variables constitute the state, how the state may evolve, and what can be observed. The value of the state at one time is not the model. The model is the engineer's contract. An agent's code, configuration, and tests must match it. |
+| Observer | The map from measurements to an estimate of the state. The estimate is a state. Observation does not change the model. |
+| Plant | The system under control. See Service-under-Control. |
+| Record | The trace of an applied event: the rule, the plan, and the result. |
+| Reference | See desired state. |
+| Rule | The content of the model: the admitted situations, the allowed events, and the desired state. |
+| Service-under-Control | The plant in this method: the operated IT service. Abbreviated SuC. |
+| Shift-left | Placement of a control at an earlier point in the work. Continuous integration does this for the release of software. Continuous Governance does this for the governance of service operation, and for that work replaces the pipeline. |
+| Source of truth | Not a term of control engineering. This method uses reference. |
+| State | The mathematical memory of the plant. Together with the future inputs, the state determines the future behavior. In a state-space model the state is a vector. In a state machine the state is an element of a finite set. |
+| State machine | A model whose state is discrete and whose evolution is by events. One type of model. This method uses a state machine. |
+
 ## Contact
 
 I am Raphael, the initiator of Continuous Governance. I work at Robert Bosch GmbH. Fifteen years of experience in project management and software development led to the idea of Continuous Governance.

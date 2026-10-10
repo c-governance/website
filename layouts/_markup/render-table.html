@@ -3,6 +3,7 @@
   {{- $label := index . 0 -}}
   {{- if or (eq $label.Text "Pipeline perspective") (eq $label.Text "Conventional") }}{{ $class = "compare" }}{{ end -}}
   {{- if eq $label.Text "Who" }}{{ $class = "benefits" }}{{ end -}}
+  {{- if eq $label.Text "Term" }}{{ $class = "glossary" }}{{ end -}}
 {{- end -}}
 <table class="{{ $class }}">
   <thead>
@@ -15,7 +16,17 @@
   <tbody>
     {{- range .TBody }}
     <tr>
-      {{- range . }}<td>{{ .Text | safeHTML }}</td>{{ end }}
+      {{- if eq $class "glossary" }}
+        {{- range $i, $cell := . }}
+          {{- if eq $i 0 }}
+            <th scope="row" id="glossary-{{ $cell.Text | plainify | anchorize }}">{{ $cell.Text | safeHTML }}</th>
+          {{- else }}
+            <td>{{ $cell.Text | safeHTML }}</td>
+          {{- end }}
+        {{- end }}
+      {{- else }}
+        {{- range . }}<td>{{ .Text | safeHTML }}</td>{{ end }}
+      {{- end }}
     </tr>
     {{- end }}
   </tbody>

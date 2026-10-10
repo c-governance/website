@@ -319,6 +319,77 @@ dl dd { margin: 0.25rem 0 0; }
 
 .card dt { margin: 0; }
 
+table.glossary {
+  width: 100%;
+  max-width: var(--measure);
+  border-collapse: separate;
+  border-spacing: 0 0.75rem;
+  margin: var(--size-3) 0;
+}
+
+table.glossary thead th {
+  padding: 0 0.9rem 0.15rem;
+  color: var(--muted);
+  font-size: var(--font-size-0);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+table.glossary tbody tr {
+  cursor: pointer;
+  scroll-margin-top: 4.5rem;
+}
+
+table.glossary tbody th,
+table.glossary td {
+  padding: 0.85rem 0.95rem;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+
+table.glossary tbody th {
+  width: 32%;
+  border-left: 1px solid var(--line);
+  border-radius: var(--radius-2) 0 0 var(--radius-2);
+  color: var(--accent);
+  font-family: "Source Serif 4", var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  scroll-margin-top: 4.5rem;
+}
+
+table.glossary tbody td {
+  border-right: 1px solid var(--line);
+  border-radius: 0 var(--radius-2) var(--radius-2) 0;
+}
+
+table.glossary tbody tr:hover th,
+table.glossary tbody tr:hover td {
+  border-color: var(--accent);
+}
+
+table.glossary tbody tr.is-current th,
+table.glossary tbody tr.is-current td {
+  background: color-mix(in srgb, var(--accent) 14%, var(--card));
+  border-color: var(--accent);
+}
+
+table.glossary tbody tr.is-current th {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+a.glossary-link {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.15em;
+}
+
 table.compare,
 table.benefits {
   width: 100%;
@@ -421,4 +492,36 @@ table.benefits td:first-child { font-weight: 600; }
 
   table.compare td:nth-child(1)::before { content: "Conventional"; }
   table.compare td:nth-child(2)::before { content: "Continuous Governance"; }
+
+  table.glossary thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  table.glossary tbody tr {
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  table.glossary tbody th,
+  table.glossary tbody td {
+    display: block;
+    width: auto;
+  }
+
+  table.glossary tbody th {
+    padding-bottom: 0.2rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+    border-radius: var(--radius-2) var(--radius-2) 0 0;
+  }
+
+  table.glossary tbody td {
+    border-left: 1px solid var(--line);
+    border-top: 0;
+    border-radius: 0 0 var(--radius-2) var(--radius-2);
+  }
 }
