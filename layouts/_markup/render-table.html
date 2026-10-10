@@ -1,7 +1,7 @@
 {{- $class := "data" -}}
 {{- with index .THead 0 -}}
   {{- $label := index . 0 -}}
-  {{- if eq $label.Text "Pipeline perspective" }}{{ $class = "compare" }}{{ end -}}
+  {{- if or (eq $label.Text "Pipeline perspective") (eq $label.Text "Conventional") }}{{ $class = "compare" }}{{ end -}}
   {{- if eq $label.Text "Who" }}{{ $class = "benefits" }}{{ end -}}
 {{- end -}}
 <table class="{{ $class }}">
