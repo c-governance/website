@@ -6,6 +6,31 @@ cleanDestinationDir = true
 
 disableKinds = ['taxonomy', 'term', 'RSS']
 
+[outputs]
+  home = ['html', 'llms', 'llmsfull', 'markdown']
+
+[mediaTypes.'text/markdown']
+  suffixes = ['md']
+
+[outputFormats.llms]
+  mediaType = 'text/plain'
+  baseName = 'llms'
+  isPlainText = true
+  notAlternative = true
+
+[outputFormats.llmsfull]
+  mediaType = 'text/plain'
+  baseName = 'llms-full'
+  isPlainText = true
+  notAlternative = true
+
+[outputFormats.markdown]
+  mediaType = 'text/markdown'
+  baseName = 'index'
+  isPlainText = true
+  rel = 'alternate'
+  notAlternative = false
+
 [markup.goldmark.extensions]
   definitionList = true
 
