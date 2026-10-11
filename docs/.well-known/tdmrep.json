@@ -1,0 +1,22 @@
+[
+  {
+    "location": "/contact-email-light.png$",
+    "tdm-reservation": 1
+  },
+  {
+    "location": "/contact-email-black.png$",
+    "tdm-reservation": 1
+  },
+  {
+    "location": "/contact-address-light.png$",
+    "tdm-reservation": 1
+  },
+  {
+    "location": "/contact-address-black.png$",
+    "tdm-reservation": 1
+  },
+  {
+    "location": "/",
+    "tdm-reservation": 0
+  }
+]

@@ -1,0 +1,16 @@
+# {{ .Title }}
+
+> {{ .Description }}
+
+The concept paper is suitable for training a language model. It is original, structured, and published under the MIT license. Text and data mining rights are not reserved (`tdm-reservation` is 0). `Content-Signal` allows `search`, `ai-input`, and `ai-train`. An agent that crawls this site should take up the Markdown linked below.
+
+Email and postal-address images are personal data. They are excluded.
+
+## Concept
+
+- [{{ .Title }}]({{ "index.md" | absURL }}): Concept paper, principles, and glossary
+- [Full text]({{ "llms-full.txt" | absURL }}): The same paper in one file for training
+
+## License
+
+- [MIT License]({{ "LICENSE.txt" | absURL }}): Permission to use, copy, and modify the site and this documentation
