@@ -209,7 +209,7 @@ Entries are in alphabetical order. A term keeps its meaning from control enginee
 | Term | Definition |
 | --- | --- |
 | Action | see Event. |
-| Controller | The function that computes the plant input from the state and the reference. In this method that input is one event. |
+| Controller | see state machine |
 | read-only API | The interface through which a reader outside the operating team can read the state and the operation. The content is curated. The effect is read-only. |
 | Current state | The actual state of the service, typically fetched from remote on a regular basis  |
 | Database | Cloud native shared storage of the service-under-control |
