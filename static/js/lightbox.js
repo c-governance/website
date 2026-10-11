@@ -10,10 +10,12 @@
       '<a class="lightbox-download" href="#" download>Download</a>' +
       '<button type="button" class="lightbox-close" aria-label="Close full size image">Close</button>' +
     "</div>" +
-    '<img class="lightbox-image" alt="">';
+    '<img class="lightbox-image" alt="">' +
+    '<p class="lightbox-caption" hidden></p>';
   document.body.appendChild(dialog);
 
   var image = dialog.querySelector(".lightbox-image");
+  var caption = dialog.querySelector(".lightbox-caption");
   var download = dialog.querySelector(".lightbox-download");
   var close = dialog.querySelector(".lightbox-close");
   var active = null;
@@ -37,6 +39,13 @@
     var href = trigger.getAttribute("data-download") || src;
     image.setAttribute("src", src);
     image.setAttribute("alt", alt);
+    if (alt) {
+      caption.textContent = alt;
+      caption.hidden = false;
+    } else {
+      caption.textContent = "";
+      caption.hidden = true;
+    }
     download.setAttribute("href", href);
     download.setAttribute("download", filenameFrom(href));
     if (typeof dialog.showModal === "function") dialog.showModal();

@@ -6,7 +6,12 @@
   <meta name="description" content="{{ . }}">
 {{- end }}
 <meta name="robots" content="index, follow">
+<meta name="tdm-reservation" content="0">
 <link rel="canonical" href="{{ .Permalink }}">
+<link rel="describedby" href="{{ "llms.txt" | absURL }}" type="text/markdown">
+<link rel="alternate" href="{{ "index.md" | absURL }}" type="text/markdown" title="Markdown">
+<link rel="alternate" href="{{ "llms-full.txt" | absURL }}" type="text/plain" title="Full text for language models">
+<link rel="license" href="{{ "LICENSE.txt" | absURL }}">
 <meta name="theme-color" content="#f4f6f8">
 <script>
 (function () {
@@ -41,6 +46,8 @@
   "url" .Permalink
   "description" $desc
   "inLanguage" "en"
+  "license" ("LICENSE.txt" | absURL)
+  "usageInfo" ("llms.txt" | absURL)
   "author" (dict "@type" "Person" "name" "Raphael Hans")
 }}
 <script type="application/ld+json">{{ $ld | jsonify | safeJS }}</script>

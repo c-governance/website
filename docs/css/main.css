@@ -182,9 +182,22 @@ img.contact-detail {
   display: block;
   width: auto;
   max-width: 100%;
-  max-height: calc(96vh - 4.5rem);
+  max-height: calc(96vh - 7.5rem);
   height: auto;
   margin: 0 auto;
+}
+
+.lightbox-caption {
+  max-width: 48rem;
+  margin: var(--size-3) auto 0;
+  color: var(--muted);
+  font-size: var(--font-size-0);
+  line-height: 1.45;
+  text-align: left;
+}
+
+.lightbox-caption[hidden] {
+  display: none;
 }
 
 a { color: var(--accent); }
