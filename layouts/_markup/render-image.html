@@ -2,10 +2,30 @@
 {{- $dark := replace $dest "-light.png" "-black.png" -}}
 {{- $paired := and (strings.HasSuffix $dest "-light.png") (fileExists (printf "static%s" $dark)) -}}
 {{- $detail := or (in $dest "contact-email") (in $dest "contact-address") -}}
+{{- $download := $dest -}}
+{{- if strings.HasSuffix $dest "-light.png" -}}
+  {{- $jpg := printf "%s.jpg" (strings.TrimSuffix $dest "-light.png") -}}
+  {{- if fileExists (printf "static%s" $jpg) -}}
+    {{- $download = $jpg -}}
+  {{- end -}}
+{{- end -}}
+{{- if $detail -}}
 <img src="{{ $dest | safeURL }}"
-  {{- if $detail }} class="contact-detail"{{ end }}
+  class="contact-detail"
   {{- if $paired }}
   data-src-light="{{ $dest | safeURL }}"
   data-src-dark="{{ $dark | safeURL }}"
   {{- end }}
   {{- with .Text }} alt="{{ . }}"{{ end }}>
+{{- else -}}
+<button type="button" class="zoom-trigger"
+  data-download="{{ $download | safeURL }}"
+  {{- with .Text }} aria-label="View full size: {{ . }}"{{ else }} aria-label="View full size image"{{ end }}>
+  <img src="{{ $dest | safeURL }}"
+    {{- if $paired }}
+    data-src-light="{{ $dest | safeURL }}"
+    data-src-dark="{{ $dark | safeURL }}"
+    {{- end }}
+    {{- with .Text }} alt="{{ . }}"{{ end }}>
+</button>
+{{- end -}}

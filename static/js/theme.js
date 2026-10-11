@@ -16,6 +16,9 @@
       var next = theme === "dark" ? img.getAttribute("data-src-dark") : img.getAttribute("data-src-light");
       if (next && img.getAttribute("src") !== next) img.setAttribute("src", next);
     });
+    try {
+      document.dispatchEvent(new CustomEvent("themechange", { detail: { theme: theme } }));
+    } catch (e) {}
   }
 
   function choose(theme) {
