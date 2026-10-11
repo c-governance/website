@@ -4,7 +4,7 @@
 {{- $detail := or (in $dest "contact-email") (in $dest "contact-address") -}}
 {{- $download := $dest -}}
 {{- if strings.HasSuffix $dest "-light.png" -}}
-  {{- $jpg := printf "%s.jpg" (strings.TrimSuffix $dest "-light.png") -}}
+  {{- $jpg := replace $dest "-light.png" ".jpg" -}}
   {{- if fileExists (printf "static%s" $jpg) -}}
     {{- $download = $jpg -}}
   {{- end -}}
