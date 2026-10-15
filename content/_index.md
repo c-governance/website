@@ -97,6 +97,13 @@ CI, CT, and CD stay in place for software development. They remain how software 
 
 Continuous Governance applies the ideas that made software delivery continuous to IT operations and their related engineering tasks. This requires a further class of automation services and platforms for enterprise IT DevOps engineers, operated in addition to the existing solutions for software developers.
 
+Continuous integration and testing
+: The shift-left promise is kept by moving release-related activities into the early stages of ongoing development. As a result, releases can be performed often and quickly.
+
+Continuous Governance
+: The shift-left promise is kept by moving governance-related activities into the day-to-day routine. DevOps does not keep pipeline tools for this work. Those tools remain with software development. As a result, audits can be performed often, and incidents can be investigated quickly.
+
+
 
 Continuous Governance oriented services and platforms follow these principles:
 
@@ -135,15 +142,6 @@ Engineering
 : How that automation is built: each requirement is traceable, each decision is auditable, each change is reviewable. Assistants work inside a declared use case. The *model* is the contract. Accepted knowledge is advisory. An organization that adopts this assisted workflow can aim at ISO 42001. Conformity belongs to that organization, and it is established by assessment.
 
 ## What's new?
-
-Continuous Governance addresses the particular requirements of IT operations in enterprise environments.
-
-Continuous integration and testing
-: The shift-left promise is kept by moving release-related activities into the early stages of ongoing development. As a result, releases can be performed often and quickly.
-
-Continuous Governance
-: The shift-left promise is kept by moving governance-related activities into the day-to-day routine. DevOps does not keep pipeline tools for this work. Those tools remain with software development. As a result, audits can be performed often, and incidents can be investigated quickly.
-
 
 ### A continuous governance oriented service design
 
