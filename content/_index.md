@@ -228,14 +228,19 @@ Entries are in alphabetical order. A term keeps its meaning from control enginee
 
 ## Contact
 
-I am Raphael, the initiator of Continuous Governance. I work at Robert Bosch GmbH. Fifteen years of experience in project management and software development led to the idea of Continuous Governance.
+I am Raphael, author of this page and initiator of Continuous Governance. I studied control engineering, and I work at Robert Bosch GmbH. Fifteen years of hands-on work in project management, service operation, and software development led to Continuous Governance.
 
-This page is meant as a concept paper. It considers the most recent developments in agentic programming and can be interpreted as a state-of-the-art approach to IT automation. The use of a mathematical modelling language as a mutual contract between human and agent can also be taken as a blueprint for other applications or domains.
+The domain changed over those years, from embedded real-time systems to cloud-based service operation. Automation pipelines and jobs remained the de facto standard in my daily work, as a software developer and as a DevOps engineer.
 
-The IT automation service under development follows this same novel agentic development approach. It comes with its own set of agents, which are context- and architecture-aware. Curated training of agents is a new task in software engineering and shows that trained agents and code belong together. I am convinced that this concept will find further application in practice.
+Software-development principles are fruitful in day-to-day DevOps work. The automation dialect should still be a different one. The two practices create different artifacts and follow a different scope. As a software developer I trace a requirement, its implementation, and the build, test, and delivery of a binary or a service. As a DevOps engineer I trace enterprise governance rules, their implementation, their continuous execution, and the drift of the operated service. These are different jobs, and they require different automation approaches.
 
+This page is a concept paper. It proposes a dialect of its own for the automation of IT systems. Governance is the focus, and a control-engineering approach is a good fit for it. A prototype of the service is in internal use at Robert Bosch GmbH.
 
-Write to ![E-mail](/contact-email-light.png) or open a [ticket](https://github.com/c-governance/website/issues) on GitHub. 
+Continuous-Governance.org is at present a fully privatly motivated one-person project. The intention is an open-source initiative from business to business: begun in enterprise practice, and carried by the enterprises that share the problem and benefit from the result. I am looking for practitioners, contributors, and collaborators in enterprise IT who know this problem from their own operations. The services they run are subject to governance rules, while the automation in daily use was built to ship software.
+
+The goal is a new kind of service, open source, and supported by the companies that benefit from it directly. The service will be presented in more detail in the coming months. Further information will be released step by step. Organizations that join the conversation now can take part in shaping what is built.
+
+If you work in enterprise IT and this gap is part of your daily work, I welcome a conversation. Write to ![E-mail](/contact-email-light.png) or open a [ticket](https://github.com/c-governance/website/issues) on GitHub. 
 
 ### Impressum
 
