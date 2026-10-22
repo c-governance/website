@@ -224,26 +224,30 @@ Entries are in alphabetical order. A term keeps its meaning from control enginee
 | State | The mathematical expression of the condition of the Service-under-Control. In practice it is represented by the database tables that store the current state and the desired state of the Service-under-Control. |
 | State machine | A finite automaton (Q, Σ, δ, q₀). Q is a finite set of states, Σ a finite set of events, δ the transition function from a state and an event to the next state, and q₀ the initial state. It is the model in which the automation is written. |
 
-## Whitepaper
+{{% whitepaper %}}
+
+## Whitepaper {#wp-title}
 
 Raphael Hans, Draft, 22.10.2026
 
 ### Summary {.abstract}
 
-Continuous governance is proposed as an automation dialect for the operation of IT services. A task is written as a finite automaton 
+Continuous governance is an automation dialect for the operation of an IT service. A task in this dialect declares a finite set of pairs
 
-`(Q, Σ, δ, q₀)`. 
+`(r, y)`,
 
-Observability, controllability, and a policy-as-code trace are properties of this design. Moreover, such automaton can be executed easily in parallel. Its implicit mutli-threading capababilities make it applicable for nearly any enterprise size. The design is illustrated by granting access to a platform resource from an Active Directory group.
+a signed residual of that pair, and the events the residual enables. `r` is the desired state. `y` is the current state. One generator applies one enabled event to one pair and records the snapshot, the event, and the result.
 
-The whitepaper shall be the theoretical/formal basis for  continuous governance.
+The design applies where those pairs can be read and the enabled events can be carried out. It does not apply to every procedure of finite length, and it states no measured latency. Distinct pairs with one owner each can be advanced concurrently. The design is illustrated by granting access to a platform resource from an Active Directory group.
+
+This whitepaper is the formal basis for continuous governance.
 
 ### Contents {.toc}
 
 1. [Introduction](#introduction)
 2. [State machine](#state-machine)
-3. [Observability & Controllability](#observability)
-4. [Policy-as-Code](#policy-as-code)
+3. [Observability and controllability](#observability)
+4. [Policy-as-code](#policy-as-code)
 5. [Scalability](#scalability)
    - [5.1 Populator — data import and processing](#populator)
    - [5.2 Generator — drift calculation and event generation](#generator)
@@ -252,17 +256,18 @@ The whitepaper shall be the theoretical/formal basis for  continuous governance.
 6. [Scenario: Manage the access to a resource](#scenario)
    - [6.1 Summary](#scenario-summary)
    - [6.2 Comparison with manifest reconciliation](#comparison)
-7. [References](#references)
+7. [Conclusion](#conclusion)
+8. [References](#references)
 
 ### Introduction {#introduction}
 
-Software development is a craft. Since 2010, it has evolved from centralized versioning concepts such as Subversion to distributed ones such as *git*, and from organizational models such as *Waterfall* to role-based *Agile*. Many of these software-development-driven pattern have diffused into domain-agnostic enterprise and organizational patterns.
+Software development is a craft. Since 2010, it has evolved from centralized versioning concepts such as Subversion to distributed ones such as *git*, and from organizational models such as *Waterfall* to role-based *Agile*. Many of these software-development patterns have diffused into enterprise practice.
 
-A continuation of this thinking is continuous deployment, as represented by tools such as Argo CD [1]. Here, modern infrastructure-as-code methods are used to adapt software-development patterns to service operations. This is a complete shift in  a modern DevOps engineer deployment routines and substitutes legacy deployment pipelines based on classical CI tools [2].
+A continuation of this thinking is continuous deployment, as represented by tools such as Argo CD [1]. Infrastructure-as-code takes a rendered manifest, compares it with the live system, and syncs the difference. That pattern replaces a class of deployment pipelines that had been written as classical CI jobs [2].
 
-This is surprising for the following reason. While Ops in DevOps has evolved over time into its own automation language, Dev has no automation dialect of its own.
+CI remains the dialect that builds and tests an artifact. CD remains the dialect that syncs a manifest. The policies a DevOps engineer is accountable for in daily operation — who may access a resource, which rule allowed a change, what the service now contains — are still often expressed as scripts or as a further pipeline. A finished job of that kind records that a run ended. It does not retain the pair `(r, y)` or the event that was applied to it.
 
-This whitepaper proposes a dedicated automation dialect for DevOps engineers in IT environments, "continuous governance". It focuses on an end-to-end practice, starting at the DevOps engineer's policies to be implemented and continuing through the calculated events of the compiled automation system during its execution. This is a governance- and audit-oriented approach that aims to match daily DevOps practice and responsibility more closely.
+This whitepaper proposes a dialect for that work, called continuous governance. It runs from the policy, written as a declared machine, through the event a generator calculates and applies. The aim is a governance and audit record that matches the accountability of the operating role.
 
 ![Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transitions and events.](/dialects-comic-v3-light.svg)
 
@@ -271,94 +276,102 @@ This whitepaper proposes a dedicated automation dialect for DevOps engineers in 
 
 ### State machine {#state-machine}
 
-The automation is written as a finite automaton
+The automation is written as a transition system
 
- `(Q, Σ, δ, q₀)` 
- 
- with
+`(Q, Σ, δ, q₀)`.
 
-- `Q` is a finite set of states,
-- `Σ` is a finite set of events,
-- `δ: Q × Σ → Q` maps a state and an event to the successor state,
-- `q₀ ∈ Q` is the initial state.
+- `Q` is a finite set of states.
+- `Σ` is a finite set of events. An event here is an action the generator may apply. It is not an input symbol of a language recognizer. A recognizer would also name an accepting set [4]. This machine does not accept a language.
+- `δ` is a partial function. It is defined only when the event is enabled at the state, and the value is the successor after the actuator succeeds.
+- `q₀ ∈ Q` is the starting pair of the task that declares it.
 
-Any automation problem is expressed by a desired state and a current state. The automaton state is that pair
+The state is the pair
 
 `q = (r, y)`.
 
-`r` is the desired state. It is typically derived from the IT environment. `y` is the current state. It is typically measured from the target system, the Service-under-Control (SuC). `Q` is the finite set of pairs the problem distinguishes. The pair at the start reads
+`r` is the desired state, written by a populator from the IT environment. `y` is the current state, written by a populator from the target system, the Service-under-Control (SuC). `Q` is the finite set of pairs the task distinguishes. A populator write is not an element of `Σ`. It replaces `r`, or `y`, or both, and the next round reads the new pair.
 
-`q₀ = (r₀, y₀)`. 
+Drift is the signed residual of that pair, written `e`. The sign is part of the definition, because the event depends on which side is ahead.
 
-Drift is the difference of the desired state and the current state
+When `r` and `y` are bits, `r, y ∈ {0, 1}`,
 
-`e = r − y`.
+`e = r − y`,
 
-Where `r` and `y` are predicates rather than numbers, `e` is the set of predicates on which they disagree. The event `σ ∈ Σ` is selected from `e`.
-The transition is the map already given
+with `e ∈ {−1, 0, +1}`. Subtraction is defined because both components are numbers in the same set [3]. When `r` and `y` are sets, subtraction is not the operation. The residual is the ordered pair of differences
+
+`e = (r \ y, y \ r)`.
+
+Members of `r \ y` are to be added. Members of `y \ r` are to be removed. The residual is empty when `r = y`. A test `r ≠ y` says only that the residual is nonempty. It does not name the event.
+
+The generator selects one enabled event `σ ∈ Σ` from the residual. When several events are enabled, the declaration names the order, so the same pair yields the same event. The transition is
 
 `δ(q, σ) = q'`,
 
-`q' = (r', y')`.
+defined only for an enabled `σ`, and `q'` is the pair after the actuator succeeds. In the machines in this paper the actuator changes `y` and leaves `r` to the populator. A failed actuator does not apply `δ`. The pair stays, and the failure is recorded.
 
-`r'` is the desired state at the successor, derived from the IT environment. `y'` is the current state measured from the **SuC** after `σ`. Above state concept does not hard-code one workflow. It evaluates a declared machine. Each automation problem is one declaration of `(r, y)` and of `δ`.
+A task is one declaration of `Q`, of the residual, of the enabled events, and of `δ`. The declaration is the model. The populators and generators run it. They are not themselves the model.
 
-In the following, the core properties of such a system are investigated.
+### Observability and controllability {#observability}
 
-### Observability & Controllability {#observability}
+The machine above is usable for a task when the following conditions hold. They are assumptions of the dialect. This paper does not prove that every IT procedure meets them.
 
-Any IT automation task that can be expressed as `q = (r, y)` with a corresponding set of transitions `δ(q, σ) = q'` can be represented by the state machine design presented above. The same fundamental control theoretical principles apply. For a DevOps engineer, this means the following for an automation task:
-- observability: the current and desired state of the SuC can be observed and/or calculated
-- controllability: events `δ(q, σ) = q'` can be implemented that set the SuC, the Service-under-Control, to the desired state
+Observation. For each declared key, a populator can write `r` and `y`, or it can record that the read failed. A failed read is not stored as the value that means absent. Stored that way, a missing response becomes a residual and can delete a live resource.
 
-Both properties correspond to the control-engineering definitions of observability and controllability of a control system. On that basis, it can be assumed that any engineering automation task in practice fulfills the criteria above, and that the state machine design can be applied.
+Control. For every nonempty residual the declaration has an enabled event, and a successful actuator moves `y` toward `r`. At an empty residual the enabled event is `none`, and
 
-### Policy-as-Code {#policy-as-code}
+`δ(q, none) = q`.
 
-Any IT automation task that can be expressed as `q = (r, y)` with the set of transitions `δ(q, σ) = q'` is machine-readable and can be tracked by a common revision-management system. It thereby fulfills policy-as-code practice. In more detail, states and transitions represent the formally abstracted policies applied to the SuC. Their verbal description, formal abstraction, and implementation belong to a single implementation trace, which has to be actively governed in practice.
+The actuator is idempotent at the target: applying the successful event again does not create a second copy. A change of `y` that no declared event can undo is outside the machine. The generator has nothing to apply.
 
+These conditions are the operational reading of observability and controllability used in this paper. The textbook reading is a different test. For a linear state-space model, observability and controllability are rank conditions on the system matrices [3]. This paper does not claim those rank conditions, and a finite checklist of steps is not enough to put a task inside `Q`. A counter, a timestamp, or an unbounded collection is in `Q` only after the task declares a finite schema.
 
+Under these assumptions, with `r` held fixed during the step and the actuator successful, a membership bit reaches `r = y` in one event. The next round sees a new populator write, including a disturbance, and may correct it. The tuple `(Q, Σ, δ, q₀)` does not provide that convergence by itself.
+
+### Policy-as-code {#policy-as-code}
+
+The declaration is the policy: the pairs, the residual, and the enabled events. It is text, so a revision-management system can hold it, diff it, and review it. That is the policy-as-code practice this dialect uses.
+
+A round then has one trace. The trace holds the declaration that was in force, the pair the generator read, the event it selected, and the result, which is the successor or the recorded failure. The event is the plan. Without the pair that was read, the event cannot be repeated from the trace. Verbal description, formal declaration, and implementation meet in that trace. A person accepts the declaration and the implementation that is supposed to match it. The acceptance is a judgment on the trace and on the tests. It is not an equality between a sentence and a source file.
+
+A pair `(r, y)` that was never given a residual and a set of enabled events is not yet a policy in this sense.
 
 ### Scalability {#scalability}
 
-Any IT automation task that can be expressed as `q = (r, y)` with the transitions `δ(q, σ) = q'` separates into two atomic classes of calculations. The state and the event are calculated separately from each other. This is a split of the state machine into the data processing paths it requires and the transitions it enforces.
+A task that declares the pair and the events splits into two calculations. Populators write the pair. Generators read a committed pair and apply one enabled event. A further data path is a further populator. A further kind of correction is a further generator.
 
-#### Populator - data import and processing {#populator}
+#### Populator — data import and processing {#populator}
 
-A populator is a general data importer and processor, and one required data processing path. It can read from any IT remote system, or process cached data. It calculates `r` and `y` in generic form. That result is the state 
+A populator is a data path. It reads a remote system, or data already stored, and writes the component it owns: the reference `r`, the measurement `y`, or both. It does not select `σ`. The pair it publishes is
 
-`q = (r, y)`.
+`q = (r, y)`,
 
-#### Generator - drift calculation and event generation {#generator}
+or a recorded failure to read. Each component of a key has one writing populator, so two imports do not overwrite the same value in the same round.
 
-A generator is a general drift calculator for event emission, and one enforced transition. It calculates an individual drift. It reads the state `q` already produced, applies one event `σ` selected from `e`, and confirms its action. In other words, it emits 
+#### Generator — drift calculation and event generation {#generator}
 
-`δ(q, σ) = q'`,
+A generator reads one committed pair, computes the residual, and applies one enabled event. One generator applies one event to one key. It then records the successor the actuator confirmed, or the failure. In the machines here that successor changes `y` and leaves `r` as the populator last wrote it:
 
-and confirms
-
-`q' = (r', y')`,
-
-for the state-machine. One generator applies one event.
-
+`δ(q, σ) = q'`.
 
 #### Shared memory {#shared-memory}
 
-A populator and a generator are atomic: each calculates either the state or one event. Assembled, they are the finite state machine, with states `q = (r, y)` and transitions `δ(q, σ) = q'`.
+Populators and generators meet in a shared memory, typically a database. The tables store the latest committed pair of each key. They are the memory of the machine. They are not the declaration.
 
-All populators and generators are coupled by a shared memory, typically in the form of a database. The tables read and written by the populators and generators are the state of the machine. A further data processing path is a further populator. A further enforced transition is a further generator.
+A generator acts on a committed pair. Writes still in flight are not yet that pair. Two generators do not apply two events to the same key in the same round. That is the one-owner rule. Keys that satisfy it do not share a write, so their events can be applied concurrently. The concurrency is the product of the per-key machines. It is not a property of every automaton, and this paper reports no measured reaction time.
 
 #### Summary {#scalability-summary}
 
-With that concept, multi-threading is built in since each state machine transition and event-generation can be calculcated in an isolated thread. This typically enables state-machine reaction times within seconds for enterprise sizes of up to 500,000 associates. 
+The work of a round grows with the keys whose residual is nonempty, and those keys can be handed to separate generators when each key has one owner. Enterprise size is then a question of how many such keys the operators declare, and of how the shared memory is run. It is not a claim that a state machine is fast at every scale.
 
 ### Scenario: Manage the access to a resource {#scenario}
 
-In the following, the state-machine design is applied to an IT-related use case: automated access management.
+Access for an employee to a resource is granted on a Service-under-Control through an Active Directory group. The same shape covers a document, a binary, a source repository, or another object the SuC serves. The reference is the member set of the Active Directory group, written `r`, from the enterprise identity provider. The measurement is the member set currently on the resource, written `y`, from the SuC. The events add or remove one member on that resource.
 
-In the scenario presented here, access for an employee to a resource is granted on a Service-under-Control through an Active Directory group membership. This is representative of granting employees permissions to a document, a binary, source code, or other material served by the SuC. The input is a reference Active Directory group. Its member set is `r`, derived from the enterprise identity provider. The member set currently on the resource is `y`, fetched from the platform, the SuC. The output is the events that add or remove a member on that resource.
+This scenario takes the directory's set of people as finite. For the sets,
 
-`e` is the drift of the two sets. Members in `r` but not in `y` are to be added. Members in `y` but not in `r` are to be removed. `Σ` contains `add(m)`, `remove(m)`, and `none`, where `m` is one member drawn from the drift `e`. It follows
+`e = (r \ y, y \ r)`.
+
+`add(m)` is enabled when `m ∈ r \ y`. `remove(m)` is enabled when `m ∈ y \ r`. `none` is enabled when `r = y`. The declaration orders the enabled members, for example by directory identifier, and the generator takes the first. The successful transitions, with `r` unchanged by the actuator, are
 
 `δ((r, y), add(m)) = (r, y ∪ {m})`,
 
@@ -366,43 +379,53 @@ In the scenario presented here, access for an employee to a resource is granted 
 
 `δ((r, y), none) = (r, y)`.
 
-The definitions above are based on sets, but can be rewritten as atomic member predicates
+If `m` is already in `y`, then `y ∪ {m} = y`. The generator does not emit `add(m)` in that case, because it is not enabled. A retry after a lost response is a no-op when the actuator implements the union. Removal is the same: `y ∖ {m} = y` when `m` is already absent.
 
-`y ∈ {0, 1}`,
-
-`r ∈ {0, 1}`.
-
-`y` represents the membership state on the Service-under-Control. `r` represents the membership state in the reference Active Directory group. The state is `q = (r, y)`. The four states are `(0, 0)`, `(1, 0)`, `(0, 1)`, and `(1, 1)`. The initial state is
+The set machine is one bit machine per person. From here, `r` and `y` denote the bits of one member, not the sets. `r, y ∈ {0, 1}`, with `r = 1` when the member is in the reference group and `y = 1` when the member is on the resource. The state is `(r, y)`. The four states are `(0, 0)`, `(1, 0)`, `(0, 1)`, and `(1, 1)`. For a member absent on both sides at the start of the story,
 
 `q₀ = (0, 0)`.
 
-`e` is empty at `(0, 0)` and at `(1, 1)`, and there `σ = none`. At `(1, 0)` the predicate is `add`. At `(0, 1)` the predicate is `remove`. Each member `m` is one copy of this machine.
+A member who is already present starts at the pair the first populator writes. That pair need not be `(0, 0)`.
 
-![State machine of one member. Initial state q0 is (0,0). States are (0,0), (1,0), (0,1), and (1,1), written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0) and from (0,1) to (1,1). Removed from AD-Group on IdP goes the other way. The event δ((1, 0), add(*)) goes from (1,0) to (1,1). The event δ((0, 1), remove(*)) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1).](/membership-sm-v1-light.svg)
+| (r, y) | Residual | Enabled event | After a successful actuator |
+| --- | --- | --- | --- |
+| (0, 0) | empty | none | (0, 0) |
+| (1, 1) | empty | none | (1, 1) |
+| (1, 0) | add | add | (1, 1) |
+| (0, 1) | remove | remove | (0, 0) |
 
-*Fig. 2. The membership machine for one member. The state is `(r, y)`. `q₀ = (0, 0)`.*
+![Membership machine for one member. State is (r, y). q0 is (0, 0). Green reference writes: Add to AD-Group on IdP from (0, 0) to (1, 0), and Removed from AD-Group on IdP from (1, 1) to (0, 1). Black actuator events: add from (1, 0) to (1, 1), remove from (0, 1) to (0, 0), and none holding (0, 0) and (1, 1). Red disturbances on the SuC: (1, 1) to (1, 0), and (0, 0) to (0, 1). Dashed edges reverse the green reference writes and are marked unused.](/membership-sm-v1-light.svg)
 
-From `q₀`, an employee added to the AD group on the identity provider reaches `(1, 0)`. `δ` applies `add` and reaches `(1, 1)`. `σ = none` holds `(1, 1)`. An employee removed from the AD group on the identity provider reaches `(0, 1)`. `δ` applies `remove` and returns to `q₀`. A manual change on the resource is an error: `(1, 1)` goes to `(1, 0)`, and `(0, 0)` goes to `(0, 1)`. 
+*Fig. 2. The membership machine for one member. The state is `(r, y)`. `q₀ = (0, 0)`. Green edges write `r`. Black edges are `δ`. Red edges disturb `y`.*
+
+From `q₀`, a populator that sees the employee added to the AD group writes `(1, 0)`. That write is the green edge on the figure. It is not `δ`. The generator then applies `add` and, on success, reaches `(1, 1)`. `none` holds `(1, 1)`. A populator that sees the employee removed from the AD group, while the resource still lists them, writes `(0, 1)`. The generator applies `remove` and returns to `(0, 0)`.
+
+The red edges are disturbances. A manual change on the resource moves `(1, 1)` to `(1, 0)`, or `(0, 0)` to `(0, 1)`, without an enabled event. The residual is then nonempty, and the next successful `add` or `remove` may restore the pair. The dashed edges are the reverse of the green reference writes. The figure marks them as unused in this scenario. They are not actuator events. A later populator read still copies the directory as it stands.
 
 #### Summary {#scenario-summary}
 
-Access management is a simple, straightforward example of how typical automation and development tasks can be expressed as a state machine. This applies to any task that can be executed in finite steps, where the overall setup is observable and controllable. In other words, no limitation can be assumed in IT practice.
+Access management fits the machine because each person is one bit and the corrections are `add` and `remove`. A procedure of finite length, with a counter or an open-ended collection and no declared finite schema, is not yet this machine. Where the assumptions in the observability section hold, the same declaration pattern applies. Where a read cannot be trusted, or no event can undo the change, the pattern stops.
 
- 
+#### Comparison with manifest reconciliation {#comparison}
 
+Argo CD reconciles a desired manifest with the live state of a cluster [1]. Each pass reads the desired state and the current state and applies the difference. The membership machine has the same shape on one bit: a desired value, a current value, a residual, and one corrective event.
 
+The difference is the record and the object of the policy. A manifest sync records that the cluster was brought toward the manifest. The machine in this paper records the rule that enabled `add(m)` or `remove(m)`, the pair that was read, the event, and the result. CI and CD stay in place for build and for deployment. Continuous governance is the dialect for the operating rule. Group membership is the example.
 
-### Conclusion{#comparison}
+### Conclusion {#conclusion}
 
-Section 2 build the formal framework of the automaton - the state machine. Its general applicablibilty is discussed in section 3, since it requires only fundamental control theoretical assumptions to be fullfill, to be applicable in practice. Its formalism is benefitial, since Policies are formalized into mathematical expressions which are automtically traceable - policy-as-code. In section 5 its shown, that although originated from embedded domains, a state machine should is multi-threading capable. Each transition can run on a separate core and the computational need can be balanced
+The state-machine section defines the machine as a finite set of pairs, a signed residual, and a partial transition on enabled events. Populator writes of `r` and `y` sit outside `Σ`. The observability section states the assumptions under which one successful event reaches `r = y` for a membership bit, and it separates those assumptions from the rank tests of linear control theory. The policy-as-code section defines the trace a round keeps. The scalability section separates writers of the pair from appliers of events, and limits concurrency to keys with one owner. The scenario writes access management in sets and in bits, in agreement with the figure, and places the pattern next to manifest reconciliation.
 
-
+The paper does not show that every IT procedure is this kind of machine, and it does not report a latency.
 
 ### References {#references}
 
 1. Argo CD project. *Core Concepts.* <https://argo-cd.readthedocs.io/en/stable/core_concepts/>
 2. Fowler, M. *Continuous Integration.* 2006. <https://martinfowler.com/articles/continuousIntegration.html>
+3. Åström, K. J. and Murray, R. M. *Feedback Systems: An Introduction for Scientists and Engineers.* Princeton University Press, second edition, 2021. The regulation error `e = r − y` is defined on a common signal. Observability and controllability, in that text, are properties of a linear model.
+4. Hopcroft, J. E., Motwani, R., and Ullman, J. D. *Introduction to Automata Theory, Languages, and Computation.* 3rd edition. A deterministic finite automaton is a 5-tuple `(Q, Σ, δ, q₀, F)`.
 
+{{% /whitepaper %}}
 
 ## Contact
 

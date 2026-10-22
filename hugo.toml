@@ -34,6 +34,9 @@ disableKinds = ['taxonomy', 'term', 'RSS']
 [markup.goldmark.extensions]
   definitionList = true
 
+[markup.goldmark.renderer]
+  unsafe = true
+
 [module]
   [module.hugoVersion]
     extended = false

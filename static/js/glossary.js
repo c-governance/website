@@ -45,7 +45,7 @@
   function skip(node) {
     var parent = node.parentElement;
     if (!parent) return true;
-    if (parent.closest("a, code, pre, script, style, button, textarea, svg")) return true;
+    if (parent.closest("a, code, pre, script, style, button, textarea, svg, #whitepaper")) return true;
     var head = parent.closest("table.glossary tbody th");
     return !!head;
   }
