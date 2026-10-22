@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 700" role="img" aria-label="Three automation dialects. CI is a pipeline that outputs code or a binary. CD diffs a rendered manifest against Kubernetes or OpenShift and outputs infrastructure. CG renders policies, applies a state-machine design, and shows the four-state machine. The output is transitions and events.">
+  <rect width="1020" height="700" fill="#1c2836"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f4f6f8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3dce6e"/>
+    </marker>
+  </defs>
+
+  <g font-family="Source Sans 3, Segoe UI, sans-serif" fill="#f4f6f8">
+    <!-- CI -->
+    <rect x="18" y="18" width="316" height="664" rx="20" fill="#243244" stroke="#f4f6f8" stroke-width="2.5"/>
+    <text x="176" y="72" text-anchor="middle" font-size="34" font-weight="600">CI</text>
+    <g font-size="20" font-weight="600" text-anchor="middle">
+      <rect x="66" y="112" width="220" height="48" rx="8" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+      <text x="176" y="142">Build</text>
+      <line x1="176" y1="168" x2="176" y2="198" stroke="#f4f6f8" stroke-width="1.75" marker-end="url(#arrow)"/>
+      <rect x="66" y="210" width="220" height="48" rx="8" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+      <text x="176" y="240">Test</text>
+      <line x1="176" y1="266" x2="176" y2="296" stroke="#f4f6f8" stroke-width="1.75" marker-end="url(#arrow)"/>
+      <rect x="66" y="308" width="220" height="48" rx="8" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+      <text x="176" y="338">Package</text>
+      <line x1="176" y1="364" x2="176" y2="394" stroke="#f4f6f8" stroke-width="1.75" marker-end="url(#arrow)"/>
+      <rect x="66" y="406" width="220" height="48" rx="8" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+      <text x="176" y="436">Publish</text>
+    </g>
+    <rect x="40" y="548" width="272" height="110" rx="12" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <text x="176" y="590" text-anchor="middle" font-size="15" fill="#b4c0cb">output</text>
+    <text x="176" y="624" text-anchor="middle" font-size="22" font-weight="600">code / binary</text>
+
+    <!-- CD -->
+    <rect x="352" y="18" width="316" height="664" rx="20" fill="#243244" stroke="#f4f6f8" stroke-width="2.5"/>
+    <text x="510" y="72" text-anchor="middle" font-size="34" font-weight="600">CD</text>
+    <rect x="400" y="118" width="220" height="72" rx="8" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <text x="510" y="148" text-anchor="middle" font-size="20" font-weight="600">rendered</text>
+    <text x="510" y="172" text-anchor="middle" font-size="20" font-weight="600">manifest</text>
+    <line x1="510" y1="198" x2="510" y2="236" stroke="#f4f6f8" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <rect x="400" y="248" width="220" height="48" rx="8" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <text x="510" y="278" text-anchor="middle" font-size="20" font-weight="600">diff</text>
+    <line x1="510" y1="304" x2="510" y2="368" stroke="#f4f6f8" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <g fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75">
+      <rect x="468" y="384" width="44" height="38" rx="6"/>
+      <rect x="520" y="384" width="44" height="38" rx="6"/>
+      <rect x="494" y="430" width="44" height="38" rx="6"/>
+    </g>
+    <text x="510" y="508" text-anchor="middle" font-size="18" fill="#b4c0cb">Kubernetes / OpenShift</text>
+    <rect x="374" y="548" width="272" height="110" rx="12" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <text x="510" y="590" text-anchor="middle" font-size="15" fill="#b4c0cb">output</text>
+    <text x="510" y="624" text-anchor="middle" font-size="22" font-weight="600">infrastructure</text>
+
+    <!-- CG -->
+    <rect x="686" y="18" width="316" height="664" rx="20" fill="#243244" stroke="#f4f6f8" stroke-width="2.5"/>
+    <text x="844" y="72" text-anchor="middle" font-size="34" font-weight="600">CG</text>
+    <rect x="734" y="108" width="220" height="64" rx="8" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <text x="844" y="134" text-anchor="middle" font-size="20" font-weight="600">rendered</text>
+    <text x="844" y="158" text-anchor="middle" font-size="20" font-weight="600">policies</text>
+    <line x1="844" y1="176" x2="844" y2="204" stroke="#f4f6f8" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <rect x="734" y="212" width="220" height="64" rx="8" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <text x="844" y="238" text-anchor="middle" font-size="17" font-weight="600">state-machine</text>
+    <text x="844" y="260" text-anchor="middle" font-size="17" font-weight="600">design</text>
+    <line x1="844" y1="280" x2="844" y2="328" stroke="#f4f6f8" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <line x1="778" y1="336" x2="778" y2="368" stroke="#f4f6f8" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <text x="804" y="352" font-size="13" font-weight="600" fill="#9ec0e0">q0</text>
+    <path d="M 801 384 Q 844 340, 887 384" fill="none" stroke="#3dce6e" stroke-width="1.75" marker-end="url(#arrow-green)"/>
+    <path d="M 934 422 L 934 470" fill="none" stroke="#f4f6f8" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <path d="M 888 512 Q 844 542, 802 512" fill="none" stroke="#3dce6e" stroke-width="1.75" marker-end="url(#arrow-green)"/>
+    <path d="M 754 470 L 754 422" fill="none" stroke="#f4f6f8" stroke-width="1.6" marker-end="url(#arrow)"/>
+    <circle cx="778" cy="396" r="26" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <circle cx="910" cy="396" r="26" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <circle cx="910" cy="496" r="26" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <circle cx="778" cy="496" r="26" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <g font-size="12" font-weight="600" text-anchor="middle">
+      <text x="778" y="400">(0, 0)</text>
+      <text x="910" y="400">(1, 0)</text>
+      <text x="910" y="500">(1, 1)</text>
+      <text x="778" y="500">(0, 1)</text>
+    </g>
+    <rect x="708" y="548" width="272" height="110" rx="12" fill="#1c2836" stroke="#f4f6f8" stroke-width="1.75"/>
+    <text x="844" y="590" text-anchor="middle" font-size="15" fill="#b4c0cb">output</text>
+    <text x="844" y="624" text-anchor="middle" font-size="22" font-weight="600">transitions, events</text>
+  </g>
+</svg>
