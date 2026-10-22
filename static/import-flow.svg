@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 280" role="img" aria-labelledby="title desc">
+  <title id="title">Import direction</title>
+  <desc id="desc">Core may be imported by a share and by an asset. A share may be imported by an asset. Core does not import either.</desc>
+  <rect width="520" height="280" fill="#f4f6f8"/>
+  <g font-family="Source Sans 3, Segoe UI, sans-serif" font-size="15" fill="#1c2836">
+    <rect x="190" y="24" width="140" height="40" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="260" y="49" text-anchor="middle" font-weight="600">Core</text>
+    <rect x="40" y="180" width="140" height="40" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="110" y="205" text-anchor="middle" font-weight="600">Share</text>
+    <rect x="340" y="180" width="140" height="40" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="410" y="205" text-anchor="middle" font-weight="600">Asset</text>
+    <line x1="230" y1="64" x2="130" y2="180" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="130,180 128,168 140,172" fill="#1f4e79"/>
+    <line x1="290" y1="64" x2="390" y2="180" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="390,180 378,172 392,168" fill="#1f4e79"/>
+    <line x1="180" y1="200" x2="340" y2="200" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="340,200 328,196 328,204" fill="#1f4e79"/>
+    <text x="260" y="258" text-anchor="middle" font-size="13" fill="#5c6b7a">An arrow means may be imported by.</text>
+  </g>
+</svg>

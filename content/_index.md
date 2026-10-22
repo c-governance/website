@@ -224,6 +224,152 @@ Entries are in alphabetical order. A term keeps its meaning from control enginee
 | State | The mathematical expression of the condition of the Service-under-Control. In practice it is represented by the database tables that store the current state and the desired state of the Service-under-Control. |
 | State machine | A finite automaton (Q, Σ, δ, q₀). Q is a finite set of states, Σ a finite set of events, δ the transition function from a state and an event to the next state, and q₀ the initial state. It is the model in which the automation is written. |
 
+## Whitepaper
+
+Raphael Hans
+
+### Summary {.abstract}
+
+Continuous governance is proposed as an automation dialect for the operation of IT services. A task is written as a finite automaton whose state is the pair `q = (r, y)`: `r` is the desired state, derived from the IT environment, and `y` is the current state, measured on the Service-under-Control. The drift `e = r − y` selects the event `σ`, and the enforced transition is `δ(q, σ) = q'`.  Observability, controllability, and a policy-as-code trace are properties of this design. The design is illustrated by granting access to a platform resource from an Active Directory group.
+
+### Contents {.toc}
+
+1. [Introduction](#introduction)
+2. [State machine](#state-machine)
+3. [Observability & Controllability](#observability)
+4. [Policy-as-Code](#policy-as-code)
+5. [Scalability](#scalability)
+   - [5.1 Populator — data import and processing](#populator)
+   - [5.2 Generator — drift calculation and event generation](#generator)
+   - [5.3 Shared memory](#shared-memory)
+   - [5.4 Summary](#scalability-summary)
+6. [Scenario: Manage the access to a resource](#scenario)
+   - [6.1 Summary](#scenario-summary)
+   - [6.2 Comparison with manifest reconciliation](#comparison)
+7. [References](#references)
+
+### Introduction {#introduction}
+
+Releasing software over time for sustainable commercial use is a decade-old discipline in software development. Since 2010, it has evolved from centralized versioning concepts such as Subversion to distributed ones such as *git*, and from organizational models such as *Waterfall* to role-based *Agile*. These changes are only examples of how software-development-driven patterns have diffused into domain-agnostic enterprise and organizational patterns.
+
+A continuation of this thinking is continuous deployment, as represented by tools such as Argo CD [1]. Here, modern infrastructure-as-code methods are used to adapt software-development patterns to service operations. This enables a modern DevOps engineer to handle the complexity of today's cloud platforms, and the same line evolves into methods such as GitOps. In practice, this replaces legacy Ansible-operated deployment pipelines based on classical CI tools [2] and VM-based enterprise IT infrastructure.
+
+This is surprising for the following reason. While Ops in DevOps has evolved over time into its own automation language, Dev has no automation dialect of its own.
+
+This whitepaper proposes a dedicated automation dialect for DevOps engineers in IT environments, "continuous governance". It focuses on an end-to-end practice, starting at the DevOps engineer's intent during the implementation phase and continuing through the calculated events of the compiled automation system during its execution. This is a governance- and audit-oriented approach that aims to match daily DevOps practice and responsibility more closely.
+
+![Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transitions and events.](/dialects-comic-v3-light.svg)
+
+*Fig. 1. CI pipeline, CD manifest sync, and CG policy sync.*
+
+
+### State machine {#state-machine}
+
+The automation is written as a finite automaton `(Q, Σ, δ, q₀)`.
+
+- `Q` is a finite set of states.
+- `Σ` is a finite set of events.
+- `δ: Q × Σ → Q` maps a state and an event to the successor state.
+- `q₀ ∈ Q` is the initial state.
+
+Any automation problem is expressed by a desired state and a current state. The automaton state is that pair.
+
+`q = (r, y)`
+
+`r` is the desired state. It is typically derived from the IT environment. `y` is the current state. It is typically measured from the target system, the Service-under-Control (SuC). `Q` is the finite set of pairs the problem distinguishes. `q₀ = (r₀, y₀)` is the pair at the start.
+
+Drift is `e = r − y`. Where `r` and `y` are predicates rather than numbers, `e` is the set of predicates on which they disagree. The event `σ ∈ Σ` is selected from `e`.
+
+The transition is the map already given. `δ(q, σ) = q'`, with `q' = (r', y')`. `r'` is the desired state at the successor, derived from the IT environment. `y'` is the current state measured from the **SuC** after `σ`. The service does not hard-code one workflow. It evaluates a declared machine. Each automation problem is one declaration of `(r, y)` and of `δ`.
+
+In the following, the core properties of such a system are investigated.
+
+### Observability & Controllability {#observability}
+
+Any IT automation task that can be expressed as `q = (r, y)` with a corresponding set of transitions `δ(q, σ) = q'` can be represented by the state machine design presented above. The same fundamental control theoretical principles apply. For a DevOps engineer, this means the following for an automation task:
+- observability: the current and desired state of the SuC can be observed and/or calculated
+- controllability: events `δ(q, σ) = q'` can be implemented that set the SuC, the Service-under-Control, to the desired state
+
+Both properties correspond to the control-engineering definitions of observability and controllability of a control system. On that basis, it can be assumed that any engineering automation task in practice fulfills the criteria above, and that the state machine design can be applied.
+
+### Policy-as-Code {#policy-as-code}
+
+Any IT automation task that can be expressed as `q = (r, y)` with the set of transitions `δ(q, σ) = q'` is machine-readable and can be tracked by a common revision-management system. It thereby fulfills policy-as-code practice. In more detail, states and transitions represent the formally abstracted rules applied to the SuC. Their verbal description, formal abstraction, and implementation belong to a single implementation trace, which has to be actively governed in practice.
+
+
+
+### Scalability {#scalability}
+
+Any IT automation task that can be expressed as `q = (r, y)` with the transitions `δ(q, σ) = q'` separates into two atomic calculations. The state and the event are calculated separately from each other. This is a split of the state machine into the data processing paths it requires and the transitions it enforces.
+
+- data import and processing, the required data paths: `q = (r, y)`
+- drift calculation and event generation, the enforced transitions: `δ(q, σ) = q'`
+
+#### Populator - data import and processing {#populator}
+
+A populator is a general data importer and processor, and one required data processing path. It can read from any IT remote system, or process cached data. It calculates `r` and `y` in generic form. That result is the state. The event is calculated by a generator.
+
+It calculates `q = (r, y)`.
+
+#### Generator - drift calculation and event generation {#generator}
+
+A generator is a general drift calculator for event emission, and one enforced transition. It calculates an individual drift. It reads the state `q` already produced, applies one event `σ` selected from `e`, and yields the successor. The state is calculated by a populator.
+
+It calculates `δ(q, σ) = q'`, with `q' = (r', y')`. One generator applies one event.
+
+
+#### Shared memory {#shared-memory}
+
+A populator and a generator are atomic: each calculates either the state or one event. Assembled, they are the finite state machine, with states `q = (r, y)` and transitions `δ(q, σ) = q'`.
+
+All populators and generators are coupled by a shared memory, typically in the form of a database. The tables read and written by the populators and generators are the state of the machine. A further data processing path is a further populator. A further enforced transition is a further generator.
+
+#### Summary {#scalability-summary}
+
+With that concept, multi-threading is built in, and event-generation times within seconds are reasonable to reach for enterprise sizes of up to 500,000 associates. 
+
+### Scenario: Manage the access to a resource {#scenario}
+
+In the following, the state-machine design is applied to an IT-related use case: automated access management.
+
+In the scenario presented here, access for an employee to a resource is granted on a Service-under-Control through an Active Directory group membership. This is representative of granting employees permissions to a document, a binary, source code, or other material served by the SuC. The input is a reference Active Directory group. Its member set is `r`, derived from the enterprise identity provider. The member set currently on the resource is `y`, fetched from the platform, the SuC. The output is the events that add or remove a member on that resource.
+
+`e` is the drift of the two sets. Members in `r` but not in `y` are to be added. Members in `y` but not in `r` are to be removed. `Σ` contains `add(m)`, `remove(m)`, and `none`, where `m` is one member drawn from the drift `e`.
+
+- `δ((r, y), add(m)) = (r, y ∪ {m})`
+- `δ((r, y), remove(m)) = (r, y ∖ {m})`
+- `δ((r, y), none) = (r, y)` when `e` is empty.
+
+The definitions above are based on sets, but can be rewritten as atomic member predicates. `y ∈ {0, 1}` represents the membership state on the Service-under-Control. `r ∈ {0, 1}` represents the membership state in the reference Active Directory group. The state is `q = (r, y)`. The four states are `(0, 0)`, `(1, 0)`, `(0, 1)`, and `(1, 1)`. The initial state is `q₀ = (0, 0)`.
+
+`e` is empty at `(0, 0)` and at `(1, 1)`, and there `σ = none`. At `(1, 0)` the predicate is `add`. At `(0, 1)` the predicate is `remove`. Each member `m` is one copy of this machine.
+
+![State machine of one member. Initial state q0 is (0,0). States are (0,0), (1,0), (0,1), and (1,1), written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0) and from (0,1) to (1,1). Removed from AD-Group on IdP goes the other way. The event δ((1, 0), add(*)) goes from (1,0) to (1,1). The event δ((0, 1), remove(*)) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1).](/membership-sm-v1-light.svg)
+
+*Fig. 2. The membership machine for one member. The state is `(r, y)`. `q₀ = (0, 0)`.*
+
+From `q₀`, an employee added to the AD group on the identity provider reaches `(1, 0)`. `δ` applies `add` and reaches `(1, 1)`. `σ = none` holds `(1, 1)`. An employee removed from the AD group on the identity provider reaches `(0, 1)`. `δ` applies `remove` and returns to `q₀`. A manual change on the resource is an error: `(1, 1)` goes to `(1, 0)`, and `(0, 0)` goes to `(0, 1)`. 
+
+#### Summary {#scenario-summary}
+
+Access management is a simple, straightforward example of how typical automation and development tasks can be expressed as a state machine. This applies to any task that can be executed in finite steps, where the overall setup is observable and controllable. In other words, no limitation can be assumed in IT practice.
+
+ 
+
+
+
+#### Comparison with manifest reconciliation {#comparison}
+
+Argo CD renders YAML to a desired manifest, reads the live object set, and reconciles the diff by create, update, or delete [1]. Continuous governance applies the same render-and-diff step to a law. The rendered artifact is a set of predicates. The live state is the SuC, observed into the same store. Reconciliation is one transition of the automaton, and the transition is persisted. Argo CD emits cluster objects. This proposal emits the recorded event of an operational rule.
+
+
+
+### References {#references}
+
+1. Argo CD project. *Core Concepts.* <https://argo-cd.readthedocs.io/en/stable/core_concepts/>
+2. Fowler, M. *Continuous Integration.* 2006. <https://martinfowler.com/articles/continuousIntegration.html>
+
+
 ## Contact
 
 I am Raphael, author of this page and initiator of Continuous Governance. In ancient times, I studied control engineering, and today I work at Robert Bosch GmbH. Fifteen years of hands-on work in project management, service operation, and software development led to Continuous Governance.
