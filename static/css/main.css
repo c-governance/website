@@ -426,20 +426,28 @@ a:hover { text-decoration: none; }
 
 #whitepaper h3.abstract + p { margin-bottom: 0.4rem; }
 
+#whitepaper code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  font-family: Georgia, "Times New Roman", "Liberation Serif", serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.05em;
+}
+
 #whitepaper p:has(> code:only-child) {
-  margin: 1.15rem 0 1.3rem;
-  padding: 0.7rem 1rem;
+  margin: 0.85rem 0 1rem;
+  padding: 0;
   text-align: center;
   hyphens: none;
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-2);
+  background: none;
+  border: 0;
 }
 
 #whitepaper p:has(> code:only-child) code {
-  background: none;
-  padding: 0;
-  font-size: 1.05em;
+  font-size: 1.15em;
 }
 
 #whitepaper p:has(> em:only-child) {
