@@ -69,32 +69,6 @@ Since **Continuous Integration (CI)** tools are already available to DevOps engi
 
 Any IT operations team in a corporate environment that uses continuous integration tools for service automation runs into the same problems with upstream processes and governance. Additional synergies of selecting such tools typically do not exist.
 
-
-## Solution
-
-Continuous Governance is an automation dialect for operating a service. Continuous integration, testing, deployment, and security remain the tools of software development. DevOps does not use them for service operation. The shift-left promise is that auditability and governance are first-class concerns, and they shape the design of automation in IT. The dialect introduces:
-
-- a ``desired state`` and a ``current state``, and a ``drift`` between them, for the operated service, the ``Service-under-Control`` (``SuC``). Drift is the error, reference minus actual state
-- a database whose tables store the ``state``. The state is the mathematical expression. The tables represent it
-- ``rule sets`` modelled as a ``state machine``, one type of model. The controller evaluates their ``state``
-- ``events`` that have ``context`` and ``intent``
-- a curated, read-only ``API`` through which readers outside the operating team can see the ``state`` and the operation of the ``SuC``
-
-With that new perspective and wording, code and logs that today live in pipelines are replaced, one for one, by a *Service-under-Control* that is auditable as it runs. This heavily impacts DevOps routines.
-
-| Conventional | Continuous Governance |
-| --- | --- |
-| A run starts from a cron trigger or a source code change. | A *local model* is polled for events continuously. |
-| Each run talks to live systems and then exits. | Remote state is observed into a local *model*. The next operation is calculated in memory. |
-| Success means the job was green. | Success means the calculated event was applied and recorded. |
-| The trace is assembled from unstructured logs. | The trace is the record of the applied event: the rule, the plan, and the result. |
-
-That is the new perspective. A *state machine* ensures that a *Service-under-Control* is aligned over time with its operational rules. Because *events* are a calculation over a local *model*, an event can be repeated, explained, and shown. Governance is not a second process. It is the trace of the rule sets and their implementation by the DevOps engineer, and it is the trace of the events, their execution, and their runtime context.
-
-CI, CT, and CD stay in place for software development. They remain how software is shipped, tested, or deployed. They are not the controller of the service. Continuous Governance (CG) carries shift-left into service operation and its governance, which is especially relevant in enterprise IT environments.
-
-
-
 ## Principles
 
 Continuous Governance applies the ideas that made software delivery continuous to IT operations and their related engineering tasks. This requires a further class of automation services and platforms for enterprise IT DevOps engineers, operated in addition to the existing solutions for software developers.
