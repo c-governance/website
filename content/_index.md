@@ -268,7 +268,7 @@ While Ops in DevOps has evolved over time into its own automation dialect, Dev h
 
 This whitepaper proposes a dedicated automation dialect for DevOps engineers in IT environments, called "continuous governance". It focuses on an end-to-end practice, starting at the DevOps engineer's policies to be implemented and continuing through the calculated events of the compiled automation system during its execution. This is a governance- and audit-oriented approach that aims to match daily DevOps practice and responsibility more closely. In fig. 1, its conceptual difference from existing automation approaches is indicated.
 
-![Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transitions and events.](/dialects-comic-v3-light.svg)
+![Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. The output is infrastructure / service. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transition / events.](/dialects-comic-v3-light.svg)
 
 *Fig. 1. CI pipeline, CD manifest sync, and CG state-machine design with policy sync.*
 
