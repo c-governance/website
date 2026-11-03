@@ -1,4 +1,4 @@
 {{ define "main" }}
 {{ partial "header.html" . }}
-{{ .Content }}
+{{ .Content | replaceRE `<p><strong>Keywords</strong>—[^<]*</p>` "" | safeHTML }}
 {{ end }}

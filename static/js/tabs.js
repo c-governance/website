@@ -59,6 +59,11 @@
   }
   panels.forEach(function (item) { main.appendChild(item.panel); });
 
+  dressEquations();
+  dressMath();
+  markReferences();
+  citePreviews();
+
   var current = "";
 
   function resolve(id) {
@@ -87,7 +92,10 @@
       if (after !== before) window.scrollBy(0, after - before);
     }
     if (focusTab) match.tab.focus();
-    if (resolved.anchor) resolved.anchor.scrollIntoView();
+    if (resolved.anchor) {
+      var target = resolved.anchor.closest("li") || resolved.anchor;
+      target.scrollIntoView();
+    }
   }
 
   function syncHash(id) {
@@ -134,6 +142,152 @@
   });
 
   select(location.hash.replace("#", "") || panels[0].id, false);
+
+  function dressMath() {
+    var subscripts = {
+      "\u2080": "0", "\u2081": "1", "\u2082": "2", "\u2083": "3", "\u2084": "4",
+      "\u2085": "5", "\u2086": "6", "\u2087": "7", "\u2088": "8", "\u2089": "9",
+      "\u2098": "m"
+    };
+    var codes = document.querySelectorAll("#whitepaper code");
+    Array.prototype.forEach.call(codes, function (code) {
+      var text = code.textContent;
+      if (!/[\u0394\u2080-\u209C]/.test(text)) return;
+      var fragment = document.createDocumentFragment();
+      var buf = "";
+      function flush() {
+        if (!buf) return;
+        fragment.appendChild(document.createTextNode(buf));
+        buf = "";
+      }
+      for (var i = 0; i < text.length; i++) {
+        var ch = text.charAt(i);
+        if (subscripts[ch]) {
+          flush();
+          var sub = document.createElement("sub");
+          sub.textContent = subscripts[ch];
+          fragment.appendChild(sub);
+        } else if (ch === "\u0394") {
+          flush();
+          var op = document.createElement("span");
+          op.className = "op";
+          op.textContent = ch;
+          fragment.appendChild(op);
+        } else {
+          buf += ch;
+        }
+      }
+      flush();
+      code.textContent = "";
+      code.appendChild(fragment);
+    });
+  }
+
+  function dressEquations() {
+    var paras = document.querySelectorAll("#whitepaper p");
+    Array.prototype.forEach.call(paras, function (paragraph) {
+      if (paragraph.children.length !== 1 || paragraph.children[0].tagName !== "CODE") return;
+      var code = paragraph.children[0];
+      var match = code.textContent.match(/^(.*)\s+(\(\d+(?:\.\d+)?\))\s*$/);
+      if (!match) return;
+      code.textContent = match[1].trim();
+      var number = document.createElement("span");
+      number.className = "eq-no";
+      number.textContent = match[2];
+      paragraph.classList.add("eq");
+      paragraph.appendChild(number);
+    });
+  }
+
+  function citePreviews() {
+    var links = document.querySelectorAll("#whitepaper a[href^='#ref-']");
+    if (!links.length) return;
+
+    var tip = document.createElement("div");
+    tip.className = "cite-preview";
+    tip.setAttribute("role", "tooltip");
+    tip.hidden = true;
+    var number = document.createElement("span");
+    number.className = "cite-preview-no";
+    var body = document.createElement("div");
+    body.className = "cite-preview-body";
+    tip.appendChild(number);
+    tip.appendChild(body);
+    document.body.appendChild(tip);
+
+    var current = null;
+    var hideTimer = 0;
+
+    function show(link) {
+      var id = link.getAttribute("href").replace(/^#/, "");
+      var target = document.getElementById(id);
+      var item = target && (target.closest("li") || target);
+      if (!item) return;
+      clearTimeout(hideTimer);
+      current = link;
+      number.textContent = link.textContent.trim();
+      body.replaceChildren();
+      Array.prototype.forEach.call(item.childNodes, function (node) {
+        if (node.nodeType === 1 && node.tagName === "SPAN" && !node.textContent.trim()) return;
+        body.appendChild(node.cloneNode(true));
+      });
+      tip.hidden = false;
+      place(link);
+    }
+
+    function place(link) {
+      var rect = link.getBoundingClientRect();
+      var gap = 12;
+      var width = tip.offsetWidth;
+      var height = tip.offsetHeight;
+      var left = rect.left + rect.width / 2 - width / 2;
+      left = Math.max(12, Math.min(left, window.innerWidth - width - 12));
+      var top = rect.top - height - gap;
+      if (top < 68) top = rect.bottom + gap;
+      tip.style.left = left + "px";
+      tip.style.top = top + "px";
+    }
+
+    function hide() {
+      clearTimeout(hideTimer);
+      tip.hidden = true;
+      current = null;
+    }
+
+    function scheduleHide() {
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(hide, 120);
+    }
+
+    Array.prototype.forEach.call(links, function (link) {
+      link.classList.add("cite");
+      link.addEventListener("mouseenter", function () { show(link); });
+      link.addEventListener("focus", function () { show(link); });
+      link.addEventListener("mouseleave", scheduleHide);
+      link.addEventListener("blur", scheduleHide);
+      link.addEventListener("click", hide);
+    });
+    tip.addEventListener("mouseenter", function () { clearTimeout(hideTimer); });
+    tip.addEventListener("mouseleave", scheduleHide);
+    window.addEventListener("scroll", function () {
+      if (!tip.hidden && current) place(current);
+    }, true);
+    window.addEventListener("resize", function () {
+      if (!tip.hidden && current) place(current);
+    });
+  }
+
+  function markReferences() {
+    var anchors = document.querySelectorAll("#whitepaper #references + ol span[id^='ref-']");
+    Array.prototype.forEach.call(anchors, function (anchor) {
+      var item = anchor.closest("li");
+      if (!item) return;
+      item.id = anchor.id;
+      anchor.removeAttribute("id");
+    });
+    var pdf = document.querySelector("#whitepaper a[href$='.pdf']");
+    if (pdf) pdf.setAttribute("download", "continuous-governance.pdf");
+  }
 
   function cardify(list) {
     if (!list) return;
