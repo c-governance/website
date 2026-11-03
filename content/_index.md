@@ -363,7 +363,7 @@ The term `e` is the drift of the two sets. Members in `r` but not in `y` are to 
 
 `δ((r, y), add(m)) = (r, y ∪ {m}), (7.1)`
 
-`δ((r, y), remove(m)) = (r, y ∪ \ {m}), (7.2)`
+`δ((r, y), remove(m)) = (r, y \ {m}), (7.2)`
 
 `δ((r, y), none) = (r, y), (7.3)`
 
