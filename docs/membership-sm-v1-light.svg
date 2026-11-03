@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-140 0 2140 1220" role="img" aria-label="Membership state machine. State is (r, y). q0 is (0,0). Green arrows are a common enterprise event. Dashed arrows are a manual instant revert of a green edge, a transition that does not occur in real life. Red arrows are a change on the SuC, a rule violation. Other arrows stay the default.">
+  <rect x="-140" width="2140" height="1220" fill="#f4f6f8"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c2836"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1b8a3c"/>
+    </marker>
+    <marker id="arrow-revert" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#5c6b7a"/>
+    </marker>
+    <marker id="arrow-red" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d12525"/>
+    </marker>
+  </defs>
+  <g font-family="Segoe UI, Liberation Sans, sans-serif" fill="#1c2836">
+    <text x="48" y="42" font-size="24" fill="#5c6b7a">state (r, y)</text>
+
+    <line x1="560" y1="150" x2="560" y2="248" stroke="#1c2836" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <text x="574" y="210" font-size="24" font-weight="600" fill="#1f4e79">q0</text>
+
+    <circle cx="560" cy="340" r="76" fill="#ffffff" stroke="#1c2836" stroke-width="2.25"/>
+    <text x="560" y="336" text-anchor="middle" font-size="26" font-weight="600">(0, 0)</text>
+    <text x="560" y="382" text-anchor="middle" font-size="20" fill="#5c6b7a">e = empty</text>
+
+    <circle cx="1320" cy="340" r="76" fill="#ffffff" stroke="#1c2836" stroke-width="2.25"/>
+    <text x="1320" y="336" text-anchor="middle" font-size="26" font-weight="600">(1, 0)</text>
+    <text x="1320" y="382" text-anchor="middle" font-size="20" fill="#5c6b7a">e = add</text>
+
+    <circle cx="1320" cy="800" r="76" fill="#ffffff" stroke="#1c2836" stroke-width="2.25"/>
+    <text x="1320" y="796" text-anchor="middle" font-size="26" font-weight="600">(1, 1)</text>
+    <text x="1320" y="842" text-anchor="middle" font-size="20" fill="#5c6b7a">e = empty</text>
+
+    <circle cx="560" cy="800" r="76" fill="#ffffff" stroke="#1c2836" stroke-width="2.25"/>
+    <text x="560" y="796" text-anchor="middle" font-size="26" font-weight="600">(0, 1)</text>
+    <text x="560" y="842" text-anchor="middle" font-size="20" fill="#5c6b7a">e = remove</text>
+
+    <path d="M 636 300 Q 940 150, 1244 300" fill="none" stroke="#1b8a3c" stroke-width="2.75" marker-end="url(#arrow-green)"/>
+    <text x="940" y="148" text-anchor="middle" font-size="28" font-style="italic" fill="#157332">Add to AD-Group on IdP</text>
+
+    <path d="M 1244 380 Q 940 500, 636 380" fill="none" stroke="#5c6b7a" stroke-width="2.25" stroke-dasharray="8 7" stroke-linecap="round" marker-end="url(#arrow-revert)"/>
+    <text x="940" y="478" text-anchor="middle" font-size="26" font-style="italic" fill="#5c6b7a">manual instant revert</text>
+
+    <path d="M 1244 760 Q 940 620, 636 760" fill="none" stroke="#1b8a3c" stroke-width="2.75" marker-end="url(#arrow-green)"/>
+    <text x="940" y="656" text-anchor="middle" font-size="28" font-style="italic" fill="#157332">Removed from AD-Group on IdP</text>
+
+    <path d="M 636 840 Q 940 980, 1244 840" fill="none" stroke="#5c6b7a" stroke-width="2.25" stroke-dasharray="8 7" stroke-linecap="round" marker-end="url(#arrow-revert)"/>
+    <text x="940" y="1036" text-anchor="middle" font-size="26" font-style="italic" fill="#5c6b7a">manual instant revert</text>
+
+    <path d="M 1396 416 Q 1540 570, 1396 724" fill="none" stroke="#1c2836" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <text x="1740" y="574" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="26" font-style="italic" fill="#1c2836">&#x3B4;((1, 0), add(*)), event</text>
+
+    <path d="M 1248 724 Q 1080 570, 1248 416" fill="none" stroke="#d12525" stroke-width="2.75" marker-end="url(#arrow-red)"/>
+    <text x="1000" y="608" text-anchor="middle" font-size="26" font-style="italic" fill="#b42318">manual change on SuC</text>
+
+    <path d="M 484 724 Q 300 570, 484 416" fill="none" stroke="#1c2836" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <text x="120" y="574" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="26" font-style="italic" fill="#1c2836">&#x3B4;((0, 1), remove(*)), event</text>
+
+    <path d="M 632 416 Q 800 570, 632 724" fill="none" stroke="#d12525" stroke-width="2.75" marker-end="url(#arrow-red)"/>
+    <text x="880" y="540" text-anchor="middle" font-size="26" font-style="italic" fill="#b42318">manual change on SuC</text>
+
+    <path d="M 500 290 C 420 200, 500 150, 548 270" fill="none" stroke="#1c2836" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <text x="430" y="168" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="26" font-style="italic" fill="#1c2836">&#x3C3; = none</text>
+
+    <path d="M 1384 860 C 1520 940, 1280 1000, 1268 870" fill="none" stroke="#1c2836" stroke-width="1.75" marker-end="url(#arrow)"/>
+    <text x="1500" y="980" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="26" font-style="italic" fill="#1c2836">&#x3C3; = none</text>
+
+    <line x1="80" y1="1136" x2="168" y2="1136" stroke="#1b8a3c" stroke-width="2.75" marker-end="url(#arrow-green)"/>
+    <text x="186" y="1146" font-size="26" fill="#1c2836">common enterprise event</text>
+    <line x1="640" y1="1136" x2="728" y2="1136" stroke="#5c6b7a" stroke-width="2.25" stroke-dasharray="8 7" stroke-linecap="round" marker-end="url(#arrow-revert)"/>
+    <text x="746" y="1146" font-size="26" fill="#1c2836">manual instant revert, not real</text>
+    <line x1="1288" y1="1136" x2="1376" y2="1136" stroke="#d12525" stroke-width="2.75" marker-end="url(#arrow-red)"/>
+    <text x="1394" y="1146" font-size="26" fill="#1c2836">change on SuC, rule violation</text>
+  </g>
+</svg>

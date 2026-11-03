@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 250" role="img" aria-labelledby="title desc">
+  <title id="title">Three dialect flows</title>
+  <desc id="desc">CI runs build stages and emits a code or binary artifact. CD diffs a rendered manifest and emits infrastructure on Kubernetes or OpenShift. CG diffs rendered laws and emits a state-machine transition and an event.</desc>
+  <rect width="980" height="250" fill="#f4f6f8"/>
+  <g font-family="Source Sans 3, Segoe UI, sans-serif" font-size="15" fill="#1c2836">
+    <text x="24" y="36" font-size="16" font-weight="600" fill="#1f4e79">CI</text>
+    <rect x="70" y="16" width="150" height="32" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="145" y="37" text-anchor="middle">Build, test, package</text>
+    <line x1="220" y1="32" x2="248" y2="32" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="248,32 240,28 240,36" fill="#1f4e79"/>
+    <rect x="252" y="16" width="170" height="32" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="337" y="37" text-anchor="middle">Code or binary artifact</text>
+
+    <text x="24" y="112" font-size="16" font-weight="600" fill="#1f4e79">CD</text>
+    <rect x="70" y="92" width="160" height="32" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="150" y="113" text-anchor="middle">Rendered manifest</text>
+    <line x1="230" y1="108" x2="258" y2="108" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="258,108 250,104 250,112" fill="#1f4e79"/>
+    <rect x="262" y="92" width="70" height="32" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="297" y="113" text-anchor="middle">Diff</text>
+    <line x1="332" y1="108" x2="360" y2="108" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="360,108 352,104 352,112" fill="#1f4e79"/>
+    <rect x="364" y="92" width="250" height="32" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="489" y="113" text-anchor="middle">Kubernetes or OpenShift</text>
+
+    <text x="24" y="188" font-size="16" font-weight="600" fill="#1f4e79">CG</text>
+    <rect x="70" y="168" width="140" height="32" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="140" y="189" text-anchor="middle">Rendered laws</text>
+    <line x1="210" y1="184" x2="238" y2="184" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="238,184 230,180 230,188" fill="#1f4e79"/>
+    <rect x="242" y="168" width="70" height="32" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="277" y="189" text-anchor="middle">Diff</text>
+    <line x1="312" y1="184" x2="340" y2="184" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="340,184 332,180 332,188" fill="#1f4e79"/>
+    <rect x="344" y="168" width="280" height="32" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="484" y="189" text-anchor="middle">Transition and event</text>
+  </g>
+</svg>

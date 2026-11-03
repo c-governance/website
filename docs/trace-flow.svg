@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 150" role="img" aria-labelledby="title desc">
+  <title id="title">Trace from requirement to execution</title>
+  <desc id="desc">A requirement becomes a model plan, then a code plan, then an execution record. The execution record repeats.</desc>
+  <rect width="860" height="150" fill="#f4f6f8"/>
+  <g font-family="Source Sans 3, Segoe UI, sans-serif" font-size="15" fill="#1c2836">
+    <rect x="20" y="48" width="130" height="36" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="85" y="71" text-anchor="middle">Requirement</text>
+    <line x1="150" y1="66" x2="178" y2="66" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="178,66 170,62 170,70" fill="#1f4e79"/>
+    <rect x="182" y="48" width="140" height="36" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="252" y="71" text-anchor="middle">Model plan</text>
+    <line x1="322" y1="66" x2="350" y2="66" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="350,66 342,62 342,70" fill="#1f4e79"/>
+    <rect x="354" y="48" width="130" height="36" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="419" y="71" text-anchor="middle">Code plan</text>
+    <line x1="484" y1="66" x2="512" y2="66" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="512,66 504,62 504,70" fill="#1f4e79"/>
+    <rect x="516" y="48" width="170" height="36" rx="4" fill="#fff" stroke="#1f4e79"/>
+    <text x="601" y="71" text-anchor="middle">Execution record</text>
+    <path d="M686 66 H730 V110 H601 V84" fill="none" stroke="#1f4e79" stroke-width="1.5"/>
+    <polygon points="601,84 597,94 605,94" fill="#1f4e79"/>
+    <text x="730" y="128" font-size="13" fill="#5c6b7a">repeats</text>
+  </g>
+</svg>
