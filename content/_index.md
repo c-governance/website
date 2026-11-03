@@ -236,7 +236,7 @@ Continuous governance (CG) is proposed as an automation dialect for the operatio
 
 `(Q, Σ, δ, q₀). (1)`
 
-Observability, controllability, and a policy-as-code trace are properties of this design. Moreover, such automaton can be executed in parallel. Its multi-threading capabilities makes it applicable for any enterprise size. The design is demonstrated on a real-world inspired automation use-case. In summary, the presented work gives an outlook for a novel IT service operation.
+Observability, controllability, and a policy-as-code trace are properties of this design. Moreover, such an automaton can be executed in parallel. Its multi-threading capabilities make it applicable for any enterprise size. The design is demonstrated on a real-world-inspired automation use-case. In summary, the presented work gives an outlook for a novel IT service operation.
 
 **Keywords**—automation, state machine, governance, IT, AI
 
@@ -260,13 +260,13 @@ Observability, controllability, and a policy-as-code trace are properties of thi
 
 ### Introduction {#introduction}
 
-Software development is a craft which evolves over time [[1]](#ref-1). In the last decades, centralized versioning concepts such as Subversion are substituted by distributed ones such as git. Organizational models are changing from Waterfall to role-based Agile [[2]](#ref-2). Many of these software-development-driven patterns have transformed into domain-agnostic enterprise and organizational methods [[3]](#ref-3).
+Software development is a craft which evolves over time [[1]](#ref-1). In recent decades, centralized versioning concepts such as Subversion are substituted by distributed ones such as Git. Organizational models are changing from Waterfall to role-based Agile [[2]](#ref-2). Many of these software-development-driven patterns have transformed into domain-agnostic enterprise and organizational methods [[3]](#ref-3).
 
-A continuation of this thinking is continuous deployment, as represented by tools such as Argo CD [[4]](#ref-4). Here, modern infrastructure-as-code methods are used to adapt software-development patterns to service operations. This is a complete shift in a modern DevOps engineer deployment routine and replaces legacy deployment pipelines based on classical CI tools. This is surprising for the following reason:
+A continuation of this thinking is continuous deployment, as represented by tools such as Argo CD [[4]](#ref-4). Here, modern infrastructure-as-code methods are used to adapt software-development patterns to service operations. This is a complete shift in a modern DevOps engineer's deployment routine and replaces legacy deployment pipelines based on classical CI tools. This is surprising for the following reason:
 
 While Ops in DevOps has evolved over time into its own automation dialect, Dev has no automation dialect of its own.
 
-This whitepaper proposes a dedicated automation dialect for DevOps engineers in IT environments, called "continuous governance". It focuses on an end-to-end practice, starting at the DevOps engineer's policies to be implemented and continuing through the calculated events of the compiled automation system during its execution. This is a governance- and audit-oriented approach that aims to match daily DevOps practice and responsibility more closely. In fig. 1, its conceptual difference to existing automation approaches is indicated.
+This whitepaper proposes a dedicated automation dialect for DevOps engineers in IT environments, called "continuous governance". It focuses on an end-to-end practice, starting at the DevOps engineer's policies to be implemented and continuing through the calculated events of the compiled automation system during its execution. This is a governance- and audit-oriented approach that aims to match daily DevOps practice and responsibility more closely. In fig. 1, its conceptual difference from existing automation approaches is indicated.
 
 ![Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transitions and events.](/dialects-comic-v3-light.svg)
 
@@ -278,13 +278,13 @@ The automation is written as a finite state machine of the form
 
 `(Q, Σ, δ, q₀), (2)`
 
-with
+where
 
 - `Q` is a finite set of states
 - `Σ` is a finite set of events
-- `δ: Q × Σ → Q` maps a state and an event to the successor state,
+- `δ: Q × Σ → Q` maps a state and an event to the successor state
 
-which is its typical representation [[5]](#ref-5). Any automation problem is expressed by a desired state `r` and a current state `y`. The automaton state is that pair
+This is its typical representation [[5]](#ref-5). Any automation problem is expressed by a desired state `r` and a current state `y`. The automaton state is that pair
 
 `q = (r, y), (3)`
 
@@ -302,14 +302,14 @@ Where `r` and `y` are predicates rather than numbers, `e` is the set of predicat
 
 `q' = (r', y'). (6.2)`
 
-`r'` is the desired state at the successor, derived from the IT environment. `y'` is the current state measured from the SuC after `σ`. Above state concept does not hard-code one workflow. It evaluates a declared machine. Each automation problem is one declaration of the states according to (3) and transitions according to (6). In the following, the core properties of such a system are investigated.
+`r'` is the desired state at the successor, derived from the IT environment. `y'` is the current state measured from the SuC after `σ`. The state concept above does not hard-code one workflow. It evaluates a declared machine. Each automation problem is one declaration of the states according to (3) and of the transitions according to (6). In the following, the core properties of such a system are investigated.
 
 ### Observability & Controllability {#observability}
 
-Any IT automation task that can be expressed as `q = (r, y)` with a corresponding set of transitions `δ(q, σ) = q'` can be represented by the presented state machine design. To such state machines, same fundamental control theoretical principles apply. For a DevOps engineer, this means the following for an automation task:
+Any IT automation task that can be expressed as `q = (r, y)` with a corresponding set of transitions `δ(q, σ) = q'` can be represented by the presented state machine design. To such state machines, the same fundamental control-theoretical principles apply. For a DevOps engineer, this means the following for an automation task:
 
 - observability: the current and desired state of the SuC can be observed and/or calculated.
-- controllability: events `δ(q, σ) = q'` can be implemented that set the SuC to the desired state
+- controllability: events `δ(q, σ) = q'` can be implemented to set the SuC to the desired state
 
 Both properties correspond to the control-engineering definitions of observability and controllability of a control system [[6]](#ref-6). On that basis, it can be assumed that any engineering automation task in practice fulfills the criteria above, and that the state machine design can be applied.
 
@@ -333,7 +333,7 @@ and confirms
 
 `q' = (r', y'),`
 
-for the state-machine. One generator applies one event.
+for the state machine. One generator applies one event.
 
 #### Assembly - Shared memory {#shared-memory}
 
@@ -345,7 +345,7 @@ All populators and generators are coupled by a shared memory, typically in the f
 
 With that concept, multi-threading is built in since each state machine transition and event generation can be calculated in an isolated thread.
 
-Note, the state machine is evaluated on tables. Their processing time is `O(nₘ)` with the table size `nₘ`. For each member in that table, transition and events are expected to be calculated within µs, as shown by prototypical measurement. This is an expected performance compared to other domains, e.g. numerical simulation [[7]](#ref-7). This enables state-machine reaction times within seconds for enterprise sizes of up to 500,000 associates.
+Note, the state machine is evaluated on tables. Their processing time is `O(nₘ)` with the table size `nₘ`. For each member in that table, transitions and events are expected to be calculated within µs, as shown by a prototypical measurement. This is an expected performance compared to other domains, e.g. numerical simulation [[7]](#ref-7). This enables state-machine reaction times within seconds for enterprise sizes of up to 500,000 associates.
 
 ### Policy-as-Code {#policy-as-code}
 
@@ -377,7 +377,7 @@ The definitions above are based on sets, but can be rewritten as atomic member p
 
 `q₀ = (0, 0). (9)`
 
-The drift `e` is empty at `(0, 0)` and at `(1, 1)`, and there `σ = none`. At `(1, 0)` the predicate is `add`. At `(0, 1)` the predicate is `remove`. Each member `m` is one copy of this machine
+The drift `e` is empty at `(0, 0)` and at `(1, 1)`, and there `σ = none`. At `(1, 0)` the predicate is `add`. At `(0, 1)` the predicate is `remove`. Each member `m` is one copy of this machine.
 
 From `q₀`, an employee added to the AD group on the IdP reaches `(1, 0)`. `δ` applies `add` and reaches `(1, 1)`. `σ = none` holds `(1, 1)`. An employee removed from the AD group on the IdP reaches `(0, 1)`. `δ` applies `remove` and returns to `q₀`. A manual change on the resource is an error: `(1, 1)` goes to `(1, 0)`, and `(0, 0)` goes to `(0, 1)`.
 
@@ -391,13 +391,13 @@ Access management is a simple, straightforward example of how typical automation
 
 ### Conclusion {#conclusion}
 
-Section 2 builds the formal framework for the state machine. Here, the automation task is formulated as controller-oriented tracking problem and requires only basic control engineering properties to be applicable in a real-world IT scenario. Moreover, it is shown, that such set of equations can be calculated in individual threads. This is of relevance to ensure acceptable processing times for large enterprises. Moreover, the formalism of such state machine can be interpreted as Policy-as-Code since the set of equations are machine readable and represent the enterprise policies one to one. Finally, the dialect is applied on a simple member synchronization task, which is a classical service automation task in IT.
+Section 2 builds the formal framework for the state machine. Here, the automation task is formulated as a controller-oriented tracking problem and requires only basic control engineering properties to be applicable in a real-world IT scenario. Moreover, it is shown that such a set of equations can be calculated in individual threads. This is of relevance to ensure acceptable processing times for large enterprises. Moreover, the formalism of such a state machine can be interpreted as Policy-as-Code since the set of equations is machine-readable and represents the enterprise policies one-to-one. Finally, the dialect is applied to a simple member synchronization task, which is a classical service automation task in IT.
 
-The presented work shows that state machine design is not limited to embedded devices or real-time applications. A state machine can operate network applications. That is beneficial since the operational policies and the compiled state-machine match in practice and can be governed easily.
+The presented work shows that state machine design is not limited to embedded devices or real-time applications. A state machine can operate network applications. That is beneficial since the operational policies and the compiled state machine match in practice and can be governed easily.
 
-The introduced automation dialect is highly abstract and fits latest trends in agentic coding. More precisely, one goal of the formalism is to be the mutual language between human and AI agents. The AI agent's context is human curated knowledge, e.g. this paper. Based on recent progresses, it can be expected that AI assistance is applicable end-to-end from modelling the state machine, to auditing the overall operation – while governance is subject of a human.
+The introduced automation dialect is highly abstract and fits the latest trends in agentic coding. More precisely, one goal of the formalism is to be the mutual language between human and AI agents. The AI agent's context is human-curated knowledge, e.g. this paper. Based on recent progress, it can be expected that AI assistance is applicable end-to-end from modelling the state machine to auditing the overall operation – while governance remains with a human.
 
-The presented automation dialect is basis of an engine prototype for network applications. This prototype already operates an internal service platform at the Robert Bosch GmbH and combines unusual aspects in service operation. The compiled state machine works as
+The presented automation dialect is the basis of an engine prototype for network applications. This prototype already operates an internal service platform at the Robert Bosch GmbH and combines unusual aspects in service operation. The compiled state machine works as:
 
 - Automation backend
 - Audit and governance surface
@@ -407,23 +407,23 @@ More use-cases are expected to be explored in future.
 
 ### Future Work {#future-work}
 
-While controllers find applications in engineering, biology, or chemistry [[9]](#ref-9), the application in IT is not yet known to the best of author's knowledge. Upcoming work will focus on
+While controllers find applications in engineering, biology, or chemistry [[9]](#ref-9), the application in IT is not yet known, to the best of the author's knowledge. Upcoming work will focus on
 
 - Concept hardening of "Continuous Governance".
-- Release of prototypical engine, incl. real-world application examples
+- Release of a prototypical engine, incl. real-world application examples
 - Further investigations on assisted modelling and coding according to ISO 42001 in the context of end-to-end IT operations
 
 ### References {#references}
 
-1. {{< bib 1 >}}M. Shahin, M. A. Babar, and L. Zhu, "Continuous Integration, Delivery and Deployment: A Systematic Review on Approaches, Tools, Challenges and Practices," *IEEE Access*, vol. 5, pp. 3909–3943, 2017
+1. {{< bib 1 >}}M. Shahin, M. A. Babar, and L. Zhu, "Continuous Integration, Delivery and Deployment: A Systematic Review on Approaches, Tools, Challenges and Practices," *IEEE Access*, vol. 5, pp. 3909–3943, 2017.
 2. {{< bib 2 >}}R. C. Martin, *Agile Software Development: Principles, Patterns, and Practices*. Upper Saddle River, NJ, USA: Prentice Hall, 2003.
 3. {{< bib 3 >}}K. Dikert, M. Paasivaara, and C. Lassenius, "Challenges and success factors for large-scale agile transformations: A systematic literature review," *Journal of Systems and Software*, vol. 119, pp. 87–108, 2016.
 4. {{< bib 4 >}}Argo CD Project, "Core concepts," *Argo CD Documentation*. [Online]. Available: <https://argo-cd.readthedocs.io/en/stable/core_concepts/>. [Accessed: Oct. 24, 2026].
 5. {{< bib 5 >}}J. E. Hopcroft, R. Motwani, and J. D. Ullman, *Introduction to Automata Theory, Languages, and Computation*, 3rd ed. Boston, MA, USA: Pearson, 2007.
-6. {{< bib 6 >}}R. E. Kalman, "Mathematical Description of Linear Dynamical Systems," *Journal of the Society for Industrial and Applied Mathematics, Series A: Control*, vol. 1, no. 2, pp. 152–192, 1963
-7. {{< bib 7 >}}R. Hans, F. Panik, and H.-C. Reuss, "1-D+1-D PEM fuel cell stack model for advanced hardware-in-the-loop applications," *SAE Int. J. Alternative Powertrains*, vol. 5, no. 1, pp. 1–12, 2015, Art. no. 2015-01-1779
-8. {{< bib 8 >}}R. Chandramouli, *Implementation of DevSecOps for a Microservices-Based Application With Service Mesh*, NIST Special Publication 800-204C. Gaithersburg, MD, USA: National Institute of Standards and Technology, Mar. 2022,
-9. {{< bib 9 >}}D. Del Vecchio, A. J. Dy, and Y. Qian, "Control theory meets synthetic biology," *J. R. Soc. Interface*, vol. 13, no. 120, Art. no. 20160380, Jul. 2016, doi: 10.1098/rsif.2016.0380
+6. {{< bib 6 >}}R. E. Kalman, "Mathematical Description of Linear Dynamical Systems," *Journal of the Society for Industrial and Applied Mathematics, Series A: Control*, vol. 1, no. 2, pp. 152–192, 1963.
+7. {{< bib 7 >}}R. Hans, F. Panik, and H.-C. Reuss, "1-D+1-D PEM fuel cell stack model for advanced hardware-in-the-loop applications," *SAE Int. J. Alternative Powertrains*, vol. 5, no. 1, pp. 1–12, 2015, Art. no. 2015-01-1779.
+8. {{< bib 8 >}}R. Chandramouli, *Implementation of DevSecOps for a Microservices-Based Application With Service Mesh*, NIST Special Publication 800-204C. Gaithersburg, MD, USA: National Institute of Standards and Technology, Mar. 2022.
+9. {{< bib 9 >}}D. Del Vecchio, A. J. Dy, and Y. Qian, "Control theory meets synthetic biology," *J. R. Soc. Interface*, vol. 13, no. 120, Art. no. 20160380, Jul. 2016, doi: 10.1098/rsif.2016.0380.
 
 
 ## Contact
