@@ -7,7 +7,7 @@
 {{- end -}}
 {{- $paired := and $dark (fileExists (printf "static%s" $dark)) -}}
 {{- $detail := or (in $dest "contact-email") (in $dest "contact-address") -}}
-{{- $wide := or (in $dest "dialects-comic") (in $dest "membership-sm") -}}
+{{- $wide := in $dest "dialects-comic" -}}
 {{- $elevator := replace $dest "membership-sm" "elevator-sm" -}}
 {{- $elevatorDark := "" -}}
 {{- if strings.HasSuffix $elevator "-light.svg" -}}

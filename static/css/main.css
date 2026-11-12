@@ -580,7 +580,7 @@ a:hover { text-decoration: none; }
 
 #whitepaper .zoom-trigger { margin: 1.15rem 0 0.35rem; }
 
-.figure-compare { max-width: var(--frame); }
+.figure-compare { max-width: var(--measure); }
 
 .figure-compare-switch {
   display: none;
