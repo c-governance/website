@@ -8,6 +8,13 @@
 {{- $paired := and $dark (fileExists (printf "static%s" $dark)) -}}
 {{- $detail := or (in $dest "contact-email") (in $dest "contact-address") -}}
 {{- $wide := or (in $dest "dialects-comic") (in $dest "membership-sm") -}}
+{{- $elevator := replace $dest "membership-sm" "elevator-sm" -}}
+{{- $elevatorDark := "" -}}
+{{- if strings.HasSuffix $elevator "-light.svg" -}}
+  {{- $elevatorDark = replace $elevator "-light.svg" "-black.svg" -}}
+{{- end -}}
+{{- $compare := and (in $dest "membership-sm") $paired $elevatorDark (fileExists (printf "static%s" $elevator)) (fileExists (printf "static%s" $elevatorDark)) -}}
+{{- $elevatorAlt := "State machine of one elevator door. Initial state q0 is (0,0), Closed. States are (0,0) Closed, (1,0) Opening, (1,1) Open, and (0,1) Closing, written as (r, y). Door open requested goes from (0,0) to (1,0). Door close requested goes from (1,1) to (0,1). The sensor event δ((1, 0), open(*)) goes from (1,0) to (1,1). The sensor event δ((0, 1), close(*)) goes from (0,1) to (0,0). Door forced to close goes from (1,1) to (1,0). Door forced to open goes from (0,0) to (0,1). none holds (0,0) and (1,1)." -}}
 {{- $download := $dest -}}
 {{- if strings.HasSuffix $dest "-light.png" -}}
   {{- $jpg := replace $dest "-light.png" ".jpg" -}}
@@ -23,6 +30,26 @@
   data-src-dark="{{ $dark | safeURL }}"
   {{- end }}
   {{- with .Text }} alt="{{ . }}"{{ end }}>
+{{- else if $compare -}}
+<div class="figure-compare" data-example="membership">
+  <div class="figure-compare-switch" role="group" aria-label="Example shown in the figure">
+    <button type="button" class="figure-compare-name" data-example-name="membership" aria-pressed="true">Membership</button>
+    <button type="button" class="figure-compare-name" data-example-name="elevator" aria-pressed="false">Elevator</button>
+  </div>
+  <button type="button" class="zoom-trigger{{ if $wide }} figure-wide{{ end }}"
+    data-download="{{ $download | safeURL }}"
+    {{- with .Text }} aria-label="View full size: {{ . }}"{{ else }} aria-label="View full size image"{{ end }}>
+    <img src="{{ $dest | safeURL }}"
+      data-src-light="{{ $dest | safeURL }}"
+      data-src-dark="{{ $dark | safeURL }}"
+      data-compare-light-0="{{ $dest | safeURL }}"
+      data-compare-dark-0="{{ $dark | safeURL }}"
+      data-compare-light-1="{{ $elevator | safeURL }}"
+      data-compare-dark-1="{{ $elevatorDark | safeURL }}"
+      {{- with .Text }} data-alt-0="{{ . }}" alt="{{ . }}"{{ end }}
+      data-alt-1="{{ $elevatorAlt }}">
+  </button>
+</div>
 {{- else -}}
 <button type="button" class="zoom-trigger{{ if $wide }} figure-wide{{ end }}"
   data-download="{{ $download | safeURL }}"

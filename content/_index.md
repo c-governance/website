@@ -355,9 +355,9 @@ The drift `e` is empty at `(0, 0)` and at `(1, 1)`, and there `σ = none`. At `(
 
 From `q₀`, an employee added to the AD group on the IdP reaches `(1, 0)`. `δ` applies `add` and reaches `(1, 1)`. `σ = none` holds `(1, 1)`. An employee removed from the AD group on the IdP reaches `(0, 1)`. `δ` applies `remove` and returns to `q₀`. A manual change on the resource is an error: `(1, 1)` goes to `(1, 0)`, and `(0, 0)` goes to `(0, 1)`.
 
-![State machine of one member. Initial state q0 is (0,0). States are (0,0), (1,0), (0,1), and (1,1), written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0) and from (0,1) to (1,1). Removed from AD-Group on IdP goes the other way. The event δ((1, 0), add(*)) goes from (1,0) to (1,1). The event δ((0, 1), remove(*)) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1).](/membership-sm-v1-light.svg)
+![State machine of one member. Initial state q0 is (0,0). States are (0,0) Request: No, (1,0) Adding, (0,1) Removing, and (1,1) Request: Done, written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0). Removed from AD-Group on IdP goes from (1,1) to (0,1). The network event δ((1, 0), add(*)) goes from (1,0) to (1,1). The network event δ((0, 1), remove(*)) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1).](/membership-sm-v1-light.svg)
 
-*Fig. 2. The membership machine for one member. The state is (r, y). q₀ = (0, 0).*
+*Fig. 2. The membership machine for one member. The elevator door is the same machine. The state is (r, y). q₀ = (0, 0).*
 
 #### Summary {#scenario-summary}
 
