@@ -580,6 +580,45 @@ a:hover { text-decoration: none; }
 
 #whitepaper .zoom-trigger { margin: 1.15rem 0 0.35rem; }
 
+.figure-compare { max-width: var(--frame); }
+
+.figure-compare-switch {
+  display: none;
+  width: max-content;
+  margin: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  overflow: hidden;
+}
+
+.figure-compare.is-ready .figure-compare-switch { display: flex; }
+
+.figure-compare-name {
+  margin: 0;
+  min-width: 9.5rem;
+  padding: 0.5rem 1.15rem;
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  font-family: "Source Sans 3", var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  cursor: pointer;
+}
+
+.figure-compare-name:last-child { border-right: 0; }
+
+.figure-compare-name[aria-pressed="true"] {
+  background: var(--mark);
+  color: var(--mark-ink);
+}
+
+#whitepaper .figure-compare.is-ready { margin-top: 1.15rem; }
+
+#whitepaper .figure-compare.is-ready .zoom-trigger { margin-top: 0.45rem; }
+
 ul, ol { padding-left: 1.2rem; }
 
 li + li { margin-top: 0.4rem; }
