@@ -20,7 +20,7 @@ A *model* allows us to express our intent with precision and formalism. Basicall
 ![A state machine that expresses, mathematically, the policies inside an IT organization.](/state-machine-comic-v20-light.png)
 *Fig.2: This comic was designed and edited by Raphael Hans - created by Grok 4.7.*
 
-The *state-machine*  is one option for a *model* and is a classical microprocessor-oriented technique in control engineering. In this context, it is meant to be an enabler for IT organizations, since such formal expressions can be:
+The [*state-machine*](#how-it-works) is one option for a *model* and is a classical microprocessor-oriented technique in control engineering. In this context, it is meant to be an enabler for IT organizations, since such formal expressions can be:
 
 - tracked simply
 - audited programmatically
@@ -121,7 +121,7 @@ Engineering
 
 ### A continuous governance oriented service design
 
-A *Continuous Governance* oriented service keeps a *Service-under-Control (SuC)* in sync with it's *desired state*, by watching it's *current state*. Populator- and Generator-microservices share one database and build together a *state machine (controller)*. A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.
+A *Continuous Governance* oriented service keeps a *Service-under-Control (SuC)* in sync with it's *desired state*, by watching it's *current state*. Populator- and Generator-microservices share one database and build together a [*state machine*](#how-it-works) (controller). A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.
 
 ![Stick-figure diagram of a Continuous Governance service: an initiator, populators, a central database, generators, and a service under control, with a user, an auditor, and a hacker.](/lorena-architecture-comic-v17-light.png)
 *Fig. 5: This comic was designed and edited by Raphael Hans - created by Grok 4.7.*
@@ -131,7 +131,7 @@ This is a sketch of an unreleased service that implements the principles.
 
 ### A continuous governance oriented engineering workflow
 
-Continuous Governance also moves the practical automation work of a DevOps engineer from scripting and coding to the engineering work of *modelling* a *state machine*: its *states* and its *transitions*. This requires particular design steps and precise mathematical formulations, which are the basis of
+Continuous Governance also moves the practical automation work of a DevOps engineer from scripting and coding to the engineering work of *modelling* a [*state machine*](#how-it-works): its *states* and its *transitions*. This requires particular design steps and precise mathematical formulations, which are the basis of
 - governing any automation process precisely across planning, implementation, and execution
 - a fully AI-assisted engineering process that considers ad-hoc know-how (feedforward) and a knowledge base (feedback), which allows human-curated training of agents over time.
 
