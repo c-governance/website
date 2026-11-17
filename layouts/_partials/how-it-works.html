@@ -1,0 +1,86 @@
+<button type="button" class="how-open" data-open-demo aria-haspopup="dialog" aria-controls="how-it-works">
+  <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+    <path fill="currentColor" d="M4 2.5v11l10-5.5L4 2.5z"/>
+  </svg>
+  How it works
+</button>
+<dialog id="how-it-works" class="how-it-works" aria-labelledby="how-it-works-title">
+  <div class="how-bar">
+    <div>
+      <p id="how-it-works-title" class="how-title">How it works</p>
+      <p class="how-lead">A state machine is a traditional way to express logic. States and events are calculated in individual threads, in memory, and shared by a database. See the <a href="#whitepaper">whitepaper</a>.</p>
+    </div>
+    <button type="button" class="how-close" data-close-demo>Close</button>
+  </div>
+  <div class="cycle-player" data-base="{{ "examples/sdk-callback-queue/" | relURL }}" data-autostart="overlay" tabindex="0">
+    <div class="top">
+      <p class="lead">This is realized by microservices that are called populators and generators. Both are generic microservice templates that can be used to process data or calculate events. In combination, they can be used to build state machines.</p>
+      <p class="count" aria-live="polite">1 of 9</p>
+    </div>
+    <div class="player">
+      <div class="stage">
+        <div class="film">
+          <video width="960" height="540" muted playsinline preload="metadata"></video>
+        </div>
+        <aside class="machine">
+          <header class="machine-head">
+            <p class="machine-label">State machine</p>
+            <p class="machine-state">q = (0, 0)</p>
+          </header>
+          <svg viewBox="0 0 360 240" role="img" aria-label="State q = (r, y). Directory writes r. add() and remove() confirm y.">
+            <defs>
+              <marker id="cp-m-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+              <marker id="cp-m-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+              <marker id="cp-m-on" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+            </defs>
+            <path class="edge dir" data-edge="e-dir-on" data-marker="url(#cp-m-green)" marker-end="url(#cp-m-green)" d="M 156 40 H 202"/>
+            <path class="edge gen" data-edge="e-add" data-marker="url(#cp-m-ink)" marker-end="url(#cp-m-ink)" d="M 346 72 V 166"/>
+            <path class="edge dir" data-edge="e-dir-off" data-marker="url(#cp-m-green)" marker-end="url(#cp-m-green)" d="M 202 198 H 156"/>
+            <path class="edge gen" data-edge="e-remove" data-marker="url(#cp-m-ink)" marker-end="url(#cp-m-ink)" d="M 14 166 V 72"/>
+            <g class="node is-on" data-state="00">
+              <rect x="26" y="12" width="128" height="56" rx="12"/>
+              <text x="90" y="36" text-anchor="middle" font-size="16" font-weight="700">(0, 0)</text>
+              <text class="word" x="90" y="54" text-anchor="middle" font-size="13">No</text>
+            </g>
+            <g class="node" data-state="10">
+              <rect x="206" y="12" width="128" height="56" rx="12"/>
+              <text x="270" y="36" text-anchor="middle" font-size="16" font-weight="700">(1, 0)</text>
+              <text class="word" x="270" y="54" text-anchor="middle" font-size="13">Adding</text>
+            </g>
+            <g class="node" data-state="11">
+              <rect x="206" y="170" width="128" height="56" rx="12"/>
+              <text x="270" y="194" text-anchor="middle" font-size="16" font-weight="700">(1, 1)</text>
+              <text class="word" x="270" y="212" text-anchor="middle" font-size="13">Done</text>
+            </g>
+            <g class="node" data-state="01">
+              <rect x="26" y="170" width="128" height="56" rx="12"/>
+              <text x="90" y="194" text-anchor="middle" font-size="16" font-weight="700">(0, 1)</text>
+              <text class="word" x="90" y="212" text-anchor="middle" font-size="13">Removing</text>
+            </g>
+          </svg>
+          <ul class="actors">
+            <li data-actor="directory" class="is-on">directory writes r</li>
+            <li data-actor="resource" class="is-on">resource writes y</li>
+            <li data-actor="add">add() confirms y</li>
+            <li data-actor="remove">remove() confirms y</li>
+          </ul>
+        </aside>
+      </div>
+      <div class="track" aria-hidden="true"><span></span></div>
+      <div class="controls">
+        <button type="button" data-control="pause" aria-pressed="false">Pause</button>
+        <button type="button" class="ghost" data-control="back">Back</button>
+        <button type="button" class="ghost" data-control="replay" aria-pressed="false">Replay</button>
+        <button type="button" class="ghost" data-control="next">Next</button>
+        <ol class="dots"></ol>
+      </div>
+    </div>
+  </div>
+</dialog>
+<script src="{{ "js/cycle-player.js" | relURL }}" defer></script>

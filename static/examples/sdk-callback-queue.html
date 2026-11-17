@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>State-machine Development Kit</title>
+  <link rel="stylesheet" href="../css/open-props.min.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="../js/theme.js" defer></script>
+  <script src="../js/cycle-player.js" defer></script>
+</head>
+<body>
+<main>
+  <div class="cycle-player" data-base="sdk-callback-queue/" data-autostart="now" tabindex="0">
+    <div class="top">
+      <div>
+        <p class="cycle-title">State-machine DK</p>
+        <p class="lead">Populators and generators are generic microservices that can be used to build state machines.</p>
+      </div>
+      <p class="count" aria-live="polite">1 of 9</p>
+    </div>
+    <div class="player">
+      <div class="stage">
+        <div class="film">
+          <video width="960" height="540" muted playsinline preload="metadata"></video>
+        </div>
+        <aside class="machine">
+          <header class="machine-head">
+            <p class="machine-label">State machine</p>
+            <p class="machine-state">q = (0, 0)</p>
+          </header>
+          <svg viewBox="0 0 360 240" role="img" aria-label="State q = (r, y). Directory writes r. add() and remove() confirm y.">
+            <defs>
+              <marker id="cp-m-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+              <marker id="cp-m-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+              <marker id="cp-m-on" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+            </defs>
+            <path class="edge dir" data-edge="e-dir-on" data-marker="url(#cp-m-green)" marker-end="url(#cp-m-green)" d="M 156 40 H 202"/>
+            <path class="edge gen" data-edge="e-add" data-marker="url(#cp-m-ink)" marker-end="url(#cp-m-ink)" d="M 346 72 V 166"/>
+            <path class="edge dir" data-edge="e-dir-off" data-marker="url(#cp-m-green)" marker-end="url(#cp-m-green)" d="M 202 198 H 156"/>
+            <path class="edge gen" data-edge="e-remove" data-marker="url(#cp-m-ink)" marker-end="url(#cp-m-ink)" d="M 14 166 V 72"/>
+            <g class="node is-on" data-state="00">
+              <rect x="26" y="12" width="128" height="56" rx="12"/>
+              <text x="90" y="36" text-anchor="middle" font-size="16" font-weight="700">(0, 0)</text>
+              <text class="word" x="90" y="54" text-anchor="middle" font-size="13">No</text>
+            </g>
+            <g class="node" data-state="10">
+              <rect x="206" y="12" width="128" height="56" rx="12"/>
+              <text x="270" y="36" text-anchor="middle" font-size="16" font-weight="700">(1, 0)</text>
+              <text class="word" x="270" y="54" text-anchor="middle" font-size="13">Adding</text>
+            </g>
+            <g class="node" data-state="11">
+              <rect x="206" y="170" width="128" height="56" rx="12"/>
+              <text x="270" y="194" text-anchor="middle" font-size="16" font-weight="700">(1, 1)</text>
+              <text class="word" x="270" y="212" text-anchor="middle" font-size="13">Done</text>
+            </g>
+            <g class="node" data-state="01">
+              <rect x="26" y="170" width="128" height="56" rx="12"/>
+              <text x="90" y="194" text-anchor="middle" font-size="16" font-weight="700">(0, 1)</text>
+              <text class="word" x="90" y="212" text-anchor="middle" font-size="13">Removing</text>
+            </g>
+          </svg>
+          <ul class="actors">
+            <li data-actor="directory" class="is-on">directory writes r</li>
+            <li data-actor="resource" class="is-on">resource writes y</li>
+            <li data-actor="add">add() confirms y</li>
+            <li data-actor="remove">remove() confirms y</li>
+          </ul>
+        </aside>
+      </div>
+      <div class="track" aria-hidden="true"><span></span></div>
+      <div class="controls">
+        <button type="button" data-control="pause" aria-pressed="false">Pause</button>
+        <button type="button" class="ghost" data-control="back">Back</button>
+        <button type="button" class="ghost" data-control="replay" aria-pressed="false">Replay</button>
+        <button type="button" class="ghost" data-control="next">Next</button>
+        <ol class="dots"></ol>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>
