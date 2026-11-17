@@ -11,10 +11,10 @@
   <footer class="site-footer">
     {{ partial "footer.html" . }}
   </footer>
-  <script src="{{ "js/theme.js" | relURL }}"></script>
-  <script src="{{ "js/figure-compare.js" | relURL }}"></script>
-  <script src="{{ "js/tabs.js" | relURL }}"></script>
-  <script src="{{ "js/glossary.js" | relURL }}"></script>
-  <script src="{{ "js/lightbox.js" | relURL }}"></script>
+  <script src="{{ partial "asset.html" "js/theme.js" }}"></script>
+  <script src="{{ partial "asset.html" "js/figure-compare.js" }}"></script>
+  <script src="{{ partial "asset.html" "js/tabs.js" }}"></script>
+  <script src="{{ partial "asset.html" "js/glossary.js" }}"></script>
+  <script src="{{ partial "asset.html" "js/lightbox.js" }}"></script>
 </body>
 </html>

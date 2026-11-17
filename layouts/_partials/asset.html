@@ -1,0 +1,3 @@
+{{- $file := . -}}
+{{- $sum := os.ReadFile (printf "static/%s" $file) | md5 -}}
+{{- printf "%s?v=%s" ($file | relURL) $sum -}}
