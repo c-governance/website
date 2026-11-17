@@ -1,39 +1,578 @@
-<!doctype html><html lang=en-us dir=ltr><head><meta name=generator content="Hugo 0.166.0"><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Continuous Governance</title><meta name=description content="Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement."><meta name=robots content="index, follow"><meta name=tdm-reservation content="0"><link rel=canonical href=https://continuous-governance.org/><link rel=describedby href=https://continuous-governance.org/llms.txt type=text/markdown><link rel=alternate href=https://continuous-governance.org/index.md type=text/markdown title=Markdown><link rel=alternate href=https://continuous-governance.org/llms-full.txt type=text/plain title="Full text for language models"><link rel=license href=https://continuous-governance.org/LICENSE.txt><meta name=theme-color content="#f4f6f8"><script>(function(){var t,n,e=null;try{e=localStorage.getItem("theme")}catch{}t=e==="light"||e==="dark"?e:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light",document.documentElement.setAttribute("data-theme",t),n=document.querySelector('meta[name="theme-color"]'),n&&n.setAttribute("content",t==="dark"?"#1c2836":"#f4f6f8")})()</script><meta property="og:type" content="website"><meta property="og:site_name" content="Continuous Governance"><meta property="og:title" content="Continuous Governance"><meta property="og:url" content="https://continuous-governance.org/"><meta property="og:locale" content="en_US"><meta property="og:description" content="Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement."><meta name=twitter:description content="Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement."><meta name=twitter:card content="summary_large_image"><meta name=twitter:title content="Continuous Governance"><meta property="og:image" content="https://continuous-governance.org/cg-entry-comic-v7.jpg"><meta name=twitter:image content="https://continuous-governance.org/cg-entry-comic-v7.jpg"><link rel=icon href=/favicon.svg type=image/svg+xml><script type=application/ld+json>{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Raphael Hans"},"description":"Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.","inLanguage":"en","license":"https://continuous-governance.org/LICENSE.txt","name":"Continuous Governance","url":"https://continuous-governance.org/","usageInfo":"https://continuous-governance.org/llms.txt"}</script><link rel=stylesheet href=/css/open-props.min.css><link rel=stylesheet href=/css/main.css></head><body><main><header class=site-header><div class=site-title><h1>Continuous Governance</h1><nav class=profiles aria-label=Profiles><a class=profile href=https://github.com/c-governance/website><svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58.0.0 3.58.0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38.0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95.0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12.0.0.67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15.0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48.0 1.07-.01 1.93-.01 2.2.0.21.15.46.55.38A8.013 8.013.0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-GitHub
-</a><a class=profile href=https://www.linkedin.com/in/raphael-hans-74723243b/><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853.0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601.0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144.0-2.063-.926-2.063-2.065.0-1.138.92-2.063 2.063-2.063 1.14.0 2.064.925 2.064 2.063.0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225.0H1.771C.792.0.0.774.0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2.0 22.222.0h.003z"/></svg>
-LinkedIn
-</a><button type=button class=theme-toggle data-theme-toggle aria-pressed=false>Dark</button></nav></div><p class=lede>Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.</p></header><h2 id=at-a-glance>At a Glance</h2><p><button type=button class=zoom-trigger data-download=/cg-entry-comic-v7.jpg aria-label="View full size: Stick-figure cycle titled Continuous Governance Cycle for auditable service operations. Observe desired and current state, plan a rule and a model controller, operate by monitoring health and drift, and record the rule, the plan, and the result. The center shows service model plus service state.">
-<img src=/cg-entry-comic-v7-light.png data-src-light=/cg-entry-comic-v7-light.png data-src-dark=/cg-entry-comic-v7-black.png alt="Stick-figure cycle titled Continuous Governance Cycle for auditable service operations. Observe desired and current state, plan a rule and a model controller, operate by monitoring health and drift, and record the rule, the plan, and the result. The center shows service model plus service state."></button></p><p><em>Fig.1: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p><p>The loop above is how day-to-day enterprise IT operations look when Continuous Governance is applied: formulate and observe the desired and the current state of your service, the <em>Service-under-Control</em>. Decide on your events and rules, keep a record of everything, and repeat. At the center of this is the service <em>state</em> and <em>model</em>. The <em>state</em> is a durable memory, holding the current information about the <em>Service-under-Control</em>.
-The <em>model</em> is a mathematical abstraction of IT policies, automation workflows, or any other DevOps engineering task in enterprise IT that is done today with scripts or pipelines.</p><p>A <em>model</em> allows us to express our intent with precision and formalism. Basically any IT automation process with finite steps can be formulated like this:</p><p><button type=button class=zoom-trigger data-download=/state-machine-comic-v20.jpg aria-label="View full size: A state machine that expresses, mathematically, the policies inside an IT organization.">
-<img src=/state-machine-comic-v20-light.png data-src-light=/state-machine-comic-v20-light.png data-src-dark=/state-machine-comic-v20-black.png alt="A state machine that expresses, mathematically, the policies inside an IT organization.">
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+	<meta name="generator" content="Hugo 0.166.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuous Governance</title>
+  <meta name="description" content="Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.">
+<meta name="robots" content="index, follow">
+<meta name="tdm-reservation" content="0">
+<link rel="canonical" href="http://localhost:1313/">
+<link rel="describedby" href="http://localhost:1313/llms.txt" type="text/markdown">
+<link rel="alternate" href="http://localhost:1313/index.md" type="text/markdown" title="Markdown">
+<link rel="alternate" href="http://localhost:1313/llms-full.txt" type="text/plain" title="Full text for language models">
+<link rel="license" href="http://localhost:1313/LICENSE.txt">
+<meta name="theme-color" content="#f4f6f8">
+<script>
+(function () {
+  var stored = null;
+  try { stored = localStorage.getItem("theme"); } catch (e) {}
+  var theme = stored === "light" || stored === "dark"
+    ? stored
+    : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+  document.documentElement.setAttribute("data-theme", theme);
+  var meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", theme === "dark" ? "#1c2836" : "#f4f6f8");
+})();
+</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Continuous Governance">
+<meta property="og:title" content="Continuous Governance">
+<meta property="og:url" content="http://localhost:1313/">
+<meta property="og:locale" content="en_US">
+  <meta property="og:description" content="Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.">
+  <meta name="twitter:description" content="Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Continuous Governance">
+<meta property="og:image" content="http://localhost:1313/cg-entry-comic-v7.jpg">
+<meta name="twitter:image" content="http://localhost:1313/cg-entry-comic-v7.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Raphael Hans"},"description":"Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.","inLanguage":"en","license":"http://localhost:1313/LICENSE.txt","name":"Continuous Governance","url":"http://localhost:1313/","usageInfo":"http://localhost:1313/llms.txt"}</script>
+<link rel="stylesheet" href="/css/open-props.min.css">
+<link rel="stylesheet" href="/css/main.css?v=2d6a6f0e556ff4d7807847352e5cabc9">
+
+</head>
+<body>
+  <main>
+    
+<header class="site-header">
+  <div class="site-title">
+    <h1>Continuous Governance</h1>
+    <nav class="profiles" aria-label="Profiles">
+      <a class="profile" href="https://github.com/c-governance/website">
+        <svg viewBox="0 0 16 16" width="20" height="20" aria-hidden="true">
+          <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        GitHub
+      </a>
+      <a class="profile" href="https://www.linkedin.com/in/raphael-hans-74723243b/">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+          <path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+        LinkedIn
+      </a>
+      <button type="button" class="theme-toggle" data-theme-toggle aria-pressed="false">Dark</button>
+    </nav>
+  </div>
+  <p class="lede">Continuous Governance is an automation dialect for enterprise IT operations that focuses on governance and enablement.</p>
+</header>
+
+<h2 id="at-a-glance">At a Glance</h2>
+<p><button type="button" class="zoom-trigger"
+  data-download="/cg-entry-comic-v7.jpg" aria-label="View full size: Stick-figure cycle titled Continuous Governance Cycle for auditable service operations. Observe desired and current state, plan a rule and a model controller, operate by monitoring health and drift, and record the rule, the plan, and the result. The center shows service model plus service state.">
+  <img src="/cg-entry-comic-v7-light.png"
+    data-src-light="/cg-entry-comic-v7-light.png"
+    data-src-dark="/cg-entry-comic-v7-black.png" alt="Stick-figure cycle titled Continuous Governance Cycle for auditable service operations. Observe desired and current state, plan a rule and a model controller, operate by monitoring health and drift, and record the rule, the plan, and the result. The center shows service model plus service state.">
+</button></p>
+<p><em>Fig.1: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p>
+<p>The loop above is how day-to-day enterprise IT operations look when Continuous Governance is applied: formulate and observe the desired and the current state of your service, the <em>Service-under-Control</em>. Decide on your events and rules, keep a record of everything, and repeat. At the center of this is the service <em>state</em> and <em>model</em>. The <em>state</em> is a durable memory, holding the current information about the <em>Service-under-Control</em>.
+The <em>model</em> is a mathematical abstraction of IT policies, automation workflows, or any other DevOps engineering task in enterprise IT that is done today with scripts or pipelines.</p>
+<p>A <em>model</em> allows us to express our intent with precision and formalism. Basically any IT automation process with finite steps can be formulated like this:</p>
+<p><button type="button" class="zoom-trigger"
+  data-download="/state-machine-comic-v20.jpg" aria-label="View full size: A state machine that expresses, mathematically, the policies inside an IT organization.">
+  <img src="/state-machine-comic-v20-light.png"
+    data-src-light="/state-machine-comic-v20-light.png"
+    data-src-dark="/state-machine-comic-v20-black.png" alt="A state machine that expresses, mathematically, the policies inside an IT organization.">
 </button>
-<em>Fig.2: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p><p>The <a href=#how-it-works><em>state-machine</em></a> is one option for a <em>model</em> and is a classical microprocessor-oriented technique in control engineering. In this context, it is meant to be an enabler for IT organizations, since such formal expressions can be:</p><ul><li>tracked simply</li><li>audited programmatically</li><li>governed continuously</li></ul><p>Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding - since it&rsquo;s replaced by <strong>assisted modelling</strong>. This can be interpreted as <em>no-code</em> engineering approach for IT automation and governance, which fits current trends and technical progresses.</p><h3 id=an-incremental-change-in-enterprise-it>An incremental change in enterprise IT</h3><p>Continuous Governance promotes a shift in the awareness of transparency in IT operations. Today, DevOps teams and their services work behind curtains, and insights are available only to a handful of people in operations. Continuous Governance promotes publishing the collected information about its service and environment state through a curated, read-only API that readers outside the operating team can use. This simple idea expands incrementally and enables IT environments. This is not radical. It is simply <em>API-first</em>, together with transparency that aims to simplify upstream services and to actively support organizations in governing service content and its compliance, or in investigating incidents more quickly.</p><p><button type=button class=zoom-trigger data-download=/enterprise-comic-v15.jpg aria-label="View full size: Continuous Governance promotes publishing all the data its controllers are collecting to its IT environment. This can change enterprises incrementally.">
-<img src=/enterprise-comic-v15-light.png data-src-light=/enterprise-comic-v15-light.png data-src-dark=/enterprise-comic-v15-black.png alt="Continuous Governance promotes publishing all the data its controllers are collecting to its IT environment. This can change enterprises incrementally.">
+<em>Fig.2: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p>
+<p>The <a href="#how-it-works"><em>state-machine</em></a> is one option for a <em>model</em> and is a classical microprocessor-oriented technique in control engineering. In this context, it is meant to be an enabler for IT organizations, since such formal expressions can be:</p>
+<ul>
+<li>tracked simply</li>
+<li>audited programmatically</li>
+<li>governed continuously</li>
+</ul>
+<p>Although it looks old-fashioned, and perhaps unnecessarily over-engineered at first, it also builds a mutual language with coding agents and allows a fully assisted development workflow without coding - since it&rsquo;s replaced by <strong>assisted modelling</strong>. This can be interpreted as <em>no-code</em> engineering approach for IT automation and governance, which fits current trends and technical progresses.</p>
+<h3 id="an-incremental-change-in-enterprise-it">An incremental change in enterprise IT</h3>
+<p>Continuous Governance promotes a shift in the awareness of transparency in IT operations. Today, DevOps teams and their services work behind curtains, and insights are available only to a handful of people in operations. Continuous Governance promotes publishing the collected information about its service and environment state through a curated, read-only API that readers outside the operating team can use. This simple idea expands incrementally and enables IT environments. This is not radical. It is simply <em>API-first</em>, together with transparency that aims to simplify upstream services and to actively support organizations in governing service content and its compliance, or in investigating incidents more quickly.</p>
+<p><button type="button" class="zoom-trigger"
+  data-download="/enterprise-comic-v15.jpg" aria-label="View full size: Continuous Governance promotes publishing all the data its controllers are collecting to its IT environment. This can change enterprises incrementally.">
+  <img src="/enterprise-comic-v15-light.png"
+    data-src-light="/enterprise-comic-v15-light.png"
+    data-src-dark="/enterprise-comic-v15-black.png" alt="Continuous Governance promotes publishing all the data its controllers are collecting to its IT environment. This can change enterprises incrementally.">
 </button>
-<em>Fig.3: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p><h3 id=northstar>Northstar</h3><p>Continuous Governance contributes to a shift-left in IT service operations by making every IT operation
-auditable and transparent to its enterprise organization.</p><p><button type=button class=zoom-trigger data-download=/northstar-v30.jpg aria-label="View full size: A setting sun labeled conventional, with one locked box in the dunes, and three people walking toward a star labeled Northstar.">
-<img src=/northstar-v30-light.png data-src-light=/northstar-v30-light.png data-src-dark=/northstar-v30-black.png alt="A setting sun labeled conventional, with one locked box in the dunes, and three people walking toward a star labeled Northstar.">
+<em>Fig.3: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p>
+<h3 id="northstar">Northstar</h3>
+<p>Continuous Governance contributes to a shift-left in IT service operations by making every IT operation
+auditable and transparent to its enterprise organization.</p>
+<p><button type="button" class="zoom-trigger"
+  data-download="/northstar-v30.jpg" aria-label="View full size: A setting sun labeled conventional, with one locked box in the dunes, and three people walking toward a star labeled Northstar.">
+  <img src="/northstar-v30-light.png"
+    data-src-light="/northstar-v30-light.png"
+    data-src-dark="/northstar-v30-black.png" alt="A setting sun labeled conventional, with one locked box in the dunes, and three people walking toward a star labeled Northstar.">
 </button>
-<em>Fig.4: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p><h2 id=problem>Problem</h2><p>In corporate IT, an IT service is connected to other services, identity providers, platforms, and local processes already in place. The operational discipline behind this is called <strong>DevOps (Development and Operations)</strong>.
+<em>Fig.4: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p>
+<h2 id="problem">Problem</h2>
+<p>In corporate IT, an IT service is connected to other services, identity providers, platforms, and local processes already in place. The operational discipline behind this is called <strong>DevOps (Development and Operations)</strong>.
 <strong>Continuous deployment (CD)</strong> tools handle the <em>operational aspect</em> and support the shift to modern cloud environments, including their complexity.
-The <em>development aspect</em> of <strong>DevOps</strong> addresses the usage of the operated IT service, for example:</p><ul><li>Resource management</li><li>Internal billing</li><li>Maintenance and security</li><li>Audit and governance</li><li>Custom user and business workflows</li></ul><p>Since <strong>Continuous Integration (CI)</strong> tools are already available to DevOps engineers in their IT environment, these software development tools are typically used for the automation tasks above.
-<strong>Continuous Integration (CI)</strong> tools are perfect for building, testing, and deploying software, but they miss the original intent of DevOps. Using <strong>CI</strong> tools to automate IT systems has the following methodological disadvantages:</p><ul><li>The operation has no durable <em>model</em>. Its <em>state</em> is the last log, a spreadsheet, or the remote system.</li><li>Each run starts without a retained <em>model</em> and reads the live APIs again. The operation is recomputed from those calls.</li><li>Evidence for an audit is assembled after the run.</li><li>A further operation requires a further pipeline. The implementation is duplicated.</li><li>A completed job records that a run finished. The record omits the resulting content of the operation, the cause of the change, and the rule that permitted it.</li></ul><p>Any IT operations team in a corporate environment that uses continuous integration tools for service automation runs into the same problems with upstream processes and governance. Additional synergies of selecting such tools typically do not exist.</p><h2 id=principles>Principles</h2><p>Continuous Governance applies the ideas that made software delivery continuous to IT operations and their related engineering tasks. This requires a further class of automation services and platforms for enterprise IT DevOps engineers, operated in addition to the existing solutions for software developers.</p><dl><dt>Continuous integration and testing</dt><dd>The shift-left promise is kept by moving release-related activities into the early stages of ongoing development. As a result, releases can be performed often and quickly.</dd><dt>Continuous Governance</dt><dd>The shift-left promise is kept by moving governance-related activities into the day-to-day routine. DevOps does not keep pipeline tools for this work. Those tools remain with software development. As a result, audits can be performed often, and incidents can be investigated quickly.</dd></dl><p>Continuous Governance oriented services and platforms follow these principles:</p><dl><dt>State before action</dt><dd>Decide from the <em>state</em> and the <em>model</em>, not from data that exists only inside a running script.</dd><dt>One owner</dt><dd>Each record and each side effect has one owner, so several jobs do not fix the same condition.</dd><dt>Reviewable rules</dt><dd>The <em>model</em> is the engineer&rsquo;s contract. It holds the desired state, the eligibility, the safeguards, and the limits. The agent&rsquo;s code, configuration, and tests must match that model.</dd><dt>Evidence by default</dt><dd>The rule, the plan, and the result are one record.</dd><dt>Bounded recovery</dt><dd>Reconciliation is idempotent. Timeouts, retries, and empty-input safeguards keep a failure visible.</dd><dt>Zero trust</dt><dd>The <em>model</em> defines the intended state, the reference. An out-of-band change is a disturbance. The controller detects it and may revert it. A deviation is an event, not a surprise.</dd><dt>Human approval</dt><dd>The machine may execute approved rules, and AI may speed the engineering. Ownership of requirements, architecture, acceptance, and release stays with people.</dd><dt>Curated learning</dt><dd>Lessons are kept only when someone accepts them. They do not drift in from the last session.</dd></dl><h3 id=two-aspects>Two aspects</h3><p>Continuous Governance reads the day-to-day work of a DevOps engineer as classical software engineering. This engineering process is considered actively in the service and platform design.</p><dl><dt>Operation</dt><dd>How an operation is automated: each event is auditable, each change is traceable, each state is observable.</dd><dt>Engineering</dt><dd>How that automation is built: each requirement is traceable, each decision is auditable, each change is reviewable. Assistants work inside a declared use case. The <em>model</em> is the contract. Accepted knowledge is advisory. An organization that adopts this assisted workflow can aim at ISO 42001. Conformity belongs to that organization, and it is established by assessment.</dd></dl><h2 id=whats-new>What&rsquo;s new?</h2><h3 id=a-continuous-governance-oriented-service-design>A continuous governance oriented service design</h3><p>A <em>Continuous Governance</em> oriented service keeps a <em>Service-under-Control (SuC)</em> in sync with it&rsquo;s <em>desired state</em>, by watching it&rsquo;s <em>current state</em>. Populator- and Generator-microservices share one database and build together a <a href=#how-it-works><em>state machine</em></a> (controller). A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.</p><p><button type=button class=zoom-trigger data-download=/lorena-architecture-comic-v17.jpg aria-label="View full size: Stick-figure diagram of a Continuous Governance service: an initiator, populators, a central database, generators, and a service under control, with a user, an auditor, and a hacker.">
-<img src=/lorena-architecture-comic-v17-light.png data-src-light=/lorena-architecture-comic-v17-light.png data-src-dark=/lorena-architecture-comic-v17-black.png alt="Stick-figure diagram of a Continuous Governance service: an initiator, populators, a central database, generators, and a service under control, with a user, an auditor, and a hacker.">
+The <em>development aspect</em> of <strong>DevOps</strong> addresses the usage of the operated IT service, for example:</p>
+<ul>
+<li>Resource management</li>
+<li>Internal billing</li>
+<li>Maintenance and security</li>
+<li>Audit and governance</li>
+<li>Custom user and business workflows</li>
+</ul>
+<p>Since <strong>Continuous Integration (CI)</strong> tools are already available to DevOps engineers in their IT environment, these software development tools are typically used for the automation tasks above.
+<strong>Continuous Integration (CI)</strong> tools are perfect for building, testing, and deploying software, but they miss the original intent of DevOps. Using <strong>CI</strong> tools to automate IT systems has the following methodological disadvantages:</p>
+<ul>
+<li>The operation has no durable <em>model</em>. Its <em>state</em> is the last log, a spreadsheet, or the remote system.</li>
+<li>Each run starts without a retained <em>model</em> and reads the live APIs again. The operation is recomputed from those calls.</li>
+<li>Evidence for an audit is assembled after the run.</li>
+<li>A further operation requires a further pipeline. The implementation is duplicated.</li>
+<li>A completed job records that a run finished. The record omits the resulting content of the operation, the cause of the change, and the rule that permitted it.</li>
+</ul>
+<p>Any IT operations team in a corporate environment that uses continuous integration tools for service automation runs into the same problems with upstream processes and governance. Additional synergies of selecting such tools typically do not exist.</p>
+<h2 id="principles">Principles</h2>
+<p>Continuous Governance applies the ideas that made software delivery continuous to IT operations and their related engineering tasks. This requires a further class of automation services and platforms for enterprise IT DevOps engineers, operated in addition to the existing solutions for software developers.</p>
+<dl>
+<dt>Continuous integration and testing</dt>
+<dd>The shift-left promise is kept by moving release-related activities into the early stages of ongoing development. As a result, releases can be performed often and quickly.</dd>
+<dt>Continuous Governance</dt>
+<dd>The shift-left promise is kept by moving governance-related activities into the day-to-day routine. DevOps does not keep pipeline tools for this work. Those tools remain with software development. As a result, audits can be performed often, and incidents can be investigated quickly.</dd>
+</dl>
+<p>Continuous Governance oriented services and platforms follow these principles:</p>
+<dl>
+<dt>State before action</dt>
+<dd>Decide from the <em>state</em> and the <em>model</em>, not from data that exists only inside a running script.</dd>
+<dt>One owner</dt>
+<dd>Each record and each side effect has one owner, so several jobs do not fix the same condition.</dd>
+<dt>Reviewable rules</dt>
+<dd>The <em>model</em> is the engineer&rsquo;s contract. It holds the desired state, the eligibility, the safeguards, and the limits. The agent&rsquo;s code, configuration, and tests must match that model.</dd>
+<dt>Evidence by default</dt>
+<dd>The rule, the plan, and the result are one record.</dd>
+<dt>Bounded recovery</dt>
+<dd>Reconciliation is idempotent. Timeouts, retries, and empty-input safeguards keep a failure visible.</dd>
+<dt>Zero trust</dt>
+<dd>The <em>model</em> defines the intended state, the reference. An out-of-band change is a disturbance. The controller detects it and may revert it. A deviation is an event, not a surprise.</dd>
+<dt>Human approval</dt>
+<dd>The machine may execute approved rules, and AI may speed the engineering. Ownership of requirements, architecture, acceptance, and release stays with people.</dd>
+<dt>Curated learning</dt>
+<dd>Lessons are kept only when someone accepts them. They do not drift in from the last session.</dd>
+</dl>
+<h3 id="two-aspects">Two aspects</h3>
+<p>Continuous Governance reads the day-to-day work of a DevOps engineer as classical software engineering. This engineering process is considered actively in the service and platform design.</p>
+<dl>
+<dt>Operation</dt>
+<dd>How an operation is automated: each event is auditable, each change is traceable, each state is observable.</dd>
+<dt>Engineering</dt>
+<dd>How that automation is built: each requirement is traceable, each decision is auditable, each change is reviewable. Assistants work inside a declared use case. The <em>model</em> is the contract. Accepted knowledge is advisory. An organization that adopts this assisted workflow can aim at ISO 42001. Conformity belongs to that organization, and it is established by assessment.</dd>
+</dl>
+<h2 id="whats-new">What&rsquo;s new?</h2>
+<h3 id="a-continuous-governance-oriented-service-design">A continuous governance oriented service design</h3>
+<p>A <em>Continuous Governance</em> oriented service keeps a <em>Service-under-Control (SuC)</em> in sync with it&rsquo;s <em>desired state</em>, by watching it&rsquo;s <em>current state</em>. Populator- and Generator-microservices share one database and build together a <a href="#how-it-works"><em>state machine</em></a> (controller). A user reads status, an auditor follows the trace, and a hacker is pushed back to the intended state.</p>
+<p><button type="button" class="zoom-trigger"
+  data-download="/lorena-architecture-comic-v17.jpg" aria-label="View full size: Stick-figure diagram of a Continuous Governance service: an initiator, populators, a central database, generators, and a service under control, with a user, an auditor, and a hacker.">
+  <img src="/lorena-architecture-comic-v17-light.png"
+    data-src-light="/lorena-architecture-comic-v17-light.png"
+    data-src-dark="/lorena-architecture-comic-v17-black.png" alt="Stick-figure diagram of a Continuous Governance service: an initiator, populators, a central database, generators, and a service under control, with a user, an auditor, and a hacker.">
 </button>
-<em>Fig. 5: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p><p>This is a sketch of an unreleased service that implements the principles.</p><h3 id=a-continuous-governance-oriented-engineering-workflow>A continuous governance oriented engineering workflow</h3><p>Continuous Governance also moves the practical automation work of a DevOps engineer from scripting and coding to the engineering work of <em>modelling</em> a <a href=#how-it-works><em>state machine</em></a>: its <em>states</em> and its <em>transitions</em>. This requires particular design steps and precise mathematical formulations, which are the basis of</p><ul><li>governing any automation process precisely across planning, implementation, and execution</li><li>a fully AI-assisted engineering process that considers ad-hoc know-how (feedforward) and a knowledge base (feedback), which allows human-curated training of agents over time.</li></ul><p>Since such modelling techniques are not typically known to DevOps engineers, AI-assisted development is feasible. An organization that adopts it can aim at ISO 42001. Conformity belongs to that organization and is established by assessment.</p><p><button type=button class=zoom-trigger data-download=/lorena-workflow-comic-v10.jpg aria-label="View full size: Two-panel stick-figure comic comparing pipeline scripting with a continuous governance engineering workflow.">
-<img src=/lorena-workflow-comic-v10-light.png data-src-light=/lorena-workflow-comic-v10-light.png data-src-dark=/lorena-workflow-comic-v10-black.png alt="Two-panel stick-figure comic comparing pipeline scripting with a continuous governance engineering workflow.">
+<em>Fig. 5: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p>
+<p>This is a sketch of an unreleased service that implements the principles.</p>
+<h3 id="a-continuous-governance-oriented-engineering-workflow">A continuous governance oriented engineering workflow</h3>
+<p>Continuous Governance also moves the practical automation work of a DevOps engineer from scripting and coding to the engineering work of <em>modelling</em> a <a href="#how-it-works"><em>state machine</em></a>: its <em>states</em> and its <em>transitions</em>. This requires particular design steps and precise mathematical formulations, which are the basis of</p>
+<ul>
+<li>governing any automation process precisely across planning, implementation, and execution</li>
+<li>a fully AI-assisted engineering process that considers ad-hoc know-how (feedforward) and a knowledge base (feedback), which allows human-curated training of agents over time.</li>
+</ul>
+<p>Since such modelling techniques are not typically known to DevOps engineers, AI-assisted development is feasible. An organization that adopts it can aim at ISO 42001. Conformity belongs to that organization and is established by assessment.</p>
+<p><button type="button" class="zoom-trigger"
+  data-download="/lorena-workflow-comic-v10.jpg" aria-label="View full size: Two-panel stick-figure comic comparing pipeline scripting with a continuous governance engineering workflow.">
+  <img src="/lorena-workflow-comic-v10-light.png"
+    data-src-light="/lorena-workflow-comic-v10-light.png"
+    data-src-dark="/lorena-workflow-comic-v10-black.png" alt="Two-panel stick-figure comic comparing pipeline scripting with a continuous governance engineering workflow.">
 </button>
-<em>Fig. 6: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p><p>In the context of Continuous Governance, previously unprioritized code is now planned, documented, and monitored. Its operation is readable beyond the operating team, curated in content, and read-only in effect.</p><h3 id=continuous-governance-is-an-agentic-no-code-approach>Continuous Governance is an agentic no-code approach</h3><p>A <em>Service-under-Control</em> is operated by rules, through a <em>state machine</em>. These rules are mathematical expressions, governed by the DevOps engineer. This controller-oriented perspective applies <a href=https://www.ibm.com/de-de/think/topics/policy-as-code><em>Policy-as-Code</em></a> to service operation. The <em>state machine</em>, one type of <em>model</em>, represents the service rules one to one.</p><p>This drives a fundamental shift in DevOps practice. The <em>state machine</em> design is the single-policy contract for the engineer and the enterprise organization. Its documentation and its implementation are performed by a set of trained agents. The engineer is expected to:</p><ul><li>formulate the rule</li><li>govern the implementation</li><li>perform the end-to-end testing</li><li>plan the rollout</li><li>curate knowledge for the agent</li><li>monitor service health</li></ul><p>Here, a <em>state machine</em> is an agent-friendly language. It lets the DevOps engineer carry out the former coding work in a fully agentic way. The development trace is now straightforward Markdown files, used at every stage and simple to archive and track. Their content is the precise service rules (<code>intent</code>). Their implementation is performed by an agent (<code>action</code>). In day-to-day work, it remains a human responsibility that</p><p><code>intent(human) == action(agent)</code>.</p><p>This split is pragmatic and reflects the governance rules in enterprise environments. With recent progress in agentic coding, it is straightforward to implement prototypical development workflows for the agents. Those workflows keep the work compliant and can fulfill individual enterprise requirements. A prototypical workflow can look like this:</p><p><button type=button class=zoom-trigger data-download=/lorena-process-comic-v23.jpg aria-label="View full size: Stick-figure flowchart of a policy-as-code process from an enterprise requirement through model, plan, code, deploy, and debug to human review.">
-<img src=/lorena-process-comic-v23-light.png data-src-light=/lorena-process-comic-v23-light.png data-src-dark=/lorena-process-comic-v23-black.png alt="Stick-figure flowchart of a policy-as-code process from an enterprise requirement through model, plan, code, deploy, and debug to human review.">
+<em>Fig. 6: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p>
+<p>In the context of Continuous Governance, previously unprioritized code is now planned, documented, and monitored. Its operation is readable beyond the operating team, curated in content, and read-only in effect.</p>
+<h3 id="continuous-governance-is-an-agentic-no-code-approach">Continuous Governance is an agentic no-code approach</h3>
+<p>A <em>Service-under-Control</em> is operated by rules, through a <em>state machine</em>. These rules are mathematical expressions, governed by the DevOps engineer. This controller-oriented perspective applies <a href="https://www.ibm.com/de-de/think/topics/policy-as-code"><em>Policy-as-Code</em></a> to service operation. The <em>state machine</em>, one type of <em>model</em>, represents the service rules one to one.</p>
+<p>This drives a fundamental shift in DevOps practice. The <em>state machine</em> design is the single-policy contract for the engineer and the enterprise organization. Its documentation and its implementation are performed by a set of trained agents. The engineer is expected to:</p>
+<ul>
+<li>formulate the rule</li>
+<li>govern the implementation</li>
+<li>perform the end-to-end testing</li>
+<li>plan the rollout</li>
+<li>curate knowledge for the agent</li>
+<li>monitor service health</li>
+</ul>
+<p>Here, a <em>state machine</em> is an agent-friendly language. It lets the DevOps engineer carry out the former coding work in a fully agentic way. The development trace is now straightforward Markdown files, used at every stage and simple to archive and track. Their content is the precise service rules (<code>intent</code>). Their implementation is performed by an agent (<code>action</code>). In day-to-day work, it remains a human responsibility that</p>
+<p><code>intent(human) == action(agent)</code>.</p>
+<p>This split is pragmatic and reflects the governance rules in enterprise environments. With recent progress in agentic coding, it is straightforward to implement prototypical development workflows for the agents. Those workflows keep the work compliant and can fulfill individual enterprise requirements. A prototypical workflow can look like this:</p>
+<p><button type="button" class="zoom-trigger"
+  data-download="/lorena-process-comic-v23.jpg" aria-label="View full size: Stick-figure flowchart of a policy-as-code process from an enterprise requirement through model, plan, code, deploy, and debug to human review.">
+  <img src="/lorena-process-comic-v23-light.png"
+    data-src-light="/lorena-process-comic-v23-light.png"
+    data-src-dark="/lorena-process-comic-v23-black.png" alt="Stick-figure flowchart of a policy-as-code process from an enterprise requirement through model, plan, code, deploy, and debug to human review.">
 </button>
-<em>Fig. 7: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p><p>In practice, it can be seen that human implementations and manual changes do not follow the same precision as agents. These manual changes often introduce misaligned wording or content mismatches, which confuse agents. That is experience from the work. The engineer does the six duties above and does not write the implementation. An agent writes it. This can be read as a modern <a href=https://www.ibm.com/think/topics/low-code-vs-no-code>no-code</a> approach.</p><h3 id=summary>Summary</h3><p>Enterprise IT operations always include engineering work. In the past, and still today, that work is often done with monolithic scripts and pipelines. New no-code, low-code, and vibe-coding approaches offer a chance to cut this Gordian knot. But an enterprise operation still has to carry the work through to a measurable trace: who made a change, which rule allowed it, and what was executed. Traceability and governance are the requirements the recent trends still leave to the surrounding environment.</p><p>Continuous Governance uses a <em>state machine</em> applied to a <em>Service-under-Control</em>. The service has a <em>desired state</em>, the reference, and a <em>current state</em>. Drift is the difference. One event is applied, and the rule, the plan, and the result are recorded. The same <em>model</em> is the contract for agentic coding. Classical <em>state machine</em> <em>modeling</em> names the <em>states</em> and the <em>transitions</em>. A modern agent implements them. People keep ownership of the rules and their acceptance. The standing check is that human intent and agent action match. To that end, an end-to-end agentic development process is proposed, one that takes individual enterprise requirements and boundaries into account.</p><p>In this way, Continuous Governance treats the <strong>service operation and the engineering process behind it as one</strong>. A <em>state machine</em> can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding and builds a mutual language between human and AI assistant. As a consequence, AI-assisted work has a central, well-defined scope in the concept. <em>State machines</em> also contribute a further perspective in IT: the <a href=https://en.wikipedia.org/wiki/Closed-loop_controller>feedback loop</a>. This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of <em>state machines</em> for IT and service operation is novel and, to the best of the author&rsquo;s knowledge, not yet explored to that extent.</p><h2 id=glossary>Glossary</h2><p>Entries are in alphabetical order. A term keeps its meaning from control engineering. Where this method applies the term to an IT service, the entry says so. A mention of a term elsewhere on the page links to its entry.</p><table class=glossary><thead><tr><th>Term</th><th>Definition</th></tr></thead><tbody><tr><th scope=row id=glossary-action>Action</th><td>see Event.</td></tr><tr><th scope=row id=glossary-controller>Controller</th><td>see state machine</td></tr><tr><th scope=row id=glossary-read-only-api>read-only API</th><td>The interface through which a reader outside the operating team can read the state and the operation. The content is curated. The effect is read-only.</td></tr><tr><th scope=row id=glossary-current-state>Current state</th><td>The actual state of the service, typically fetched from remote on a regular basis</td></tr><tr><th scope=row id=glossary-database>Database</th><td>Cloud native shared storage of the service-under-control</td></tr><tr><th scope=row id=glossary-desired-state>Desired state</th><td>The reference: the state the controller is required to reach or keep. The model defines it.</td></tr><tr><th scope=row id=glossary-drift>Drift</th><td>The error, equal to the desired state minus the current state.</td></tr><tr><th scope=row id=glossary-event>Event</th><td>The controller&rsquo;s calculated response to a drift. It carries context and intent. The same state and the same model yield the same event.</td></tr><tr><th scope=row id=glossary-intent>Intent</th><td>The engineer&rsquo;s statement of the rule, held in the model. The engineer formulates the rule, governs the implementation, tests, plans the rollout, curates knowledge, and monitors health. The engineer does not write the implementation.</td></tr><tr><th scope=row id=glossary-model>Model</th><td>The mathematical abstraction of the Service-under-Control and of its rules.</td></tr><tr><th scope=row id=glossary-plant>Plant</th><td>The system under control. See Service-under-Control.</td></tr><tr><th scope=row id=glossary-record>Record</th><td>The trace of an applied event: the rule, the plan, and the result.</td></tr><tr><th scope=row id=glossary-rule>Rule</th><td>The content of the model: the admitted situations, the allowed events, and the desired state.</td></tr><tr><th scope=row id=glossary-service-under-control>Service-under-Control</th><td>The remote system operated by the controller-oriented automation system sketched on this page. Abbreviated SuC.</td></tr><tr><th scope=row id=glossary-shift-left>Shift-left</th><td>Placement of a control at an earlier point in the work. Continuous integration does this for the release of software. Continuous Governance does this for the governance of service operation, and for that work replaces the pipeline.</td></tr><tr><th scope=row id=glossary-state>State</th><td>The mathematical expression of the condition of the Service-under-Control. In practice it is represented by the database tables that store the current state and the desired state of the Service-under-Control.</td></tr><tr><th scope=row id=glossary-state-machine>State machine</th><td>A finite automaton (Q, Σ, δ, q₀). Q is a finite set of states, Σ a finite set of events, δ the transition function from a state and an event to the next state, and q₀ the initial state. It is the model in which the automation is written.</td></tr></tbody></table><h2 id=whitepaper>Whitepaper</h2><p>Continuous Governance – a novel dialect for IT automation. Raphael Hans, Stuttgart, Germany. <a href=mailto:Raphael.Hans@continuous-governance.org>Raphael.Hans@continuous-governance.org</a></p><p><a href=/continuous-governance.pdf>Download PDF (printable, black/white)</a></p><h3 class=abstract id=abstract>Abstract</h3><p>Continuous governance (CG) is proposed as an automation dialect for the operation of IT services. An automation is written as a finite state machine</p><p><code>(Q, Σ, δ, q₀). (1)</code></p><p>Observability, controllability, and a policy-as-code trace are properties of this design. Moreover, such an automaton can be executed in parallel. Its multi-threading capabilities make it applicable for any enterprise size. The design is demonstrated on a real-world-inspired automation use-case. In summary, the presented work gives an outlook for a novel IT service operation.</p><h3 class=toc id=contents>Contents</h3><ol><li><a href=#introduction>Introduction</a></li><li><a href=#state-machine>State Machine</a></li><li><a href=#observability>Observability & Controllability</a></li><li><a href=#scalability>Scalability</a><ul><li><a href=#populator>4.1 Populator - data import and processing</a></li><li><a href=#generator>4.2 Generator - drift calculation and event generation</a></li><li><a href=#shared-memory>4.3 Assembly - Shared memory</a></li><li><a href=#scalability-summary>4.4 Summary</a></li></ul></li><li><a href=#policy-as-code>Policy-as-Code</a></li><li><a href=#scenario>Scenario: access management to a resource</a><ul><li><a href=#the-scenario>6.1 The Scenario</a></li><li><a href=#scenario-summary>6.2 Summary</a></li></ul></li><li><a href=#conclusion>Conclusion</a></li><li><a href=#future-work>Future Work</a></li><li><a href=#references>References</a></li></ol><h3 id=introduction>Introduction</h3><p>Software development is a craft which evolves over time <a href=#ref-1>[1]</a>. In recent decades, centralized versioning concepts such as Subversion are substituted by distributed ones such as Git. Organizational models are changing from Waterfall to role-based Agile <a href=#ref-2>[2]</a>. Many of these software-development-driven patterns have transformed into domain-agnostic enterprise and organizational methods <a href=#ref-3>[3]</a>.</p><p>A continuation of this thinking is continuous deployment, as represented by tools such as Argo CD <a href=#ref-4>[4]</a>. Here, modern infrastructure-as-code methods are used to adapt software-development patterns to service operations. This is a complete shift in a modern DevOps engineer&rsquo;s deployment routine and replaces legacy deployment pipelines based on classical CI tools. This is surprising for the following reason:</p><p>While Ops in DevOps has evolved over time into its own automation dialect, Dev has no automation dialect of its own.</p><p>This whitepaper proposes a dedicated automation dialect for DevOps engineers in IT environments, called &ldquo;continuous governance&rdquo;. It focuses on an end-to-end practice, starting at the DevOps engineer&rsquo;s policies to be implemented and continuing through the calculated events of the compiled automation system during its execution. This is a governance- and audit-oriented approach that aims to match daily DevOps practice and responsibility more closely. In fig. 1, its conceptual difference from existing automation approaches is indicated.</p><p><button type=button class="zoom-trigger figure-wide" data-download=/dialects-comic-v3-light.svg aria-label="View full size: Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. The output is infrastructure / service. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transition / events.">
-<img src=/dialects-comic-v3-light.svg data-src-light=/dialects-comic-v3-light.svg data-src-dark=/dialects-comic-v3-black.svg alt="Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. The output is infrastructure / service. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transition / events."></button></p><p><em>Fig. 1. CI pipeline, CD manifest sync, and CG state-machine design with policy sync.</em></p><h3 id=state-machine>State Machine</h3><p>The automation is written as a finite state machine of the form</p><p><code>(Q, Σ, δ, q₀), (2)</code></p><p>where</p><ul><li><code>Q</code> is a finite set of states</li><li><code>Σ</code> is a finite set of events</li><li><code>δ: Q × Σ → Q</code> maps a state and an event to the successor state</li></ul><p>This is its typical representation <a href=#ref-5>[5]</a>. Any automation problem is expressed by a desired state <code>r</code> and a current state <code>y</code>. The automaton state is that pair</p><p><code>q = (r, y), (3)</code></p><p>While <code>r</code> is derived from the IT environment, <code>y</code> is measured from the target system, the Service-under-Control (SuC). <code>Q</code> is the finite set of pairs the problem distinguishes. The pair at the start reads</p><p><code>q₀ = (r₀, y₀). (4)</code></p><p>Drift is the difference between the desired state and the current state</p><p><code>e = Δ(r, y). (5)</code></p><p>Where <code>r</code> and <code>y</code> are predicates rather than numbers, <code>e</code> is the set of predicates on which they disagree. The event <code>σ ∈ Σ</code> is selected from <code>e</code>. The transition is the map already given</p><p><code>δ(q, σ) = q' (6.1)</code></p><p><code>q' = (r', y'). (6.2)</code></p><p><code>r'</code> is the desired state at the successor, derived from the IT environment. <code>y'</code> is the current state measured from the SuC after <code>σ</code>. The state concept above does not hard-code one workflow. It evaluates a declared machine. Each automation problem is one declaration of the states according to (3) and of the transitions according to (6). In the following, the core properties of such a system are investigated.</p><h3 id=observability>Observability & Controllability</h3><p>Any IT automation task that can be expressed as <code>q = (r, y)</code> with a corresponding set of transitions <code>δ(q, σ) = q'</code> can be represented by the presented state machine design. To such state machines, the same fundamental control-theoretical principles apply. For a DevOps engineer, this means the following for an automation task:</p><ul><li>observability: the current and desired state of the SuC can be observed and/or calculated.</li><li>controllability: events <code>δ(q, σ) = q'</code> can be implemented to set the SuC to the desired state</li></ul><p>Both properties correspond to the control-engineering definitions of observability and controllability of a control system <a href=#ref-6>[6]</a>. On that basis, it can be assumed that any engineering automation task in practice fulfills the criteria above, and that the state machine design can be applied.</p><h3 id=scalability>Scalability</h3><p>Any IT automation task that can be expressed as <code>q = (r, y)</code> with the transitions <code>δ(q, σ) = q'</code> separates into two atomic classes of calculations. The state and the event are calculated separately from each other. This is a split of the state machine into the data processing paths it requires and the transitions it enforces.</p><h4 id=populator>Populator - data import and processing</h4><p>A populator is a general data importer and processor, and one required data processing path. It can read from any remote system, or process locally cached data. It calculates <code>r</code> and <code>y</code> in generic form. That result is the state as given in eq. 3</p><p><code>q = (r, y).</code></p><h4 id=generator>Generator - drift calculation and event generation</h4><p>A generator is a general drift calculator for event emission, and one enforced transition. It calculates an individual drift. It reads the state <code>q</code> already produced, applies one event <code>σ</code> selected from <code>e</code>, and confirms its action. In other words, it emits</p><p><code>δ(q, σ) = q',</code></p><p>and confirms</p><p><code>q' = (r', y'),</code></p><p>for the state machine. One generator applies one event.</p><h4 id=shared-memory>Assembly - Shared memory</h4><p>A populator and a generator are atomic: each calculates either the state or one event. Assembled, they are the finite state machine, with states <code>q = (r, y)</code> and transitions <code>δ(q, σ) = q'</code>.</p><p>All populators and generators are coupled by a shared memory, typically in the form of a database. The tables read and written by the populators and generators are the state of the machine. A further data processing path is a further populator. A further enforced transition is a further generator.</p><h4 id=scalability-summary>Summary</h4><p>With that concept, multi-threading is built in since each state machine transition and event generation can be calculated in an isolated thread.</p><p>Note, the state machine is evaluated on tables. Their processing time is <code>O(nₘ)</code> with the table size <code>nₘ</code>. For each member in that table, transitions and events are expected to be calculated within µs, as shown by a prototypical measurement. This is an expected performance compared to other domains, e.g. numerical simulation <a href=#ref-7>[7]</a>. This enables state-machine reaction times within seconds for enterprise sizes of up to 500,000 associates.</p><h3 id=policy-as-code>Policy-as-Code</h3><p>Any IT automation task that can be expressed as <code>q = (r, y)</code> with the set of transitions <code>δ(q, σ) = q'</code> is machine-readable and can be tracked by a common revision-management system. It thereby fulfills policy-as-code practice <a href=#ref-8>[8]</a>. In more detail, states and transitions represent the formally abstracted policies applied to the SuC. Their verbal description, formal abstraction, and implementation belong to a single implementation trace, which must be actively governed in practice.</p><h3 id=scenario>Scenario: access management to a resource</h3><h4 id=the-scenario>The Scenario</h4><p>In the following, the state machine design is applied to an IT-related use case: automated access management.</p><p>In this scenario, access for an employee to a resource is granted on a SuC through an Active Directory group membership. This is representative of granting employees permissions to a document, a binary, source code, or other material served by the SuC. The input is a reference Active Directory group. Its member set is <code>r</code>, derived from the enterprise Identity Provider (IdP). The member set currently on the resource is <code>y</code>, fetched from the platform, the SuC. The output is the events that add or remove a member on that resource.</p><p>The term <code>e</code> is the drift of the two sets. Members in <code>r</code> but not in <code>y</code> are to be added. Members in <code>y</code> but not in <code>r</code> are to be removed. <code>Σ</code> contains <code>add(m)</code>, <code>remove(m)</code>, and <code>none</code>, where <code>m</code> is one member drawn from the drift <code>e</code>. It follows</p><p><code>δ((r, y), add(m)) = (r, y ∪ {m}), (7.1)</code></p><p><code>δ((r, y), remove(m)) = (r, y \ {m}), (7.2)</code></p><p><code>δ((r, y), none) = (r, y), (7.3)</code></p><p>The definitions above are based on sets, but can be rewritten as atomic member predicates</p><p><code>y ∈ {0, 1}, (8.1)</code></p><p><code>r ∈ {0, 1}, (8.2)</code></p><p><code>y</code> represents the membership state on the SuC. <code>r</code> represents the membership state in the reference Active Directory group. The state is <code>q = (r, y)</code>. The four states are <code>(0, 0)</code>, <code>(1, 0)</code>, <code>(0, 1)</code>, and <code>(1, 1)</code>. The initial state is</p><p><code>q₀ = (0, 0). (9)</code></p><p>The drift <code>e</code> is empty at <code>(0, 0)</code> and at <code>(1, 1)</code>, and there <code>σ = none</code>. At <code>(1, 0)</code> the predicate is <code>add</code>. At <code>(0, 1)</code> the predicate is <code>remove</code>. Each member <code>m</code> is one copy of this machine.</p><p>From <code>q₀</code>, an employee added to the AD group on the IdP reaches <code>(1, 0)</code>. <code>δ</code> applies <code>add</code> and reaches <code>(1, 1)</code>. <code>σ = none</code> holds <code>(1, 1)</code>. An employee removed from the AD group on the IdP reaches <code>(0, 1)</code>. <code>δ</code> applies <code>remove</code> and returns to <code>q₀</code>. A manual change on the resource is an error: <code>(1, 1)</code> goes to <code>(1, 0)</code>, and <code>(0, 0)</code> goes to <code>(0, 1)</code>.</p><p><div class=figure-compare data-example=membership><div class=figure-compare-switch role=group aria-label="Example shown in the figure"><button type=button class=figure-compare-name data-example-name=membership aria-pressed=true>Membership</button>
-<button type=button class=figure-compare-name data-example-name=elevator aria-pressed=false>Elevator</button></div><button type=button class=zoom-trigger data-download=/membership-sm-v1-light.svg aria-label="View full size: State machine of one member. Initial state q0 is (0,0). States are (0,0) Request: No, (1,0) Adding, (0,1) Removing, and (1,1) Request: Done, written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0). Removed from AD-Group on IdP goes from (1,1) to (0,1). The network event δ((1, 0), add()) goes from (1,0) to (1,1). The network event δ((0, 1), remove()) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1).">
-<img src=/membership-sm-v1-light.svg data-src-light=/membership-sm-v1-light.svg data-src-dark=/membership-sm-v1-black.svg data-compare-light-0=/membership-sm-v1-light.svg data-compare-dark-0=/membership-sm-v1-black.svg data-compare-light-1=/elevator-sm-v1-light.svg data-compare-dark-1=/elevator-sm-v1-black.svg data-alt-0="State machine of one member. Initial state q0 is (0,0). States are (0,0) Request: No, (1,0) Adding, (0,1) Removing, and (1,1) Request: Done, written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0). Removed from AD-Group on IdP goes from (1,1) to (0,1). The network event δ((1, 0), add()) goes from (1,0) to (1,1). The network event δ((0, 1), remove()) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1)." alt="State machine of one member. Initial state q0 is (0,0). States are (0,0) Request: No, (1,0) Adding, (0,1) Removing, and (1,1) Request: Done, written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0). Removed from AD-Group on IdP goes from (1,1) to (0,1). The network event δ((1, 0), add()) goes from (1,0) to (1,1). The network event δ((0, 1), remove()) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1)." data-alt-1="State machine of one elevator door. Initial state q0 is (0,0), Closed. States are (0,0) Closed, (1,0) Opening, (1,1) Open, and (0,1) Closing, written as (r, y). Door open requested goes from (0,0) to (1,0). Door close requested goes from (1,1) to (0,1). The sensor event δ((1, 0), open(*)) goes from (1,0) to (1,1). The sensor event δ((0, 1), close(*)) goes from (0,1) to (0,0). Door forced to close goes from (1,1) to (1,0). Door forced to open goes from (0,0) to (0,1). none holds (0,0) and (1,1)."></button></div></p><p><em>Fig. 2. The membership machine for one member. The elevator door is the same machine. The state is (r, y). q₀ = (0, 0).</em></p><h4 id=scenario-summary>Summary</h4><p>Access management is a simple, straightforward example of how typical automation and development tasks can be expressed as a state machine. This applies to any task that can be executed in finite steps, where the overall setup is observable and controllable. In other words, no limitation can be assumed in IT practice.</p><h3 id=conclusion>Conclusion</h3><p>Section 2 builds the formal framework for the state machine. Here, the automation task is formulated as a controller-oriented tracking problem and requires only basic control engineering properties to be applicable in a real-world IT scenario. Moreover, it is shown that such a set of equations can be calculated in individual threads. This is of relevance to ensure acceptable processing times for large enterprises. Moreover, the formalism of such a state machine can be interpreted as Policy-as-Code since the set of equations is machine-readable and represents the enterprise policies one-to-one. Finally, the dialect is applied to a simple member synchronization task, which is a classical service automation task in IT.</p><p>The presented work shows that state machine design is not limited to embedded devices or real-time applications. A state machine can operate network applications. That is beneficial since the operational policies and the compiled state machine match in practice and can be governed easily.</p><p>The introduced automation dialect is highly abstract and fits the latest trends in agentic coding. More precisely, one goal of the formalism is to be the mutual language between human and AI agents. The AI agent&rsquo;s context is human-curated knowledge, e.g. this paper. Based on recent progress, it can be expected that AI assistance is applicable end-to-end from modelling the state machine to auditing the overall operation – while governance remains with a human.</p><p>The presented automation dialect is the basis of an engine prototype for network applications. This prototype already operates an internal service platform at the Robert Bosch GmbH and combines unusual aspects in service operation. The compiled state machine works as:</p><ul><li>Automation backend</li><li>Audit and governance surface</li><li>Cyber-Security incident handler</li></ul><p>More use-cases are expected to be explored in future.</p><h3 id=future-work>Future Work</h3><p>While controllers find applications in engineering, biology, or chemistry <a href=#ref-9>[9]</a>, the application in IT is not yet known, to the best of the author&rsquo;s knowledge. Upcoming work will focus on</p><ul><li>Concept hardening of &ldquo;Continuous Governance&rdquo;.</li><li>Release of a prototypical engine, incl. real-world application examples</li><li>Further investigations on assisted modelling and coding according to ISO 42001 in the context of end-to-end IT operations</li></ul><h3 id=references>References</h3><ol><li><span id=ref-1></span>M. Shahin, M. A. Babar, and L. Zhu, &ldquo;Continuous Integration, Delivery and Deployment: A Systematic Review on Approaches, Tools, Challenges and Practices,&rdquo; <em>IEEE Access</em>, vol. 5, pp. 3909–3943, 2017.</li><li><span id=ref-2></span>R. C. Martin, <em>Agile Software Development: Principles, Patterns, and Practices</em>. Upper Saddle River, NJ, USA: Prentice Hall, 2003.</li><li><span id=ref-3></span>K. Dikert, M. Paasivaara, and C. Lassenius, &ldquo;Challenges and success factors for large-scale agile transformations: A systematic literature review,&rdquo; <em>Journal of Systems and Software</em>, vol. 119, pp. 87–108, 2016.</li><li><span id=ref-4></span>Argo CD Project, &ldquo;Core concepts,&rdquo; <em>Argo CD Documentation</em>. [Online]. Available: <a href=https://argo-cd.readthedocs.io/en/stable/core_concepts/>https://argo-cd.readthedocs.io/en/stable/core_concepts/</a>. [Accessed: Oct. 24, 2026].</li><li><span id=ref-5></span>J. E. Hopcroft, R. Motwani, and J. D. Ullman, <em>Introduction to Automata Theory, Languages, and Computation</em>, 3rd ed. Boston, MA, USA: Pearson, 2007.</li><li><span id=ref-6></span>R. E. Kalman, &ldquo;Mathematical Description of Linear Dynamical Systems,&rdquo; <em>Journal of the Society for Industrial and Applied Mathematics, Series A: Control</em>, vol. 1, no. 2, pp. 152–192, 1963.</li><li><span id=ref-7></span>R. Hans, F. Panik, and H.-C. Reuss, &ldquo;1-D+1-D PEM fuel cell stack model for advanced hardware-in-the-loop applications,&rdquo; <em>SAE Int. J. Alternative Powertrains</em>, vol. 5, no. 1, pp. 1–12, 2015, Art. no. 2015-01-1779.</li><li><span id=ref-8></span>R. Chandramouli, <em>Implementation of DevSecOps for a Microservices-Based Application With Service Mesh</em>, NIST Special Publication 800-204C. Gaithersburg, MD, USA: National Institute of Standards and Technology, Mar. 2022.</li><li><span id=ref-9></span>D. Del Vecchio, A. J. Dy, and Y. Qian, &ldquo;Control theory meets synthetic biology,&rdquo; <em>J. R. Soc. Interface</em>, vol. 13, no. 120, Art. no. 20160380, Jul. 2016, doi: 10.1098/rsif.2016.0380.</li></ol><h2 id=contact>Contact</h2><p>I am Raphael, author of this page and initiator of Continuous Governance. In ancient times, I studied control engineering, and today I work at Robert Bosch GmbH. Fifteen years of hands-on work in project management, service operation, and software development led to Continuous Governance.</p><p>The domain changed over those years, from embedded real-time systems to cloud-based service operation. Automation pipelines and jobs remained the de facto standard in my daily work, as a software developer and as a DevOps engineer.</p><p>Software-development principles are fruitful in day-to-day DevOps work, but the automation tools and services for that work should be different. These two practices create different artifacts and follow a different scope in daily work. As a software developer I trace a requirement, its implementation, and the build, test, and delivery of a binary or a service. As a DevOps engineer I trace enterprise governance rules, their implementation, their continuous execution, and the drift of the operated service. These are different jobs, and they require different automation approaches.</p><p>This page is a concept paper. It proposes a dialect of its own for the automation of IT systems. Governance is the focus, and a control-engineering approach is a good fit for it. A prototype of the service is in internal use at Robert Bosch GmbH.</p><p>If you work in enterprise IT and this gap is part of your daily work, I welcome a conversation. Write to <img src=/contact-email-light.png class=contact-detail data-src-light=/contact-email-light.png data-src-dark=/contact-email-black.png alt=E-mail> or open a <a href=https://github.com/c-governance/website/issues>ticket</a> on GitHub.</p><h3 id=impressum>Impressum</h3><p>Angaben gemäß § 5 DDG</p><p>Raphael Hans<br><img src=/contact-address-light.png class=contact-detail data-src-light=/contact-address-light.png data-src-dark=/contact-address-black.png alt="Postal address"></p><p>E-Mail: <img src=/contact-email-light.png class=contact-detail data-src-light=/contact-email-light.png data-src-dark=/contact-email-black.png alt=E-mail></p><p>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Raphael Hans, Anschrift wie oben.</p><p>Diese Website wird von Raphael Hans betrieben. Robert Bosch GmbH ist nicht Diensteanbieter dieser Website.</p></main><button type=button class=how-open data-open-demo aria-haspopup=dialog aria-controls=how-it-works>
-<svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M4 2.5v11L14 8 4 2.5z"/></svg>
-How it works
+<em>Fig. 7: This comic was designed and edited by Raphael Hans - created by Grok 4.7.</em></p>
+<p>In practice, it can be seen that human implementations and manual changes do not follow the same precision as agents. These manual changes often introduce misaligned wording or content mismatches, which confuse agents. That is experience from the work. The engineer does the six duties above and does not write the implementation. An agent writes it. This can be read as a modern <a href="https://www.ibm.com/think/topics/low-code-vs-no-code">no-code</a> approach.</p>
+<h3 id="summary">Summary</h3>
+<p>Enterprise IT operations always include engineering work. In the past, and still today, that work is often done with monolithic scripts and pipelines. New no-code, low-code, and vibe-coding approaches offer a chance to cut this Gordian knot. But an enterprise operation still has to carry the work through to a measurable trace: who made a change, which rule allowed it, and what was executed. Traceability and governance are the requirements the recent trends still leave to the surrounding environment.</p>
+<p>Continuous Governance uses a <em>state machine</em> applied to a <em>Service-under-Control</em>. The service has a <em>desired state</em>, the reference, and a <em>current state</em>. Drift is the difference. One event is applied, and the rule, the plan, and the result are recorded. The same <em>model</em> is the contract for agentic coding. Classical <em>state machine</em> <em>modeling</em> names the <em>states</em> and the <em>transitions</em>. A modern agent implements them. People keep ownership of the rules and their acceptance. The standing check is that human intent and agent action match. To that end, an end-to-end agentic development process is proposed, one that takes individual enterprise requirements and boundaries into account.</p>
+<p>In this way, Continuous Governance treats the <strong>service operation and the engineering process behind it as one</strong>. A <em>state machine</em> can seem old-fashioned at first, yet its well-established formalism fits the most recent trends in agentic coding and builds a mutual language between human and AI assistant. As a consequence, AI-assisted work has a central, well-defined scope in the concept. <em>State machines</em> also contribute a further perspective in IT: the <a href="https://en.wikipedia.org/wiki/Closed-loop_controller">feedback loop</a>. This fundamental principle of control engineering can be applied in IT in a universal way, for automation, governance, or security. It is established on embedded devices, for example in elevator control. The use of <em>state machines</em> for IT and service operation is novel and, to the best of the author&rsquo;s knowledge, not yet explored to that extent.</p>
+<h2 id="glossary">Glossary</h2>
+<p>Entries are in alphabetical order. A term keeps its meaning from control engineering. Where this method applies the term to an IT service, the entry says so. A mention of a term elsewhere on the page links to its entry.</p>
+<table class="glossary">
+  <thead>
+    <tr><th>Term</th><th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+            <th scope="row" id="glossary-action">Action</th>
+            <td>see Event.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-controller">Controller</th>
+            <td>see state machine</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-read-only-api">read-only API</th>
+            <td>The interface through which a reader outside the operating team can read the state and the operation. The content is curated. The effect is read-only.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-current-state">Current state</th>
+            <td>The actual state of the service, typically fetched from remote on a regular basis</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-database">Database</th>
+            <td>Cloud native shared storage of the service-under-control</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-desired-state">Desired state</th>
+            <td>The reference: the state the controller is required to reach or keep. The model defines it.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-drift">Drift</th>
+            <td>The error, equal to the desired state minus the current state.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-event">Event</th>
+            <td>The controller&rsquo;s calculated response to a drift. It carries context and intent. The same state and the same model yield the same event.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-intent">Intent</th>
+            <td>The engineer&rsquo;s statement of the rule, held in the model. The engineer formulates the rule, governs the implementation, tests, plans the rollout, curates knowledge, and monitors health. The engineer does not write the implementation.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-model">Model</th>
+            <td>The mathematical abstraction of the Service-under-Control and of its rules.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-plant">Plant</th>
+            <td>The system under control. See Service-under-Control.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-record">Record</th>
+            <td>The trace of an applied event: the rule, the plan, and the result.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-rule">Rule</th>
+            <td>The content of the model: the admitted situations, the allowed events, and the desired state.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-service-under-control">Service-under-Control</th>
+            <td>The remote system operated by the controller-oriented automation system sketched on this page. Abbreviated SuC.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-shift-left">Shift-left</th>
+            <td>Placement of a control at an earlier point in the work. Continuous integration does this for the release of software. Continuous Governance does this for the governance of service operation, and for that work replaces the pipeline.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-state">State</th>
+            <td>The mathematical expression of the condition of the Service-under-Control. In practice it is represented by the database tables that store the current state and the desired state of the Service-under-Control.</td>
+    </tr>
+    <tr>
+            <th scope="row" id="glossary-state-machine">State machine</th>
+            <td>A finite automaton (Q, Σ, δ, q₀). Q is a finite set of states, Σ a finite set of events, δ the transition function from a state and an event to the next state, and q₀ the initial state. It is the model in which the automation is written.</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="whitepaper">Whitepaper</h2>
+<p>Continuous Governance – a novel dialect for IT automation. Raphael Hans, Stuttgart, Germany. <a href="mailto:Raphael.Hans@continuous-governance.org">Raphael.Hans@continuous-governance.org</a></p>
+<p><a href="/continuous-governance.pdf">Download PDF (printable, black/white)</a></p>
+<h3 class="abstract" id="abstract">Abstract</h3>
+<p>Continuous governance (CG) is proposed as an automation dialect for the operation of IT services. An automation is written as a finite state machine</p>
+<p><code>(Q, Σ, δ, q₀). (1)</code></p>
+<p>Observability, controllability, and a policy-as-code trace are properties of this design. Moreover, such an automaton can be executed in parallel. Its multi-threading capabilities make it applicable for any enterprise size. The design is demonstrated on a real-world-inspired automation use-case. In summary, the presented work gives an outlook for a novel IT service operation.</p>
+
+<h3 class="toc" id="contents">Contents</h3>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#state-machine">State Machine</a></li>
+<li><a href="#observability">Observability &amp; Controllability</a></li>
+<li><a href="#scalability">Scalability</a>
+<ul>
+<li><a href="#populator">4.1 Populator - data import and processing</a></li>
+<li><a href="#generator">4.2 Generator - drift calculation and event generation</a></li>
+<li><a href="#shared-memory">4.3 Assembly - Shared memory</a></li>
+<li><a href="#scalability-summary">4.4 Summary</a></li>
+</ul>
+</li>
+<li><a href="#policy-as-code">Policy-as-Code</a></li>
+<li><a href="#scenario">Scenario: access management to a resource</a>
+<ul>
+<li><a href="#the-scenario">6.1 The Scenario</a></li>
+<li><a href="#scenario-summary">6.2 Summary</a></li>
+</ul>
+</li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#future-work">Future Work</a></li>
+<li><a href="#references">References</a></li>
+</ol>
+<h3 id="introduction">Introduction</h3>
+<p>Software development is a craft which evolves over time <a href="#ref-1">[1]</a>. In recent decades, centralized versioning concepts such as Subversion are substituted by distributed ones such as Git. Organizational models are changing from Waterfall to role-based Agile <a href="#ref-2">[2]</a>. Many of these software-development-driven patterns have transformed into domain-agnostic enterprise and organizational methods <a href="#ref-3">[3]</a>.</p>
+<p>A continuation of this thinking is continuous deployment, as represented by tools such as Argo CD <a href="#ref-4">[4]</a>. Here, modern infrastructure-as-code methods are used to adapt software-development patterns to service operations. This is a complete shift in a modern DevOps engineer&rsquo;s deployment routine and replaces legacy deployment pipelines based on classical CI tools. This is surprising for the following reason:</p>
+<p>While Ops in DevOps has evolved over time into its own automation dialect, Dev has no automation dialect of its own.</p>
+<p>This whitepaper proposes a dedicated automation dialect for DevOps engineers in IT environments, called &ldquo;continuous governance&rdquo;. It focuses on an end-to-end practice, starting at the DevOps engineer&rsquo;s policies to be implemented and continuing through the calculated events of the compiled automation system during its execution. This is a governance- and audit-oriented approach that aims to match daily DevOps practice and responsibility more closely. In fig. 1, its conceptual difference from existing automation approaches is indicated.</p>
+<p><button type="button" class="zoom-trigger figure-wide"
+  data-download="/dialects-comic-v3-light.svg" aria-label="View full size: Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. The output is infrastructure / service. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transition / events.">
+  <img src="/dialects-comic-v3-light.svg"
+    data-src-light="/dialects-comic-v3-light.svg"
+    data-src-dark="/dialects-comic-v3-black.svg" alt="Three boxed panels. CI shows build stages ending in a code or binary artifact. CD shows a rendered manifest, a diff, and Kubernetes or OpenShift. The output is infrastructure / service. CG shows rendered policies, a state-machine design, and the four-state machine. The output is transition / events.">
+</button></p>
+<p><em>Fig. 1. CI pipeline, CD manifest sync, and CG state-machine design with policy sync.</em></p>
+<h3 id="state-machine">State Machine</h3>
+<p>The automation is written as a finite state machine of the form</p>
+<p><code>(Q, Σ, δ, q₀), (2)</code></p>
+<p>where</p>
+<ul>
+<li><code>Q</code> is a finite set of states</li>
+<li><code>Σ</code> is a finite set of events</li>
+<li><code>δ: Q × Σ → Q</code> maps a state and an event to the successor state</li>
+</ul>
+<p>This is its typical representation <a href="#ref-5">[5]</a>. Any automation problem is expressed by a desired state <code>r</code> and a current state <code>y</code>. The automaton state is that pair</p>
+<p><code>q = (r, y), (3)</code></p>
+<p>While <code>r</code> is derived from the IT environment, <code>y</code> is measured from the target system, the Service-under-Control (SuC). <code>Q</code> is the finite set of pairs the problem distinguishes. The pair at the start reads</p>
+<p><code>q₀ = (r₀, y₀). (4)</code></p>
+<p>Drift is the difference between the desired state and the current state</p>
+<p><code>e = Δ(r, y). (5)</code></p>
+<p>Where <code>r</code> and <code>y</code> are predicates rather than numbers, <code>e</code> is the set of predicates on which they disagree. The event <code>σ ∈ Σ</code> is selected from <code>e</code>. The transition is the map already given</p>
+<p><code>δ(q, σ) = q' (6.1)</code></p>
+<p><code>q' = (r', y'). (6.2)</code></p>
+<p><code>r'</code> is the desired state at the successor, derived from the IT environment. <code>y'</code> is the current state measured from the SuC after <code>σ</code>. The state concept above does not hard-code one workflow. It evaluates a declared machine. Each automation problem is one declaration of the states according to (3) and of the transitions according to (6). In the following, the core properties of such a system are investigated.</p>
+<h3 id="observability">Observability &amp; Controllability</h3>
+<p>Any IT automation task that can be expressed as <code>q = (r, y)</code> with a corresponding set of transitions <code>δ(q, σ) = q'</code> can be represented by the presented state machine design. To such state machines, the same fundamental control-theoretical principles apply. For a DevOps engineer, this means the following for an automation task:</p>
+<ul>
+<li>observability: the current and desired state of the SuC can be observed and/or calculated.</li>
+<li>controllability: events <code>δ(q, σ) = q'</code> can be implemented to set the SuC to the desired state</li>
+</ul>
+<p>Both properties correspond to the control-engineering definitions of observability and controllability of a control system <a href="#ref-6">[6]</a>. On that basis, it can be assumed that any engineering automation task in practice fulfills the criteria above, and that the state machine design can be applied.</p>
+<h3 id="scalability">Scalability</h3>
+<p>Any IT automation task that can be expressed as <code>q = (r, y)</code> with the transitions <code>δ(q, σ) = q'</code> separates into two atomic classes of calculations. The state and the event are calculated separately from each other. This is a split of the state machine into the data processing paths it requires and the transitions it enforces.</p>
+<h4 id="populator">Populator - data import and processing</h4>
+<p>A populator is a general data importer and processor, and one required data processing path. It can read from any remote system, or process locally cached data. It calculates <code>r</code> and <code>y</code> in generic form. That result is the state as given in eq. 3</p>
+<p><code>q = (r, y).</code></p>
+<h4 id="generator">Generator - drift calculation and event generation</h4>
+<p>A generator is a general drift calculator for event emission, and one enforced transition. It calculates an individual drift. It reads the state <code>q</code> already produced, applies one event <code>σ</code> selected from <code>e</code>, and confirms its action. In other words, it emits</p>
+<p><code>δ(q, σ) = q',</code></p>
+<p>and confirms</p>
+<p><code>q' = (r', y'),</code></p>
+<p>for the state machine. One generator applies one event.</p>
+<h4 id="shared-memory">Assembly - Shared memory</h4>
+<p>A populator and a generator are atomic: each calculates either the state or one event. Assembled, they are the finite state machine, with states <code>q = (r, y)</code> and transitions <code>δ(q, σ) = q'</code>.</p>
+<p>All populators and generators are coupled by a shared memory, typically in the form of a database. The tables read and written by the populators and generators are the state of the machine. A further data processing path is a further populator. A further enforced transition is a further generator.</p>
+<h4 id="scalability-summary">Summary</h4>
+<p>With that concept, multi-threading is built in since each state machine transition and event generation can be calculated in an isolated thread.</p>
+<p>Note, the state machine is evaluated on tables. Their processing time is <code>O(nₘ)</code> with the table size <code>nₘ</code>. For each member in that table, transitions and events are expected to be calculated within µs, as shown by a prototypical measurement. This is an expected performance compared to other domains, e.g. numerical simulation <a href="#ref-7">[7]</a>. This enables state-machine reaction times within seconds for enterprise sizes of up to 500,000 associates.</p>
+<h3 id="policy-as-code">Policy-as-Code</h3>
+<p>Any IT automation task that can be expressed as <code>q = (r, y)</code> with the set of transitions <code>δ(q, σ) = q'</code> is machine-readable and can be tracked by a common revision-management system. It thereby fulfills policy-as-code practice <a href="#ref-8">[8]</a>. In more detail, states and transitions represent the formally abstracted policies applied to the SuC. Their verbal description, formal abstraction, and implementation belong to a single implementation trace, which must be actively governed in practice.</p>
+<h3 id="scenario">Scenario: access management to a resource</h3>
+<h4 id="the-scenario">The Scenario</h4>
+<p>In the following, the state machine design is applied to an IT-related use case: automated access management.</p>
+<p>In this scenario, access for an employee to a resource is granted on a SuC through an Active Directory group membership. This is representative of granting employees permissions to a document, a binary, source code, or other material served by the SuC. The input is a reference Active Directory group. Its member set is <code>r</code>, derived from the enterprise Identity Provider (IdP). The member set currently on the resource is <code>y</code>, fetched from the platform, the SuC. The output is the events that add or remove a member on that resource.</p>
+<p>The term <code>e</code> is the drift of the two sets. Members in <code>r</code> but not in <code>y</code> are to be added. Members in <code>y</code> but not in <code>r</code> are to be removed. <code>Σ</code> contains <code>add(m)</code>, <code>remove(m)</code>, and <code>none</code>, where <code>m</code> is one member drawn from the drift <code>e</code>. It follows</p>
+<p><code>δ((r, y), add(m)) = (r, y ∪ {m}), (7.1)</code></p>
+<p><code>δ((r, y), remove(m)) = (r, y \ {m}), (7.2)</code></p>
+<p><code>δ((r, y), none) = (r, y), (7.3)</code></p>
+<p>The definitions above are based on sets, but can be rewritten as atomic member predicates</p>
+<p><code>y ∈ {0, 1}, (8.1)</code></p>
+<p><code>r ∈ {0, 1}, (8.2)</code></p>
+<p><code>y</code> represents the membership state on the SuC. <code>r</code> represents the membership state in the reference Active Directory group. The state is <code>q = (r, y)</code>. The four states are <code>(0, 0)</code>, <code>(1, 0)</code>, <code>(0, 1)</code>, and <code>(1, 1)</code>. The initial state is</p>
+<p><code>q₀ = (0, 0). (9)</code></p>
+<p>The drift <code>e</code> is empty at <code>(0, 0)</code> and at <code>(1, 1)</code>, and there <code>σ = none</code>. At <code>(1, 0)</code> the predicate is <code>add</code>. At <code>(0, 1)</code> the predicate is <code>remove</code>. Each member <code>m</code> is one copy of this machine.</p>
+<p>From <code>q₀</code>, an employee added to the AD group on the IdP reaches <code>(1, 0)</code>. <code>δ</code> applies <code>add</code> and reaches <code>(1, 1)</code>. <code>σ = none</code> holds <code>(1, 1)</code>. An employee removed from the AD group on the IdP reaches <code>(0, 1)</code>. <code>δ</code> applies <code>remove</code> and returns to <code>q₀</code>. A manual change on the resource is an error: <code>(1, 1)</code> goes to <code>(1, 0)</code>, and <code>(0, 0)</code> goes to <code>(0, 1)</code>.</p>
+<p><div class="figure-compare" data-example="membership">
+  <div class="figure-compare-switch" role="group" aria-label="Example shown in the figure">
+    <button type="button" class="figure-compare-name" data-example-name="membership" aria-pressed="true">Membership</button>
+    <button type="button" class="figure-compare-name" data-example-name="elevator" aria-pressed="false">Elevator</button>
+  </div>
+  <button type="button" class="zoom-trigger"
+    data-download="/membership-sm-v1-light.svg" aria-label="View full size: State machine of one member. Initial state q0 is (0,0). States are (0,0) Request: No, (1,0) Adding, (0,1) Removing, and (1,1) Request: Done, written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0). Removed from AD-Group on IdP goes from (1,1) to (0,1). The network event δ((1, 0), add()) goes from (1,0) to (1,1). The network event δ((0, 1), remove()) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1).">
+    <img src="/membership-sm-v1-light.svg"
+      data-src-light="/membership-sm-v1-light.svg"
+      data-src-dark="/membership-sm-v1-black.svg"
+      data-compare-light-0="/membership-sm-v1-light.svg"
+      data-compare-dark-0="/membership-sm-v1-black.svg"
+      data-compare-light-1="/elevator-sm-v1-light.svg"
+      data-compare-dark-1="/elevator-sm-v1-black.svg" data-alt-0="State machine of one member. Initial state q0 is (0,0). States are (0,0) Request: No, (1,0) Adding, (0,1) Removing, and (1,1) Request: Done, written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0). Removed from AD-Group on IdP goes from (1,1) to (0,1). The network event δ((1, 0), add()) goes from (1,0) to (1,1). The network event δ((0, 1), remove()) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1)." alt="State machine of one member. Initial state q0 is (0,0). States are (0,0) Request: No, (1,0) Adding, (0,1) Removing, and (1,1) Request: Done, written as (r, y). Add to AD-Group on IdP goes from (0,0) to (1,0). Removed from AD-Group on IdP goes from (1,1) to (0,1). The network event δ((1, 0), add()) goes from (1,0) to (1,1). The network event δ((0, 1), remove()) goes from (0,1) to (0,0). A manual change on SuC goes from (1,1) to (1,0) and from (0,0) to (0,1). none holds (0,0) and (1,1)."
+      data-alt-1="State machine of one elevator door. Initial state q0 is (0,0), Closed. States are (0,0) Closed, (1,0) Opening, (1,1) Open, and (0,1) Closing, written as (r, y). Door open requested goes from (0,0) to (1,0). Door close requested goes from (1,1) to (0,1). The sensor event δ((1, 0), open(*)) goes from (1,0) to (1,1). The sensor event δ((0, 1), close(*)) goes from (0,1) to (0,0). Door forced to close goes from (1,1) to (1,0). Door forced to open goes from (0,0) to (0,1). none holds (0,0) and (1,1).">
+  </button>
+</div></p>
+<p><em>Fig. 2. The membership machine for one member. The elevator door is the same machine. The state is (r, y). q₀ = (0, 0).</em></p>
+<h4 id="scenario-summary">Summary</h4>
+<p>Access management is a simple, straightforward example of how typical automation and development tasks can be expressed as a state machine. This applies to any task that can be executed in finite steps, where the overall setup is observable and controllable. In other words, no limitation can be assumed in IT practice.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Section 2 builds the formal framework for the state machine. Here, the automation task is formulated as a controller-oriented tracking problem and requires only basic control engineering properties to be applicable in a real-world IT scenario. Moreover, it is shown that such a set of equations can be calculated in individual threads. This is of relevance to ensure acceptable processing times for large enterprises. Moreover, the formalism of such a state machine can be interpreted as Policy-as-Code since the set of equations is machine-readable and represents the enterprise policies one-to-one. Finally, the dialect is applied to a simple member synchronization task, which is a classical service automation task in IT.</p>
+<p>The presented work shows that state machine design is not limited to embedded devices or real-time applications. A state machine can operate network applications. That is beneficial since the operational policies and the compiled state machine match in practice and can be governed easily.</p>
+<p>The introduced automation dialect is highly abstract and fits the latest trends in agentic coding. More precisely, one goal of the formalism is to be the mutual language between human and AI agents. The AI agent&rsquo;s context is human-curated knowledge, e.g. this paper. Based on recent progress, it can be expected that AI assistance is applicable end-to-end from modelling the state machine to auditing the overall operation – while governance remains with a human.</p>
+<p>The presented automation dialect is the basis of an engine prototype for network applications. This prototype already operates an internal service platform at the Robert Bosch GmbH and combines unusual aspects in service operation. The compiled state machine works as:</p>
+<ul>
+<li>Automation backend</li>
+<li>Audit and governance surface</li>
+<li>Cyber-Security incident handler</li>
+</ul>
+<p>More use-cases are expected to be explored in future.</p>
+<h3 id="future-work">Future Work</h3>
+<p>While controllers find applications in engineering, biology, or chemistry <a href="#ref-9">[9]</a>, the application in IT is not yet known, to the best of the author&rsquo;s knowledge. Upcoming work will focus on</p>
+<ul>
+<li>Concept hardening of &ldquo;Continuous Governance&rdquo;.</li>
+<li>Release of a prototypical engine, incl. real-world application examples</li>
+<li>Further investigations on assisted modelling and coding according to ISO 42001 in the context of end-to-end IT operations</li>
+</ul>
+<h3 id="references">References</h3>
+<ol>
+<li><span id="ref-1"></span>M. Shahin, M. A. Babar, and L. Zhu, &ldquo;Continuous Integration, Delivery and Deployment: A Systematic Review on Approaches, Tools, Challenges and Practices,&rdquo; <em>IEEE Access</em>, vol. 5, pp. 3909–3943, 2017.</li>
+<li><span id="ref-2"></span>R. C. Martin, <em>Agile Software Development: Principles, Patterns, and Practices</em>. Upper Saddle River, NJ, USA: Prentice Hall, 2003.</li>
+<li><span id="ref-3"></span>K. Dikert, M. Paasivaara, and C. Lassenius, &ldquo;Challenges and success factors for large-scale agile transformations: A systematic literature review,&rdquo; <em>Journal of Systems and Software</em>, vol. 119, pp. 87–108, 2016.</li>
+<li><span id="ref-4"></span>Argo CD Project, &ldquo;Core concepts,&rdquo; <em>Argo CD Documentation</em>. [Online]. Available: <a href="https://argo-cd.readthedocs.io/en/stable/core_concepts/">https://argo-cd.readthedocs.io/en/stable/core_concepts/</a>. [Accessed: Oct. 24, 2026].</li>
+<li><span id="ref-5"></span>J. E. Hopcroft, R. Motwani, and J. D. Ullman, <em>Introduction to Automata Theory, Languages, and Computation</em>, 3rd ed. Boston, MA, USA: Pearson, 2007.</li>
+<li><span id="ref-6"></span>R. E. Kalman, &ldquo;Mathematical Description of Linear Dynamical Systems,&rdquo; <em>Journal of the Society for Industrial and Applied Mathematics, Series A: Control</em>, vol. 1, no. 2, pp. 152–192, 1963.</li>
+<li><span id="ref-7"></span>R. Hans, F. Panik, and H.-C. Reuss, &ldquo;1-D+1-D PEM fuel cell stack model for advanced hardware-in-the-loop applications,&rdquo; <em>SAE Int. J. Alternative Powertrains</em>, vol. 5, no. 1, pp. 1–12, 2015, Art. no. 2015-01-1779.</li>
+<li><span id="ref-8"></span>R. Chandramouli, <em>Implementation of DevSecOps for a Microservices-Based Application With Service Mesh</em>, NIST Special Publication 800-204C. Gaithersburg, MD, USA: National Institute of Standards and Technology, Mar. 2022.</li>
+<li><span id="ref-9"></span>D. Del Vecchio, A. J. Dy, and Y. Qian, &ldquo;Control theory meets synthetic biology,&rdquo; <em>J. R. Soc. Interface</em>, vol. 13, no. 120, Art. no. 20160380, Jul. 2016, doi: 10.1098/rsif.2016.0380.</li>
+</ol>
+<h2 id="contact">Contact</h2>
+<p>I am Raphael, author of this page and initiator of Continuous Governance. In ancient times, I studied control engineering, and today I work at Robert Bosch GmbH. Fifteen years of hands-on work in project management, service operation, and software development led to Continuous Governance.</p>
+<p>The domain changed over those years, from embedded real-time systems to cloud-based service operation. Automation pipelines and jobs remained the de facto standard in my daily work, as a software developer and as a DevOps engineer.</p>
+<p>Software-development principles are fruitful in day-to-day DevOps work, but the automation tools and services for that work should be different. These two practices create different artifacts and follow a different scope in daily work. As a software developer I trace a requirement, its implementation, and the build, test, and delivery of a binary or a service. As a DevOps engineer I trace enterprise governance rules, their implementation, their continuous execution, and the drift of the operated service. These are different jobs, and they require different automation approaches.</p>
+<p>This page is a concept paper. It proposes a dialect of its own for the automation of IT systems. Governance is the focus, and a control-engineering approach is a good fit for it. A prototype of the service is in internal use at Robert Bosch GmbH.</p>
+<p>If you work in enterprise IT and this gap is part of your daily work, I welcome a conversation. Write to <img src="/contact-email-light.png"
+  class="contact-detail"
+  data-src-light="/contact-email-light.png"
+  data-src-dark="/contact-email-black.png" alt="E-mail"> or open a <a href="https://github.com/c-governance/website/issues">ticket</a> on GitHub.</p>
+<h3 id="impressum">Impressum</h3>
+<p>Angaben gemäß § 5 DDG</p>
+<p>Raphael Hans<br>
+<img src="/contact-address-light.png"
+  class="contact-detail"
+  data-src-light="/contact-address-light.png"
+  data-src-dark="/contact-address-black.png" alt="Postal address"></p>
+<p>E-Mail: <img src="/contact-email-light.png"
+  class="contact-detail"
+  data-src-light="/contact-email-light.png"
+  data-src-dark="/contact-email-black.png" alt="E-mail"></p>
+<p>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV: Raphael Hans, Anschrift wie oben.</p>
+<p>Diese Website wird von Raphael Hans betrieben. Robert Bosch GmbH ist nicht Diensteanbieter dieser Website.</p>
+
+
+  </main>
+  <button type="button" class="how-open" data-open-demo aria-haspopup="dialog" aria-controls="how-it-works">
+  <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+    <path fill="currentColor" d="M4 2.5v11l10-5.5L4 2.5z"/>
+  </svg>
+  How it works
 </button>
-<dialog id=how-it-works class=how-it-works aria-labelledby=how-it-works-title><div class=how-bar><div><p id=how-it-works-title class=how-title>How it works</p><p class=how-lead>A state machine is a traditional way to express logic. States and events are calculated in individual threads, in memory, and shared by a database. See the <a href=#whitepaper>whitepaper</a>.</p></div><button type=button class=how-close data-close-demo>Close</button></div><div class=cycle-player data-base=/examples/sdk-callback-queue/ data-autostart=overlay tabindex=0><div class=top><p class=lead>This is realized by microservices that are called populators and generators. Both are generic microservice templates that can be used to process data or calculate events. In combination, they can be used to build state machines.</p><p class=count aria-live=polite>1 of 9</p></div><div class=player><div class=stage><div class=film><video width=960 height=540 muted playsinline preload=metadata></video></div><aside class=machine><header class=machine-head><p class=machine-label>State machine</p><p class=machine-state>q = (0, 0)</p></header><svg viewBox="0 0 360 240" role="img" aria-label="State q = (r, y). Directory writes r. add() and remove() confirm y."><defs><marker id="cp-m-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z"/></marker><marker id="cp-m-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z"/></marker><marker id="cp-m-on" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 10 5 0 10z"/></marker></defs><path class="edge dir" data-edge="e-dir-on" data-marker="url(#cp-m-green)" marker-end="url(#cp-m-green)" d="M156 40h46"/><path class="edge gen" data-edge="e-add" data-marker="url(#cp-m-ink)" marker-end="url(#cp-m-ink)" d="M346 72v94"/><path class="edge dir" data-edge="e-dir-off" data-marker="url(#cp-m-green)" marker-end="url(#cp-m-green)" d="M202 198H156"/><path class="edge gen" data-edge="e-remove" data-marker="url(#cp-m-ink)" marker-end="url(#cp-m-ink)" d="M14 166V72"/><g class="node is-on" data-state="0"><rect x="26" y="12" width="128" height="56" rx="12"/><text x="90" y="36" text-anchor="middle" font-size="16" font-weight="700">(0, 0)</text><text class="word" x="90" y="54" text-anchor="middle" font-size="13">No</text></g><g class="node" data-state="10"><rect x="206" y="12" width="128" height="56" rx="12"/><text x="270" y="36" text-anchor="middle" font-size="16" font-weight="700">(1, 0)</text><text class="word" x="270" y="54" text-anchor="middle" font-size="13">Adding</text></g><g class="node" data-state="11"><rect x="206" y="170" width="128" height="56" rx="12"/><text x="270" y="194" text-anchor="middle" font-size="16" font-weight="700">(1, 1)</text><text class="word" x="270" y="212" text-anchor="middle" font-size="13">Done</text></g><g class="node" data-state="1"><rect x="26" y="170" width="128" height="56" rx="12"/><text x="90" y="194" text-anchor="middle" font-size="16" font-weight="700">(0, 1)</text><text class="word" x="90" y="212" text-anchor="middle" font-size="13">Removing</text></g></svg><ul class=actors><li data-actor=directory class=is-on>directory writes r</li><li data-actor=resource class=is-on>resource writes y</li><li data-actor=add>add() confirms y</li><li data-actor=remove>remove() confirms y</li></ul></aside></div><div class=track aria-hidden=true><span></span></div><div class=controls><button type=button data-control=pause aria-pressed=false>Pause</button>
-<button type=button class=ghost data-control=back>Back</button>
-<button type=button class=ghost data-control=replay aria-pressed=false>Replay</button>
-<button type=button class=ghost data-control=next>Next</button><ol class=dots></ol></div></div></div></dialog><script src=/js/cycle-player.js defer></script><footer class=site-footer><p>Initiator: Raphael Hans. <img class=contact-detail src=/contact-email-light.png data-src-light=/contact-email-light.png data-src-dark=/contact-email-black.png alt=E-mail></p><p class=footer-links><a href=/#impressum>Impressum</a> <a href=/llms.txt>For language models</a> <a href=/LICENSE.txt>MIT License</a> <a href=https://github.com/c-governance/website>Give a ★ on GitHub to support Continuous Governance.</a></p></footer><script src=/js/theme.js></script><script src=/js/figure-compare.js></script><script src=/js/tabs.js></script><script src=/js/glossary.js></script><script src=/js/lightbox.js></script></body></html>
+<dialog id="how-it-works" class="how-it-works" aria-labelledby="how-it-works-title">
+  <div class="how-bar">
+    <div>
+      <p id="how-it-works-title" class="how-title">How it works</p>
+      <p class="how-lead">A state machine is a traditional way to express logic. States and events are calculated in individual threads, in memory, and shared by a database. See the <a href="#whitepaper">whitepaper</a>.</p>
+    </div>
+    <button type="button" class="how-close" data-close-demo>Close</button>
+  </div>
+  <div class="cycle-player" data-base="/examples/sdk-callback-queue/" data-autostart="overlay" tabindex="0">
+    <div class="top">
+      <p class="lead">This is realized by microservices that are called populators and generators. Both are generic microservice templates that can be used to process data or calculate events. In combination, they can be used to build state machines.</p>
+      <p class="count" aria-live="polite">1 of 9</p>
+    </div>
+    <div class="player">
+      <div class="stage">
+        <div class="film">
+          <video width="960" height="540" muted playsinline preload="metadata"></video>
+        </div>
+        <aside class="machine">
+          <header class="machine-head">
+            <p class="machine-label">State machine</p>
+            <p class="machine-state">q = (0, 0)</p>
+          </header>
+          <svg viewBox="0 0 360 240" role="img" aria-label="State q = (r, y). Directory writes r. add() and remove() confirm y.">
+            <defs>
+              <marker id="cp-m-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+              <marker id="cp-m-ink" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+              <marker id="cp-m-on" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                <path d="M 0 0 L 10 5 L 0 10 z"/>
+              </marker>
+            </defs>
+            <path class="edge dir" data-edge="e-dir-on" data-marker="url(#cp-m-green)" marker-end="url(#cp-m-green)" d="M 156 40 H 202"/>
+            <path class="edge gen" data-edge="e-add" data-marker="url(#cp-m-ink)" marker-end="url(#cp-m-ink)" d="M 346 72 V 166"/>
+            <path class="edge dir" data-edge="e-dir-off" data-marker="url(#cp-m-green)" marker-end="url(#cp-m-green)" d="M 202 198 H 156"/>
+            <path class="edge gen" data-edge="e-remove" data-marker="url(#cp-m-ink)" marker-end="url(#cp-m-ink)" d="M 14 166 V 72"/>
+            <g class="node is-on" data-state="00">
+              <rect x="26" y="12" width="128" height="56" rx="12"/>
+              <text x="90" y="36" text-anchor="middle" font-size="16" font-weight="700">(0, 0)</text>
+              <text class="word" x="90" y="54" text-anchor="middle" font-size="13">No</text>
+            </g>
+            <g class="node" data-state="10">
+              <rect x="206" y="12" width="128" height="56" rx="12"/>
+              <text x="270" y="36" text-anchor="middle" font-size="16" font-weight="700">(1, 0)</text>
+              <text class="word" x="270" y="54" text-anchor="middle" font-size="13">Adding</text>
+            </g>
+            <g class="node" data-state="11">
+              <rect x="206" y="170" width="128" height="56" rx="12"/>
+              <text x="270" y="194" text-anchor="middle" font-size="16" font-weight="700">(1, 1)</text>
+              <text class="word" x="270" y="212" text-anchor="middle" font-size="13">Done</text>
+            </g>
+            <g class="node" data-state="01">
+              <rect x="26" y="170" width="128" height="56" rx="12"/>
+              <text x="90" y="194" text-anchor="middle" font-size="16" font-weight="700">(0, 1)</text>
+              <text class="word" x="90" y="212" text-anchor="middle" font-size="13">Removing</text>
+            </g>
+          </svg>
+          <ul class="actors">
+            <li data-actor="directory" class="is-on">directory writes r</li>
+            <li data-actor="resource" class="is-on">resource writes y</li>
+            <li data-actor="add">add() confirms y</li>
+            <li data-actor="remove">remove() confirms y</li>
+          </ul>
+        </aside>
+      </div>
+      <div class="track" aria-hidden="true"><span></span></div>
+      <div class="controls">
+        <button type="button" data-control="pause" aria-pressed="false">Pause</button>
+        <button type="button" class="ghost" data-control="back">Back</button>
+        <button type="button" class="ghost" data-control="replay" aria-pressed="false">Replay</button>
+        <button type="button" class="ghost" data-control="next">Next</button>
+        <ol class="dots"></ol>
+      </div>
+    </div>
+  </div>
+</dialog>
+<script src="/js/cycle-player.js?v=c11b3b43dc47f33b7e8aaff3f2fff00d" defer></script>
+
+  <footer class="site-footer">
+    <p>Initiator: Raphael Hans. <img class="contact-detail" src="/contact-email-light.png" data-src-light="/contact-email-light.png" data-src-dark="/contact-email-black.png" alt="E-mail"></p>
+<p class="footer-links"><a href="/#impressum">Impressum</a> <a href="/llms.txt">For language models</a> <a href="/LICENSE.txt">MIT License</a> <a href="https://github.com/c-governance/website">Give a ★ on GitHub to support Continuous Governance.</a></p>
+
+  </footer>
+  <script src="/js/theme.js?v=ea2f422de298b43648bb04882c5092bf"></script>
+  <script src="/js/figure-compare.js?v=2144f921b5cde51f67e53b0c48ff059d"></script>
+  <script src="/js/tabs.js?v=059076ddaf21cbc3fa6bf0dee452fc02"></script>
+  <script src="/js/glossary.js?v=60a9d805d674a0c137ed832be3e202a9"></script>
+  <script src="/js/lightbox.js?v=39a177b6c4cf47a71f6a27e289b4cd05"></script>
+</body>
+</html>
