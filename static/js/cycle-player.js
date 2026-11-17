@@ -115,7 +115,8 @@
         if (time + 0.04 >= candidate.t) mark = candidate;
       });
       ["00", "10", "11", "01"].forEach(function (id) {
-        root.querySelector("[data-state='" + id + "']").classList.toggle("is-on", id === mark.state);
+        var node = root.querySelector("[data-state='s" + id + "']");
+        if (node) node.classList.toggle("is-on", id === mark.state);
       });
       root.querySelectorAll("[data-edge]").forEach(function (part) {
         var on = part.getAttribute("data-edge") === mark.edge;
@@ -244,24 +245,26 @@
   }
 
   function boot() {
-    Array.prototype.forEach.call(document.querySelectorAll(".cycle-player"), mount);
     var dialog = document.getElementById("how-it-works");
-    if (!dialog) return;
-    document.addEventListener("click", function (event) {
-      var opener = event.target.closest("[data-open-demo], a[href='#how-it-works']");
-      if (!opener) return;
-      event.preventDefault();
-      if (!dialog.open) dialog.showModal();
-    });
-    dialog.addEventListener("click", function (event) {
-      if (event.target === dialog) dialog.close();
-      if (event.target.closest("a[href='#whitepaper']")) {
-        setTimeout(function () { dialog.close(); }, 0);
-      }
-    });
-    var closer = dialog.querySelector("[data-close-demo]");
-    if (closer) closer.addEventListener("click", function () { dialog.close(); });
-    if (location.hash === "#how-it-works") dialog.showModal();
+    if (dialog) {
+      document.addEventListener("click", function (event) {
+        var el = event.target;
+        if (el && el.nodeType !== 1) el = el.parentElement;
+        var opener = el && el.closest && el.closest("[data-open-demo], a[href='#how-it-works']");
+        if (!opener) return;
+        event.preventDefault();
+        if (!dialog.open) dialog.showModal();
+      });
+      dialog.addEventListener("click", function (event) {
+        if (event.target === dialog) dialog.close();
+        var link = event.target.closest && event.target.closest("a[href='#whitepaper']");
+        if (link) setTimeout(function () { dialog.close(); }, 0);
+      });
+      var closer = dialog.querySelector("[data-close-demo]");
+      if (closer) closer.addEventListener("click", function () { dialog.close(); });
+      if (location.hash === "#how-it-works") dialog.showModal();
+    }
+    Array.prototype.forEach.call(document.querySelectorAll(".cycle-player"), mount);
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
